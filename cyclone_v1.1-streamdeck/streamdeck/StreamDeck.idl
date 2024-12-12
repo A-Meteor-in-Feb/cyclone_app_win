@@ -1,0 +1,46 @@
+module StreamDeckData{
+
+    @extensibility(FINAL)
+    struct steeringWheel_data {
+        string tele_id;
+        long lX;
+        long lY;
+        long lRz;
+        long rglSlider_0;
+        unsigned long buttons;
+    };
+
+    @extensibility(FINAL)
+    struct joyStick_data {
+        string tele_id;
+        long lX;
+        long lZ;
+        long lRx;
+        long lRy;
+        long lRz;
+        unsigned long buttons;
+        sequence<long, 2> rglSlider;
+    };
+
+    @extensibility(FINAL)
+    struct streamdeck_buttons_data {
+        short buttons;
+    };
+
+    @extensibility(FINAL)
+    struct statistic_data {
+        double height;
+        double depth;
+        short auto_flag;
+    };
+
+    @extensibility(FINAL)
+    struct imu_data {
+        string vehicle_id;
+        sequence<double, 3> acc;
+        sequence<double, 3> gyro;
+        sequence<double, 3> angle;
+        sequence<double, 3> msg;
+    };
+
+};
