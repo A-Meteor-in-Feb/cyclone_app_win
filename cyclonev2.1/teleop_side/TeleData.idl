@@ -1,0 +1,65 @@
+module TeleData{
+
+    struct tele_status {
+        string tele_id;
+        boolean online;
+        boolean connected;
+    };
+
+    struct vehicle_status {
+        string vehicle_id;
+        boolean online;
+        boolean connected;
+    };
+
+    struct connection_msg {
+        string tele_id;
+        string vehicle_id;
+    };
+
+    struct steeringWheel_data {
+        string tele_id;
+        long lX;
+        long lY;
+        long lRz;
+        long rglSlider_0;
+        unsigned long buttons;
+    };
+
+    struct joyStick_data {
+        string tele_id;
+        long lX;
+        long lZ;
+        long lRx;
+        long lRy;
+        long lRz;
+        unsigned long buttons;
+        sequence<long, 2> rglSlider;
+    };
+
+    struct streamdeck_buttons_data {
+        short buttons;
+    };
+
+    struct statistic_data {
+        double height;
+        double depth;
+        short auto_flag;
+    };
+
+    struct imu_data {
+        string vehicle_id;
+        sequence<double, 3> acc;
+        sequence<double, 3> gyro;
+        sequence<double, 3> angle;
+        sequence<double, 3> msg;
+    };
+
+    struct vehicle_gps {
+        string vehicle_id;
+        double latitude;
+        double longitude;
+        double altitude;
+    };
+
+};

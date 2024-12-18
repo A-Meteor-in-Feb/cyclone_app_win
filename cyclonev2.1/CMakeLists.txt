@@ -3,8 +3,9 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("cyclone_v1.2")
+project ("cyclonev2.1")
 
 # Include sub-projects.
 add_subdirectory ("teleop_side")
 add_subdirectory ("vehicle_side")
+add_subdirectory ("command_center")
