@@ -28,10 +28,10 @@ int main(int argc, char* argv[]) {
     try {
 
         initControllers();
-        std::thread tele_publisher(run_subscriber_application, tele_id);
         std::thread tele_subscriber(run_publisher_application, tele_id);
+        //std::thread tele_publisher(run_subscriber_application, tele_id);
 
-        tele_publisher.join();
+        //tele_publisher.join();
         tele_subscriber.join();
 
     }

@@ -13,3 +13,17 @@ cyclone_v1.2/teleop_side/build/*
 cyclone_v1.2/vehicle_side/build/*
 cyclonev2.1/.vs/*
 cyclonev2.1/out/*
+cyclonev1.2_test/.vs/*
+cyclonev1.2_test/out/*
+cyclonev1.2_test/teleop_controller/build/*
+cyclonev1.2_test/teleop_imu/build/*
+cyclonev1.2_test/vehicle_controller/
+helloworld/.vs/*
+helloworld/out/*
+helloworld/helloworld/build/*
+test_cyclonedds/.vs/*
+test_cyclonedds/out/*
+test_cyclonedds/test_cyclonedds/build/*
+test_udp/.vs/*
+test_udp/Debug/*
+test_udp/test_udp/*

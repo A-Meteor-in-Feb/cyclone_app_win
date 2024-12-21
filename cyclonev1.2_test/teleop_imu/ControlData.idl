@@ -1,0 +1,10 @@
+module ControlData{
+
+    struct imu_data {
+        sequence<double, 3> acc;
+        sequence<double, 3> gyro;
+        sequence<double, 3> angle;
+        sequence<double, 3> msg;
+    };
+
+};
