@@ -1,4 +1,4 @@
-module VehicleData{
+module ControlData{
 
     struct tele_status {
         string tele_id;
@@ -52,7 +52,7 @@ module VehicleData{
         sequence<double, 3> acc;
         sequence<double, 3> gyro;
         sequence<double, 3> angle;
-        sequence<double, 3> msg;
+        sequence<double, 3> mag;
     };
 
     struct vehicle_gps {

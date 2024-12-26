@@ -1,0 +1,11 @@
+module ControlData{
+
+    struct steeringWheel {
+        long lX;
+        long lY;
+        long lRz;
+        long rglSlider_0;
+        unsigned long buttons;
+    };
+
+};

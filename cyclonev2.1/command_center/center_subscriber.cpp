@@ -4,7 +4,7 @@
 
 #include "shutdownsignal.hpp"
 #include "dds/dds.hpp"
-#include "CommandData.hpp"
+#include "ControlData.hpp"
 
 using namespace org::eclipse::cyclonedds;
 
@@ -20,24 +20,24 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 	dds::domain::DomainParticipant command_participant(command_domain);
 	dds::sub::Subscriber command_subscriber(command_participant);
 
-	dds::topic::Topic<CommandData::tele_status> tele_ststus_topic(command_participant, "tele_status_data");
-	dds::topic::Topic<CommandData::vehicle_status> vehicle_status_topic(command_particiant, "vehicle_status_data");
-	dds::topic::Topic<CommandData::vehicle_gps> vehicle_gps_topic(command_participant, "vehicle_gps_data");
+	dds::topic::Topic<ControlData::tele_status> tele_ststus_topic(command_participant, "tele_status_data");
+	dds::topic::Topic<ControlData::vehicle_status> vehicle_status_topic(command_particiant, "vehicle_status_data");
+	dds::topic::Topic<ControlData::vehicle_gps> vehicle_gps_topic(command_participant, "vehicle_gps_data");
 
-	dds::sub::DataReader<CommandData::tele_status> tele_status_reader(command_subscriber, tele_status_topic);
-	dds::sub::DataReader<CommandData::vehicle_status> vehicle_status_reader(command_subscriber, vehicle_status_topic);
-	dds::sub::DataReader<CommandData::vehicle_gps> vehicle_gps_reader(command_subscriber, vehicle_gps_topic);
+	dds::sub::DataReader<ControlData::tele_status> tele_status_reader(command_subscriber, tele_status_topic);
+	dds::sub::DataReader<ControlData::vehicle_status> vehicle_status_reader(command_subscriber, vehicle_status_topic);
+	dds::sub::DataReader<ControlData::vehicle_gps> vehicle_gps_reader(command_subscriber, vehicle_gps_topic);
 
-	dds::sub::LoanedSamples<CommandData::tele_status> tele_status_samples;
-	dds::sub::LoanedSamples<CommandData::vehicle_status> vehicle_status_samples;
-	dds::sub::LoanedSamples<CommandData::vehicle_gps> vehicle_gps_samples;
+	dds::sub::LoanedSamples<ControlData::tele_status> tele_status_samples;
+	dds::sub::LoanedSamples<ControlData::vehicle_status> vehicle_status_samples;
+	dds::sub::LoanedSamples<ControlData::vehicle_gps> vehicle_gps_samples;
 
 	while (!shutdown_requested) {
 
 		tele_status_samples = tele_status_reader.take();
 		if (tele_status_samples.length() > 0) {
 
-			dds::sub::LoanedSamples<CommandData::tele_status>::const_iterator iter;
+			dds::sub::LoanedSamples<ControlData::tele_status>::const_iterator iter;
 			for (iter = tele_status_samples.begin(); iter < tele_status_samples.end(); ++iter) {
 
 				const TeleData::tele_status& data = iter->data();
@@ -48,10 +48,12 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 
 					std::string tele_state;
 
+					//=====================================================
 					//Can we do this to get the value????
 					std::string tele_name = data::tele_status()::tele_id();
 					bool tele_online = data::tele_status()::online();
 					bool tele_connected = data::tale_status()::connected();
+					//=====================================================
 
 					if (tele_connected) {
 						tele_state = "connected";
@@ -75,7 +77,7 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 		vehicle_status_samples = vehicle_status_reader.take();
 		if (vehicle_status_samples.length() > 0) {
 
-			dds::sub::LoanedSamples<CommandData::vehicle_status>::const_iterator iter;
+			dds::sub::LoanedSamples<ControlData::vehicle_status>::const_iterator iter;
 			for (iter = vehicle_status_samples.begin(); iter < vehicle_status_samples.end(); ++iter) {
 
 

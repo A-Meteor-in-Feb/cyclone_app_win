@@ -1,5 +1,5 @@
-﻿cmake_minimum_required(VERSION 3.8)
-project(teleop_side LANGUAGES C CXX)
+cmake_minimum_required(VERSION 3.8)
+project(vehicle_con_nonad LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -15,28 +15,25 @@ idlcxx_generate(TARGET controldata FILES ControlData.idl WARNINGS no-implicit-ex
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 # add source files
-set(SOURCES entry.cpp tele_publisher.cpp tele_subscriber.cpp ControlData.cpp shutdownsignal.cpp)
+set(SOURCES vehicle_subscriber.cpp ControlData.cpp shutdownsignal.cpp)
 
 
 # add executable 
-add_executable(teleop_side ${SOURCES} "shutdownsignal.hpp")
+add_executable(vehicle_con_nonad ${SOURCES} "shutdownsignal.hpp")
 
 # Link both executables to idl data type library and ddscxx.
-target_link_libraries(teleop_side PRIVATE CycloneDDS-CXX::ddscxx controldata)
-
+target_link_libraries(vehicle_con_nonad PRIVATE CycloneDDS-CXX::ddscxx controldata)
 # link libraries about LogitecSteeringWheelLib
-target_include_directories(teleop_side PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-#target_link_libraries(teleop_side PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/LogitechSteeringWheelEnginesWrapper.dll)
-target_link_libraries(teleop_side PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/LogitechSteeringWheelLib.lib)
+target_include_directories(vehicle_con_nonad PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Disable the static analyzer in GCC to avoid crashing the GNU C++ compiler
 # on Azure Pipelines
 if(DEFINED ENV{SYSTEM_TEAMFOUNDATIONSERVERURI})
   if(CMAKE_C_COMPILER_ID STREQUAL "GNU" AND ANALYZER STREQUAL "on")
-    target_compile_options(tele_entry PRIVATE -fno-analyzer)
+    target_compile_options(vehicle_con_nonad PRIVATE -fno-analyzer)
   endif()
 endif()
 
-set_property(TARGET teleop_side PROPERTY CXX_STANDARD 17)
+set_property(TARGET vehicle_con_nonad PROPERTY CXX_STANDARD 17)
 
 

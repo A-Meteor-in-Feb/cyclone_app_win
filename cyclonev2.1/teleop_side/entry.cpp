@@ -8,12 +8,27 @@
 #include <codecvt>
 #include <bitset>
 
+#include <Windows.h>
 #include "shutdownsignal.hpp"
 
 
 int run_publisher_application(int tele_id);
 int run_subscriber_application(int tele_id);
 void initControllers();
+
+
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
+    switch (message) {
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+
+    default:
+        return ::DefWindowProc(hwnd, message, wparam, lparam);
+    }
+
+}
 
 
 int main(int argc, char* argv[]) {
@@ -27,12 +42,43 @@ int main(int argc, char* argv[]) {
 
     try {
 
-        initControllers();
-        std::thread tele_publisher(run_subscriber_application, tele_id);
-        std::thread tele_subscriber(run_publisher_application, tele_id);
+        HINSTANCE hInstance = GetModuleHandle(NULL);
+        WNDCLASS wc = {};
+        wc.lpfnWndProc = WindowProc;
+        wc.hInstance = hInstance;
+        wc.lpszClassName = "Name";
+        RegisterClass(&wc);
+        HWND hwnd = CreateWindowEx(
+            0,
+            "Name",
+            "Name",
+            WS_OVERLAPPEDWINDOW,
+            40, 20, 50, 50,
+            NULL,
+            NULL,
+            hInstance,
+            NULL
+        );
 
-        tele_publisher.join();
-        tele_subscriber.join();
+        if (hwnd == NULL) {
+            std::cerr << "Failed to create a Window" << std::endl;
+            return 0;
+        }
+
+        if (!shutdown_requested) {
+            MSG msg = {};
+            if (GetMessage(&msg, NULL, 0, 0)) {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+
+            initControllers();
+            std::thread tele_publisher(run_subscriber_application, tele_id);
+            std::thread tele_subscriber(run_publisher_application, tele_id);
+
+            tele_publisher.join();
+            tele_subscriber.join();
+        }
 
     }
     catch (const std::exception& ex) {

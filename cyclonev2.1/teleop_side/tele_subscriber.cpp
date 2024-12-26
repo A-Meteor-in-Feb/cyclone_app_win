@@ -5,7 +5,7 @@
 
 #include "dds/dds.hpp"
 #include "shutdownsignal.hpp"
-#include "TeleData.hpp"
+#include "ControlData.hpp"
 
 using namespace org::eclipse::cyclonedds;
 
@@ -18,14 +18,14 @@ int run_subscriber_application(int tele_id) {
 
 	dds::sub::Subscriber tele_subscriber(control_participant);
 
-	dds::topic::Topic<TeleData::streamdeck_buttons_data> buttons_topic(control_participant, "streamdeck_buttons_data");
-	dds::topic::Topic<TeleData::imu_data> imu_topic(control_participant, "imu_data");
+	dds::topic::Topic<ControlData::streamdeck_buttons_data> buttons_topic(control_participant, "streamdeck_buttons_data");
+	dds::topic::Topic<ControlData::imu_data> imu_topic(control_participant, "imu_data");
 
-	dds::sub::DataReader<TeleData::streamdeck_buttons_data> buttons_reader(tele_subscriber, buttons_topic);
-	dds::sub::DataReader<TeleData::imu_data> imu_reader(tele_subscriber, imu_topic);
+	dds::sub::DataReader<ControlData::streamdeck_buttons_data> buttons_reader(tele_subscriber, buttons_topic);
+	dds::sub::DataReader<ControlData::imu_data> imu_reader(tele_subscriber, imu_topic);
 
-	dds::sub::LoanedSamples<TeleData::streamdeck_buttons_data> buttons_samples;
-	dds::sub::LoanedSamples<TeleData::imu_data> imu_samples;
+	dds::sub::LoanedSamples<ControlData::streamdeck_buttons_data> buttons_samples;
+	dds::sub::LoanedSamples<ControlData::imu_data> imu_samples;
 
 	while (!shutdown_requested) {
 
@@ -34,10 +34,10 @@ int run_subscriber_application(int tele_id) {
 
 		if (buttons_samples.length() > 0) {
 
-			dds::sub::LoanedSamples<TeleData::streamdeck_buttons_data>::const_iterator iter;
+			dds::sub::LoanedSamples<ControlData::streamdeck_buttons_data>::const_iterator iter;
 			for (iter = buttons_samples.begin(); iter < buttons_samples.end(); ++iter) {
 
-				const TeleData::streamdeck_buttons_data& data = iter->data();
+				const ControlData::streamdeck_buttons_data& data = iter->data();
 				const dds::sub::SampleInfo& info = iter->info();
 
 				if (info.valid()) {
@@ -51,10 +51,10 @@ int run_subscriber_application(int tele_id) {
 		imu_samples = imu_reader.take();
 
 		if (imu_samples.length() > 0) {
-			dds::sub::LoanedSamples<TeleData::imu_data>::const_iterator iter;
+			dds::sub::LoanedSamples<ControlData::imu_data>::const_iterator iter;
 			for (iter = imu_samples.begin(); iter < imu_samples.end(); ++iter) {
 
-				const TeleData::imu_data& data = iter->data();
+				const ControlData::imu_data& data = iter->data();
 				const dds::sub::SampleInfo& info = iter->info();
 
 				if (info.valid()) {

@@ -1,5 +1,5 @@
 #include "dds/dds.hpp"
-#include "VehicleData.hpp"
+#include "ControlData.hpp"
 #include "shutdownsignal.hpp"
 
 #include "string.h"
@@ -40,13 +40,13 @@ void run_publisher_application(int vehicle_id) {
 
     dds::domain::DomainParticipant control_participant(control_domain);
 
-    dds::topic::Topic<VehicleData::imu_data> imu_topic(control_participant, "imu_data");
-    dds::topic::Topic<VehicleData::statistic_data> statistic_topic(control_participant, "statistic_data");
+    dds::topic::Topic<ControlData::imu_data> imu_topic(control_participant, "imu_data");
+    dds::topic::Topic<ControlData::statistic_data> statistic_topic(control_participant, "statistic_data");
 
     dds::pub::Publisher vehicle_publisher(control_participant);
 
-    dds::pub::DataWriter<VehicleData::imu_data> imu_writer(vehicle_publisher, imu_topic);
-    dds::pub::DataWriter<VehicleData::statistic_data> statistic_writer(vehicle_publisher, statistic_topic);
+    dds::pub::DataWriter<ControlData::imu_data> imu_writer(vehicle_publisher, imu_topic);
+    dds::pub::DataWriter<ControlData::statistic_data> statistic_writer(vehicle_publisher, statistic_topic);
 
     
     printf("Please enter the serial number:");
@@ -71,12 +71,12 @@ void run_publisher_application(int vehicle_id) {
             h[i] = (float)sReg[HX + i];
         }
 
-        VehicleData::imu_data imu_data(vehicle_name, { a[0], a[1], a[2] }, { w[0], w[1], w[2] }, { Angle[0], Angle[1], Angle[2] }, { h[0], h[1], h[2] });
+        ControlData::imu_data imu_data(vehicle_name, { a[0], a[1], a[2] }, { w[0], w[1], w[2] }, { Angle[0], Angle[1], Angle[2] }, { h[0], h[1], h[2] });
         imu_writer.write(imu_data);
 
         int sleep = 0;
         while (sleep < 5) {
-            VehicleData::statistic_data statistic_data(1.1, 2.2, 0);
+            ControlData::statistic_data statistic_data(1.1, 2.2, 0);
             statistic_writer.write(statistic_data);
 
             std::this_thread::sleep_for(std::chrono::microseconds(10));

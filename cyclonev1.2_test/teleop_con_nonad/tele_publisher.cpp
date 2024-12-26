@@ -2,9 +2,6 @@
 #include <locale>
 #include <codecvt>
 #include <bitset>
-#include <iostream>
-#include <thread>
-#include <chrono>
 
 #include "dds/dds.hpp"
 #include "shutdownsignal.hpp"
@@ -18,13 +15,27 @@
 
 using namespace org::eclipse::cyclonedds;
 
-
 wchar_t name[256];
 int wheelIndex = -1;
-int joystickIndex = -1;
+//int joystickIndex = -1;
 
 DIJOYSTATE2* steeringWheel_state;
-DIJOYSTATE2* joyStick_state;
+//DIJOYSTATE2* joyStick_state;
+
+
+
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
+    switch (message) {
+
+    case WM_DESTROY: 
+        PostQuitMessage(0);
+        return 0;
+    
+    default:
+        return ::DefWindowProc(hwnd, message, wparam, lparam);
+    }
+
+}
 
 
 std::string wstringToString(const std::wstring& wstr) {
@@ -42,6 +53,7 @@ std::bitset<32> getBitwiseButtons(DIJOYSTATE2* state, int max_buttons) {
 
     return buttons;
 }
+
 
 std::bitset<32> getCombinedButtons(DIJOYSTATE2* state) {
     std::bitset<32> buttons = getBitwiseButtons(state, 24);
@@ -61,6 +73,7 @@ std::bitset<32> getCombinedButtons(DIJOYSTATE2* state) {
     return buttons;
 
 }
+
 
 
 void initControllers() {
@@ -83,15 +96,16 @@ void initControllers() {
                 if (nameStr.find("wheel") != std::string::npos || nameStr.find("Wheel") != std::string::npos) {
                     wheelIndex = i;
                     std::cout << "Wheel detected at index: " << wheelIndex << std::endl;
-                }
+                }/*
                 else if (nameStr.find("stick") != std::string::npos || nameStr.find("Stick") != std::string::npos) {
                     joystickIndex = i;
                     std::cout << "JoyStick detected at index: " << joystickIndex << std::endl;
-                }
+                }*/
             }
         }
     }
 }
+
 
 
 int run_publisher_application(int tele_id) {
@@ -101,19 +115,18 @@ int run_publisher_application(int tele_id) {
     LogiPlayLeds(wheelIndex, 4, 1, 6);
     LogiSetOperatingRange(wheelIndex, 900);
 
-    int control_domain = 1;
-    dds::domain::DomainParticipant control_participant(control_domain);
+    int domain_id = 0;
 
-    dds::pub::Publisher tele_publisher(control_participant);
+    dds::domain::DomainParticipant participant(domain_id);
 
-    dds::topic::Topic<ControlData::steeringWheel_data> steeringWheel_topic(control_participant, "steeringWheel_topic");
-    dds::topic::Topic<ControlData::joyStick_data> joyStick_topic(control_participant, "joyStick_topic");
+    dds::pub::Publisher tele_publisher(participant);
 
-    dds::pub::DataWriter<ControlData::steeringWheel_data> steeringWheel_writer(tele_publisher, steeringWheel_topic);
-    dds::pub::DataWriter<ControlData::joyStick_data> joyStick_writer(tele_publisher, joyStick_topic);
+    dds::topic::Topic<ControlData::steeringWheel> steeringWheel_topic(participant, "steeringWheel_topic");
 
-    while (!shutdown_requested) { 
+    dds::pub::DataWriter<ControlData::steeringWheel> steeringWheel_writer(tele_publisher, steeringWheel_topic);
 
+
+    while (!shutdown_requested) {
 
         if (GetKeyState('Q') < 0) {
             break;
@@ -121,14 +134,13 @@ int run_publisher_application(int tele_id) {
 
         //then, transmit the data...
         if (LogiUpdate()) {
-            try {
 
+            std::cout << "update" << std::endl;
+
+            try {
                 steeringWheel_state = LogiGetState(wheelIndex);
-                joyStick_state = LogiGetState(joystickIndex);
 
                 if (steeringWheel_state) {
-
-                    //std::cout << "Detected: controller." << std::endl;
 
                     std::bitset<32> wheelButtons = getCombinedButtons(steeringWheel_state);
 
@@ -139,42 +151,17 @@ int run_publisher_application(int tele_id) {
                     long sw_rglSlider_0 = steeringWheel_state->rglSlider[0];
                     unsigned long sw_buttons = wheelButtons.to_ulong();
 
-                    //I think you initialize it here will cause some problems.
-                    ControlData::steeringWheel_data steeringWheel_data(tele_name, sw_lX, sw_lY, sw_lRz, sw_rglSlider_0, sw_buttons);
+                    ControlData::steeringWheel steeringWheel_data(sw_lX, sw_lY, sw_lRz, sw_rglSlider_0, sw_buttons);
+
                     steeringWheel_writer.write(steeringWheel_data);
 
-                    //std::cout << "s data: " << steeringWheel_data << std::endl;
-
-
-                }
-                else {
-                    std::cout << "controller is nullptr" << std::endl;
-                }
-
-                if (joyStick_state) {
-
-                    //std::cout << "Detected: JoyStick." << std::endl;
-
-                    std::bitset<32> joyButtons = getBitwiseButtons(joyStick_state, 32);
-
-                    long js_lX = joyStick_state->lX;
-                    long js_lZ = joyStick_state->lZ;
-                    long js_lRx = joyStick_state->lRx;
-                    long js_lRy = joyStick_state->lRy;
-                    long js_lRz = joyStick_state->lRz;
-                    unsigned long js_buttons = joyButtons.to_ulong();
-                    long js_rglSlider[2] = { joyStick_state->rglSlider[0], joyStick_state->rglSlider[1] };
-
-                    //I think you initialize it here will cause some problems.
-                    ControlData::joyStick_data joyStick_data(tele_name, js_lX, js_lZ, js_lRx, js_lRy, js_lRz, js_buttons, { js_rglSlider[0], js_rglSlider[1] });
-                    joyStick_writer.write(joyStick_data);
-
-                    //std::cout << "j data: " << joyStick_data << std::endl;
+                    std::cout << "wrote." << std::endl;
 
                 }
                 else {
                     std::cout << "controller is nullptr" << std::endl;
                 }
+
 
             }
             catch (const std::exception& e) {
@@ -184,8 +171,61 @@ int run_publisher_application(int tele_id) {
                 std::cerr << "Unknown Error" << std::endl;
             }
 
-            std::this_thread::sleep_for(std::chrono::microseconds(33)); // ~30Hz
+            std::this_thread::sleep_for(std::chrono::microseconds(33));
         }
+    }
+
+    return EXIT_SUCCESS;
+}
+
+
+int main(int argc, char* argv[]) {
+    int tele_id = -1;
+
+    if (argc > 2 && strcmp(argv[1], "-id") == 0) {
+        tele_id = atoi(argv[2]);
+    }
+
+    try {
+        HINSTANCE hInstance = GetModuleHandle(NULL);
+        WNDCLASS wc = {};
+        wc.lpfnWndProc = WindowProc;
+        wc.hInstance = hInstance;
+        wc.lpszClassName = "Name";
+        RegisterClass(&wc);
+        HWND hwnd = CreateWindowEx(
+            0,
+            "Name",
+            "Name",
+            WS_OVERLAPPEDWINDOW,
+            40,20,50,50,
+            NULL,
+            NULL,
+            hInstance,
+            NULL
+        );
+        if (hwnd == NULL) {
+            std::cerr << "Failed to create a Window" << std::endl;
+            return 0;
+        }
+        ShowWindow(hwnd, SW_SHOW);
+        SetForegroundWindow(hwnd);
+        initControllers();
+
+        if (!shutdown_requested) {
+            MSG msg = {};
+            if (GetMessage(&msg, NULL, 0, 0)) {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+            run_publisher_application(tele_id);
+        }
+    }
+    catch (const std::exception& ex) {
+        std::cerr << "Exception in publication function." << ex.what() << std::endl;
+    }
+    catch (...) {
+        std::cerr << "Unknown Error :(" << std::endl;
     }
 
     return EXIT_SUCCESS;
