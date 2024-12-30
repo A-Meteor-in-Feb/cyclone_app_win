@@ -14,7 +14,7 @@ std::map<std::string, std::string> vehicle_map;
 std::map<std::string, std::string> tele_map;
 std::map<std::string, std::string> tele_vehicle_pair;
 
-
+//add the potential pairs into the tele_vehicle_pair.
 void judge_connection(std::atomic<bool>& p_conn) {
 
 	bool vehicle_usable = false;
@@ -76,9 +76,30 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 					std::string tele_id = data.tele_id();
 
 					if (tele_vehicle_pair.count(tele_id)) {
-						
-						tele_state = "connected";
 
+						std::string tele_state = "connected";
+						
+						if (!data.connected()) {
+
+							if (data.online()) {
+
+								std::string vehicle = tele_vehicle_pair[tele_id];
+
+								if (vehicle_map[vehicle] != "offline" ) {
+									//transmit the connection msg again.
+								}
+								else {
+									//delete this pair, set tele_state = "online"
+									//transmit the disconnection msg.
+								}
+							}
+							else {
+								//judge vehicle's state, unless it's offline, make it be online.
+								//delete the pair.
+								//transmit the disconnection msg.
+							}
+						}
+						
 
 					}else {
 
@@ -86,14 +107,17 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 
 						if (data.online()) {
 							tele_state = "online";
-						}
-
-						if (tele_map.count(tele_id)) {
-							tele_map[tele_id] = tele_state;
+							if (tele_map.count(tele_id) == 0) {
+								tele_map.insert(std::make_pair(tele_id, tele_state));
+							}
 						}
 						else {
-							tele_map.insert(std::make_pair(tele_id, tele_state));
+							if (tele_map.count(tele_id) != 0) {
+								tele_map.erase(tele_id);
+							}
 						}
+
+						
 					}
 
 				}
@@ -117,6 +141,7 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 					std::string vehicle_id = data.vehicle_id();
 					std::string vehicle_state = "offline";
 
+					//judge the state and add this vehicle to the corresponding map.
 					if (data.connected()) {
 						vehicle_state = "connected";
 					}
