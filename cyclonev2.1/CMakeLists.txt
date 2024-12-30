@@ -8,4 +8,4 @@ project ("cyclonev2.1")
 # Include sub-projects.
 add_subdirectory ("teleop_side")
 add_subdirectory ("vehicle_side")
-add_subdirectory ("command_center")
+#add_subdirectory ("command_center")

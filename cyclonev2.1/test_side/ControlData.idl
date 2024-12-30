@@ -1,0 +1,20 @@
+module ControlData{
+
+    struct tele_status {
+        string tele_id;
+        boolean online;
+        boolean connected;
+    };
+
+    struct vehicle_status {
+        string vehicle_id;
+        boolean online;
+        boolean connected;
+    };
+
+    struct connection_msg {
+        string tele_id;
+        string vehicle_id;
+    };
+
+};
