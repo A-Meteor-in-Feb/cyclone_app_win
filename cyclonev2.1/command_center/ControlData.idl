@@ -17,4 +17,7 @@ module ControlData{
         string vehicle_id;
     };
 
+    struct disconnection_msg {
+        string msg;
+    };
 };

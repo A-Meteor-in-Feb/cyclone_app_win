@@ -6,8 +6,8 @@
   Cyclone DDS: v0.11.0
 
 *****************************************************************/
-#ifndef DDSCXX_CONTROLDATA_HPP_206764C1320D367D34AD6134AAFE1C85
-#define DDSCXX_CONTROLDATA_HPP_206764C1320D367D34AD6134AAFE1C85
+#ifndef DDSCXX_CONTROLDATA_HPP_30E0EC86E5B9495D61A71D73B4011558
+#define DDSCXX_CONTROLDATA_HPP_30E0EC86E5B9495D61A71D73B4011558
 
 #include <utility>
 #include <ostream>
@@ -146,6 +146,38 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, connection_msg const& rhs);
+
+class disconnection_msg
+{
+private:
+ std::string msg_;
+
+public:
+  disconnection_msg() = default;
+
+  explicit disconnection_msg(
+    const std::string& msg) :
+    msg_(msg) { }
+
+  const std::string& msg() const { return this->msg_; }
+  std::string& msg() { return this->msg_; }
+  void msg(const std::string& _val_) { this->msg_ = _val_; }
+  void msg(std::string&& _val_) { this->msg_ = std::move(_val_); }
+
+  bool operator==(const disconnection_msg& _other) const
+  {
+    (void) _other;
+    return msg_ == _other.msg_;
+  }
+
+  bool operator!=(const disconnection_msg& _other) const
+  {
+    return !(*this == _other);
+  }
+
+};
+
+std::ostream& operator<<(std::ostream& os, disconnection_msg const& rhs);
 
 } //namespace ControlData
 
@@ -317,6 +349,55 @@ template<> inline const uint8_t * TopicTraits<::ControlData::connection_msg>::ty
 }
 #endif //DDSCXX_HAS_TYPELIB
 
+template <> constexpr const char* TopicTraits<::ControlData::disconnection_msg>::getTypeName()
+{
+  return "ControlData::disconnection_msg";
+}
+
+template <> constexpr bool TopicTraits<::ControlData::disconnection_msg>::isSelfContained()
+{
+  return false;
+}
+
+template <> constexpr bool TopicTraits<::ControlData::disconnection_msg>::isKeyless()
+{
+  return true;
+}
+
+#ifdef DDSCXX_HAS_TYPELIB
+template<> constexpr unsigned int TopicTraits<::ControlData::disconnection_msg>::type_map_blob_sz() { return 210; }
+template<> constexpr unsigned int TopicTraits<::ControlData::disconnection_msg>::type_info_blob_sz() { return 100; }
+template<> inline const uint8_t * TopicTraits<::ControlData::disconnection_msg>::type_map_blob() {
+  alignas(4) static const uint8_t blob[] = {
+ 0x3c,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0xf1,  0x81,  0x93,  0xa9,  0xae,  0xf6,  0x87,  0x18, 
+ 0x36,  0xf6,  0xed,  0xa1,  0xff,  0x01,  0x36,  0x00,  0x24,  0x00,  0x00,  0x00,  0xf1,  0x51,  0x01,  0x00, 
+ 0x01,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x14,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00, 
+ 0x0c,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x01,  0x00,  0x70,  0x00,  0x6e,  0x2b,  0xaa,  0xf3, 
+ 0x66,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0xf2,  0xf6,  0x72,  0x39,  0x3e,  0xf3,  0x88,  0xc2, 
+ 0x96,  0x19,  0xbf,  0x94,  0xde,  0x34,  0xae,  0x00,  0x4e,  0x00,  0x00,  0x00,  0xf2,  0x51,  0x01,  0x00, 
+ 0x27,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x1f,  0x00,  0x00,  0x00,  0x43,  0x6f,  0x6e,  0x74, 
+ 0x72,  0x6f,  0x6c,  0x44,  0x61,  0x74,  0x61,  0x3a,  0x3a,  0x64,  0x69,  0x73,  0x63,  0x6f,  0x6e,  0x6e, 
+ 0x65,  0x63,  0x74,  0x69,  0x6f,  0x6e,  0x5f,  0x6d,  0x73,  0x67,  0x00,  0x00,  0x1a,  0x00,  0x00,  0x00, 
+ 0x01,  0x00,  0x00,  0x00,  0x12,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x01,  0x00,  0x70,  0x00, 
+ 0x04,  0x00,  0x00,  0x00,  0x6d,  0x73,  0x67,  0x00,  0x00,  0x00,  0x00,  0x00,  0x22,  0x00,  0x00,  0x00, 
+ 0x01,  0x00,  0x00,  0x00,  0xf2,  0xf6,  0x72,  0x39,  0x3e,  0xf3,  0x88,  0xc2,  0x96,  0x19,  0xbf,  0x94, 
+ 0xde,  0x34,  0xae,  0xf1,  0x81,  0x93,  0xa9,  0xae,  0xf6,  0x87,  0x18,  0x36,  0xf6,  0xed,  0xa1,  0xff, 
+ 0x01,  0x36, };
+  return blob;
+}
+template<> inline const uint8_t * TopicTraits<::ControlData::disconnection_msg>::type_info_blob() {
+  alignas(4) static const uint8_t blob[] = {
+ 0x60,  0x00,  0x00,  0x00,  0x01,  0x10,  0x00,  0x40,  0x28,  0x00,  0x00,  0x00,  0x24,  0x00,  0x00,  0x00, 
+ 0x14,  0x00,  0x00,  0x00,  0xf1,  0x81,  0x93,  0xa9,  0xae,  0xf6,  0x87,  0x18,  0x36,  0xf6,  0xed,  0xa1, 
+ 0xff,  0x01,  0x36,  0x00,  0x28,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
+ 0x00,  0x00,  0x00,  0x00,  0x02,  0x10,  0x00,  0x40,  0x28,  0x00,  0x00,  0x00,  0x24,  0x00,  0x00,  0x00, 
+ 0x14,  0x00,  0x00,  0x00,  0xf2,  0xf6,  0x72,  0x39,  0x3e,  0xf3,  0x88,  0xc2,  0x96,  0x19,  0xbf,  0x94, 
+ 0xde,  0x34,  0xae,  0x00,  0x52,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
+ 0x00,  0x00,  0x00,  0x00, };
+  return blob;
+}
+#endif //DDSCXX_HAS_TYPELIB
+
 } //namespace topic
 } //namespace cyclonedds
 } //namespace eclipse
@@ -352,12 +433,22 @@ struct topic_type_name<::ControlData::connection_msg>
     }
 };
 
+template <>
+struct topic_type_name<::ControlData::disconnection_msg>
+{
+    static std::string value()
+    {
+      return org::eclipse::cyclonedds::topic::TopicTraits<::ControlData::disconnection_msg>::getTypeName();
+    }
+};
+
 }
 }
 
 REGISTER_TOPIC_TYPE(::ControlData::tele_status)
 REGISTER_TOPIC_TYPE(::ControlData::vehicle_status)
 REGISTER_TOPIC_TYPE(::ControlData::connection_msg)
+REGISTER_TOPIC_TYPE(::ControlData::disconnection_msg)
 
 namespace org{
 namespace eclipse{
@@ -906,10 +997,137 @@ bool max(S& str, const ::ControlData::connection_msg& instance, key_mode key) {
   return max(str, instance, props.data()); 
 }
 
+template<>
+const propvec &get_type_props<::ControlData::disconnection_msg>();
+
+namespace {
+  static const volatile propvec &properties___ControlData__disconnection_msg = get_type_props<::ControlData::disconnection_msg>();
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool write(T& streamer, const ::ControlData::disconnection_msg& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!write_string(streamer, instance.msg(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool write(S& str, const ::ControlData::disconnection_msg& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::disconnection_msg>();
+  str.set_mode(cdr_stream::stream_mode::write, key);
+  return write(str, instance, props.data()); 
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool read(T& streamer, ::ControlData::disconnection_msg& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!read_string(streamer, instance.msg(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool read(S& str, ::ControlData::disconnection_msg& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::disconnection_msg>();
+  str.set_mode(cdr_stream::stream_mode::read, key);
+  return read(str, instance, props.data()); 
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool move(T& streamer, const ::ControlData::disconnection_msg& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!move_string(streamer, instance.msg(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool move(S& str, const ::ControlData::disconnection_msg& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::disconnection_msg>();
+  str.set_mode(cdr_stream::stream_mode::move, key);
+  return move(str, instance, props.data()); 
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool max(T& streamer, const ::ControlData::disconnection_msg& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!max_string(streamer, instance.msg(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool max(S& str, const ::ControlData::disconnection_msg& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::disconnection_msg>();
+  str.set_mode(cdr_stream::stream_mode::max, key);
+  return max(str, instance, props.data()); 
+}
+
 } //namespace cdr
 } //namespace core
 } //namespace cyclonedds
 } //namespace eclipse
 } //namespace org
 
-#endif // DDSCXX_CONTROLDATA_HPP_206764C1320D367D34AD6134AAFE1C85
+#endif // DDSCXX_CONTROLDATA_HPP_30E0EC86E5B9495D61A71D73B4011558

@@ -10,7 +10,7 @@
 using namespace org::eclipse::cyclonedds;
 
 
-int run_subscriber_application(int tele_id) {
+int subscriber_control_domain(int tele_id) {
 
 	int control_domain = 1;
 

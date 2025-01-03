@@ -44,6 +44,15 @@ std::ostream& operator<<(std::ostream& os, connection_msg const& rhs)
   return os;
 }
 
+std::ostream& operator<<(std::ostream& os, disconnection_msg const& rhs)
+{
+  (void) rhs;
+  os << "[";
+  os << "msg: " << rhs.msg();
+  os << "]";
+  return os;
+}
+
 std::ostream& operator<<(std::ostream& os, steeringWheel_data const& rhs)
 {
   (void) rhs;
@@ -103,18 +112,6 @@ std::ostream& operator<<(std::ostream& os, imu_data const& rhs)
   os << ", gyro: " << rhs.gyro();
   os << ", angle: " << rhs.angle();
   os << ", mag: " << rhs.mag();
-  os << "]";
-  return os;
-}
-
-std::ostream& operator<<(std::ostream& os, vehicle_gps const& rhs)
-{
-  (void) rhs;
-  os << "[";
-  os << "vehicle_id: " << rhs.vehicle_id();
-  os << ", latitude: " << rhs.latitude();
-  os << ", longitude: " << rhs.longitude();
-  os << ", altitude: " << rhs.altitude();
   os << "]";
   return os;
 }
@@ -189,6 +186,27 @@ const propvec &get_type_props<::ControlData::connection_msg>() {
   props.push_back(entity_properties_t(0, 0, false, bit_bound::bb_unset, extensibility::ext_final));  //root
   props.push_back(entity_properties_t(1, 0, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::tele_id
   props.push_back(entity_properties_t(1, 1, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::vehicle_id
+
+  entity_properties_t::finish(props, keylist);
+  initialized.store(true, std::memory_order_release);
+  return props;
+}
+
+template<>
+const propvec &get_type_props<::ControlData::disconnection_msg>() {
+  static std::mutex mtx;
+  static propvec props;
+  static std::atomic_bool initialized {false};
+  key_endpoint keylist;
+  if (initialized.load(std::memory_order_relaxed))
+    return props;
+  std::lock_guard<std::mutex> lock(mtx);
+  if (initialized.load(std::memory_order_relaxed))
+    return props;
+  props.clear();
+
+  props.push_back(entity_properties_t(0, 0, false, bit_bound::bb_unset, extensibility::ext_final));  //root
+  props.push_back(entity_properties_t(1, 0, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::msg
 
   entity_properties_t::finish(props, keylist);
   initialized.store(true, std::memory_order_release);
@@ -312,30 +330,6 @@ const propvec &get_type_props<::ControlData::imu_data>() {
   props.push_back(entity_properties_t(1, 2, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::gyro
   props.push_back(entity_properties_t(1, 3, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::angle
   props.push_back(entity_properties_t(1, 4, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::mag
-
-  entity_properties_t::finish(props, keylist);
-  initialized.store(true, std::memory_order_release);
-  return props;
-}
-
-template<>
-const propvec &get_type_props<::ControlData::vehicle_gps>() {
-  static std::mutex mtx;
-  static propvec props;
-  static std::atomic_bool initialized {false};
-  key_endpoint keylist;
-  if (initialized.load(std::memory_order_relaxed))
-    return props;
-  std::lock_guard<std::mutex> lock(mtx);
-  if (initialized.load(std::memory_order_relaxed))
-    return props;
-  props.clear();
-
-  props.push_back(entity_properties_t(0, 0, false, bit_bound::bb_unset, extensibility::ext_final));  //root
-  props.push_back(entity_properties_t(1, 0, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::vehicle_id
-  props.push_back(entity_properties_t(1, 1, false, get_bit_bound<double>(), extensibility::ext_final, false));  //::latitude
-  props.push_back(entity_properties_t(1, 2, false, get_bit_bound<double>(), extensibility::ext_final, false));  //::longitude
-  props.push_back(entity_properties_t(1, 3, false, get_bit_bound<double>(), extensibility::ext_final, false));  //::altitude
 
   entity_properties_t::finish(props, keylist);
   initialized.store(true, std::memory_order_release);

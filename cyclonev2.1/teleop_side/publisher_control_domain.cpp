@@ -18,6 +18,7 @@
 
 using namespace org::eclipse::cyclonedds;
 
+std::string control_partition_name = "";
 
 wchar_t name[256];
 int wheelIndex = -1;
@@ -94,7 +95,13 @@ void initControllers() {
 }
 
 
-int run_publisher_application(int tele_id) {
+// --- Update Parition Name here for the connected devices.
+void set_control_publisher_partition(std::string partition_name) {
+    control_partition_name = partition_name;
+}
+
+
+int publisher_control_domain(int tele_id) {
 
     std::string tele_name = "tele" + std::to_string(tele_id);
 
@@ -104,7 +111,13 @@ int run_publisher_application(int tele_id) {
     int control_domain = 1;
     dds::domain::DomainParticipant control_participant(control_domain);
 
-    dds::pub::Publisher tele_publisher(control_participant);
+    dds::pub::qos::PublisherQos pub_qos;
+
+    dds::core::StringSeq partition_name{ control_partition_name };
+
+    pub_qos << dds::core::policy::Partition(partition_name);
+
+    dds::pub::Publisher tele_publisher(control_participant, pub_qos);
 
     dds::topic::Topic<ControlData::steeringWheel_data> steeringWheel_topic(control_participant, "steeringWheel_topic");
     dds::topic::Topic<ControlData::joyStick_data> joyStick_topic(control_participant, "joyStick_topic");

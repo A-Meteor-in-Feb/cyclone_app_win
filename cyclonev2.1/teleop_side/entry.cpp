@@ -12,8 +12,8 @@
 #include "shutdownsignal.hpp"
 
 
-int run_publisher_application(int tele_id);
-int run_subscriber_application(int tele_id);
+int publisher_control_domain(int tele_id);
+int subscriber_control_domain(int tele_id);
 void initControllers();
 
 
@@ -73,11 +73,14 @@ int main(int argc, char* argv[]) {
             }
 
             initControllers();
-            std::thread tele_publisher(run_subscriber_application, tele_id);
-            std::thread tele_subscriber(run_publisher_application, tele_id);
+            std::thread tele_subscriber_control_domain(subscriber_control_domain, tele_id);
+            std::thread tele_publisher_control_domain(publisher_control_domain, tele_id);
 
-            tele_publisher.join();
-            tele_subscriber.join();
+            tele_subscriber_control_domain.join();
+            tele_publisher_control_domain.join();
+        }
+        else {
+            PostMessage(HWND_BROADCAST, WM_DESTROY, 0, 0);
         }
 
     }

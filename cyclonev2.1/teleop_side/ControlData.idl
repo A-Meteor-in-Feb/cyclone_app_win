@@ -17,6 +17,10 @@ module ControlData{
         string vehicle_id;
     };
 
+    struct disconnection_msg {
+        string msg;
+    };
+
     struct steeringWheel_data {
         string tele_id;
         long lX;
@@ -53,13 +57,6 @@ module ControlData{
         sequence<double, 3> gyro;
         sequence<double, 3> angle;
         sequence<double, 3> mag;
-    };
-
-    struct vehicle_gps {
-        string vehicle_id;
-        double latitude;
-        double longitude;
-        double altitude;
     };
 
 };

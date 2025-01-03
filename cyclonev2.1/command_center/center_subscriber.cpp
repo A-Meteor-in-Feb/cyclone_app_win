@@ -4,7 +4,6 @@
 #include <typeinfo>
 #include <utility>
 #include <map>
-#include <TCorePolicy.hpp>
 #include "shutdownsignal.hpp"
 #include "dds/dds.hpp"
 #include "ControlData.hpp"
@@ -20,24 +19,32 @@ std::map<std::string, std::string> con_te_ve;
 //publish the connection message in strictly reliable way...
 //Also, publisher will only publish the connection msg to the relevant subscribers,
 //so, we need set Partition Qos, then do the initialization of Data Writer.
+// ----
+// HOWEVER, Partition Qos can only be applied to publisher (subscriber) ......
+// ----
 //Use the QoS settings.
-void run_publisher_application(dds::pub::Publisher& command_publisher, dds::topic::Topic<ControlData::connection_msg>& con_topic, const std::string& tele_id, const std::string& vehicle_id) {
-
-	dds::pub::qos::DataWriterQos w_qos;
-	w_qos << dds::core::policy::detail::Reliability(dds::core::policy::ReliabilityKind_def::RELIABLE);
-	w_qos << dds::core::policy::detail::History(dds::core::policy::HistoryKind_def::KEEP_ALL);
-
-	if (tele_id == "non-mateched") {
-		w_qos << dds::core::policy::detail::Partition(dds::core::policy::detail::TPartition({ vehicle_id }));
+void publish_connection_msg(dds::domain::DomainParticipant& command_participant, dds::topic::Topic<ControlData::connection_msg>& con_topic, const std::string& tele_id, const std::string& vehicle_id) {
+	
+	dds::pub::qos::PublisherQos pub_qos;
+	if (tele_id == "non-matched") {
+		dds::core::StringSeq partition{ vehicle_id };
+		pub_qos << dds::core::policy::detail::Partition(partition);
 	}
-	else if (vehicle_id = "non-matched") {
-		w_qos << dds::core::policy::detail::Partition(dds::core::policy::detail::TPartition({ tele_id }));
+	else if (vehicle_id == "non-matched") {
+		dds::core::StringSeq partition{ tele_id };
+		pub_qos << dds::core::policy::detail::Partition(partition);
 	}
 	else {
-		w_qos << dds::core::policy::detail::Partition(dds::core::policy::detail::TPartition({ tele_id, vehicle_id }));
+		dds::core::StringSeq partition{ tele_id, vehicle_id };
+		pub_qos << dds::core::policy::detail::Partition(partition);
 	}
+	dds::pub::Publisher command_con_publisher(command_participant, pub_qos);
+
+
+	dds::core::QosProvider provider("ReliableQos.xml");
+	auto writer_qos = provider.datawriter_qos("myqoslib::qos_profile");
 	
-	dds::pub::DataWriter con_topic_writer(command_publisher, con_topic, w_qos);
+	dds::pub::DataWriter con_topic_writer(command_con_publisher, con_topic, writer_qos);
 
 	ControlData::connection_msg con_msg(tele_id, vehicle_id);
 	con_topic_writer.write(con_msg);
@@ -46,7 +53,7 @@ void run_publisher_application(dds::pub::Publisher& command_publisher, dds::topi
 
 
 //add the potential pairs into the tele_vehicle pair.
-void judge_connection(dds::pub::Publisher& command_publisher, dds::topic::Topic<ControlData::connection_msg>& con_topic) {
+void judge_connection(dds::domain::DomainParticipant& command_participant, dds::topic::Topic<ControlData::connection_msg>& con_topic) {
 
 	if (!online_tele.empty() || !online_vehicle.empty()) {
 
@@ -67,7 +74,7 @@ void judge_connection(dds::pub::Publisher& command_publisher, dds::topic::Topic<
 			con_te_ve.insert(std::make_pair(usable_tele, usable_vehicle));
 			con_te_ve.insert(std::make_pair(usable_vehicle, usable_tele));
 
-			run_publisher_application(command_publisher, con_topic, usable_tele, usable_vehicle);
+			publish_connection_msg(command_participant, con_topic, usable_tele, usable_vehicle);
 		}
 
 		while (tele_num) {
@@ -75,7 +82,7 @@ void judge_connection(dds::pub::Publisher& command_publisher, dds::topic::Topic<
 			std::string usable_vehicle = "non-matched";
 			tele_num -= 1;
 
-			run_publisher_application(command_publisher, con_topic, usable_tele, usable_vehicle);
+			publish_connection_msg(command_participant, con_topic, usable_tele, usable_vehicle);
 		}
 
 		while (vehicle_num) {
@@ -83,7 +90,7 @@ void judge_connection(dds::pub::Publisher& command_publisher, dds::topic::Topic<
 			std::string usable_tele = "non-matched";
 			vehicle_num -= 1;
 
-			run_publisher_application(command_publisher, con_topic, usable_tele, usable_vehicle);
+			publish_connection_msg(command_participant, con_topic, usable_tele, usable_vehicle);
 		}
 		
 	}
@@ -92,7 +99,8 @@ void judge_connection(dds::pub::Publisher& command_publisher, dds::topic::Topic<
 }
 
 
-void run_subscriber_application(std::atomic<bool>& p_conn) {
+
+void run_subscriber_application() {
 
 	int command_domain = 0;
 
@@ -100,16 +108,15 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 
 
 	//---- initialize publisher and data writer and related topics
-	dds::pub::Publisher command_publisher(command_participant);
-
 	dds::topic::Topic<ControlData::connection_msg> con_topic(command_participant, "connection_msg");
+	dds::topic::Topic<ControlData::disconnection_msg> discon_topic(command_participant, "disconnection_msg");
 
 
 	//---- initializa subscriber and data readers and related topics
 	dds::sub::Subscriber command_subscriber(command_participant);
 
-	dds::topic::Topic<ControlData::tele_status> tele_status_topic(command_participant, "tele_status_data");
-	dds::topic::Topic<ControlData::vehicle_status> vehicle_status_topic(command_participant, "vehicle_status_data");
+	dds::topic::Topic<ControlData::tele_status> tele_status_topic(command_participant, "tele_status");
+	dds::topic::Topic<ControlData::vehicle_status> vehicle_status_topic(command_participant, "vehicle_status");
 	
 	dds::sub::DataReader<ControlData::tele_status> tele_status_reader(command_subscriber, tele_status_topic);
 	dds::sub::DataReader<ControlData::vehicle_status> vehicle_status_reader(command_subscriber, vehicle_status_topic);
@@ -154,8 +161,23 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 					}
 
 					if (tele_state == "offline" && con_te_ve.count(tele_id)) {
-						//send dis-connection msg. 
+						
+						std::string discon_tele = tele_id;
+						std::string discon_vehicle = con_te_ve[tele_id];
+
+						//send dis-connection msg. TO THE SPECIFIC TELE !!!
+						dds::pub::qos::PublisherQos pub_qos;
+						dds::core::StringSeq partition{ discon_tele, discon_vehicle };
+						pub_qos << dds::core::policy::detail::Partition(partition);
+						dds::pub::Publisher command_discon_publisher(command_participant, pub_qos);
+						dds::pub::DataWriter<ControlData::disconnection_msg> discon_writer(command_discon_publisher, discon_topic);
+
+						ControlData::disconnection_msg discon_msg("disconnection");
+						discon_writer.write(discon_msg);
+						
 						//delete tele_id:vehicle_id && vehicle_id:tele_id pairs.
+						con_te_ve.erase(discon_tele);
+						con_te_ve.erase(discon_vehicle);
 					}
 					
 					
@@ -181,7 +203,7 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 
 					std::string vehicle_id = data.vehicle_id();
 					std::string vehicle_state = data.online() && data.connected() ? "connected" : "online";
-					vehicle_state = data.online && !data.connected() ? "online" : "offline";
+					vehicle_state = data.online() && !data.connected() ? "online" : "offline";
 
 					if (vehicle_state == "online") {
 						bool usable = true;
@@ -199,15 +221,31 @@ void run_subscriber_application(std::atomic<bool>& p_conn) {
 					}
 
 					if (vehicle_state == "offline" && con_te_ve.count(vehicle_id)) {
-						//send dis-connection msg. 
+
+						std::string discon_vehicle = vehicle_id;
+						std::string discon_tele = con_te_ve[vehicle_id];
+
+						//send dis-connection msg. TO THE SPECIFIC VEHICLE !!!!!!
+						dds::pub::qos::PublisherQos pub_qos;
+						dds::core::StringSeq partition{ discon_tele, discon_vehicle };
+						pub_qos << dds::core::policy::detail::Partition(partition);
+						dds::pub::Publisher command_discon_publisher(command_participant, pub_qos);
+						dds::pub::DataWriter<ControlData::disconnection_msg> discon_writer(command_discon_publisher, discon_topic);
+
+						ControlData::disconnection_msg discon_msg("disconnection");
+						discon_writer.write(discon_msg);
+						
+
 						//delete tele_id:vehicle_id && vehicle_id : tele_id pairs.
+						con_te_ve.erase(discon_vehicle);
+						con_te_ve.erase(discon_tele);
 					}
 				}
 
 			}
 		}
 
-		judge_connection(command_publisher, con_topic);
+		judge_connection(command_participant, con_topic);
 
 	}
 }

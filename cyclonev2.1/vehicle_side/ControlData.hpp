@@ -6,8 +6,8 @@
   Cyclone DDS: v0.11.0
 
 *****************************************************************/
-#ifndef DDSCXX_CONTROLDATA_HPP_C5DEB406088C265D644F852D90304874
-#define DDSCXX_CONTROLDATA_HPP_C5DEB406088C265D644F852D90304874
+#ifndef DDSCXX_CONTROLDATA_HPP_45B3BF5AD483A40ABA01BB2C935E96B6
+#define DDSCXX_CONTROLDATA_HPP_45B3BF5AD483A40ABA01BB2C935E96B6
 
 #include <utility>
 #include <ostream>
@@ -148,6 +148,38 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, connection_msg const& rhs);
+
+class disconnection_msg
+{
+private:
+ std::string msg_;
+
+public:
+  disconnection_msg() = default;
+
+  explicit disconnection_msg(
+    const std::string& msg) :
+    msg_(msg) { }
+
+  const std::string& msg() const { return this->msg_; }
+  std::string& msg() { return this->msg_; }
+  void msg(const std::string& _val_) { this->msg_ = _val_; }
+  void msg(std::string&& _val_) { this->msg_ = std::move(_val_); }
+
+  bool operator==(const disconnection_msg& _other) const
+  {
+    (void) _other;
+    return msg_ == _other.msg_;
+  }
+
+  bool operator!=(const disconnection_msg& _other) const
+  {
+    return !(*this == _other);
+  }
+
+};
+
+std::ostream& operator<<(std::ostream& os, disconnection_msg const& rhs);
 
 class steeringWheel_data
 {
@@ -438,59 +470,6 @@ public:
 
 std::ostream& operator<<(std::ostream& os, imu_data const& rhs);
 
-class vehicle_gps
-{
-private:
- std::string vehicle_id_;
- double latitude_ = 0.0;
- double longitude_ = 0.0;
- double altitude_ = 0.0;
-
-public:
-  vehicle_gps() = default;
-
-  explicit vehicle_gps(
-    const std::string& vehicle_id,
-    double latitude,
-    double longitude,
-    double altitude) :
-    vehicle_id_(vehicle_id),
-    latitude_(latitude),
-    longitude_(longitude),
-    altitude_(altitude) { }
-
-  const std::string& vehicle_id() const { return this->vehicle_id_; }
-  std::string& vehicle_id() { return this->vehicle_id_; }
-  void vehicle_id(const std::string& _val_) { this->vehicle_id_ = _val_; }
-  void vehicle_id(std::string&& _val_) { this->vehicle_id_ = std::move(_val_); }
-  double latitude() const { return this->latitude_; }
-  double& latitude() { return this->latitude_; }
-  void latitude(double _val_) { this->latitude_ = _val_; }
-  double longitude() const { return this->longitude_; }
-  double& longitude() { return this->longitude_; }
-  void longitude(double _val_) { this->longitude_ = _val_; }
-  double altitude() const { return this->altitude_; }
-  double& altitude() { return this->altitude_; }
-  void altitude(double _val_) { this->altitude_ = _val_; }
-
-  bool operator==(const vehicle_gps& _other) const
-  {
-    (void) _other;
-    return vehicle_id_ == _other.vehicle_id_ &&
-      latitude_ == _other.latitude_ &&
-      longitude_ == _other.longitude_ &&
-      altitude_ == _other.altitude_;
-  }
-
-  bool operator!=(const vehicle_gps& _other) const
-  {
-    return !(*this == _other);
-  }
-
-};
-
-std::ostream& operator<<(std::ostream& os, vehicle_gps const& rhs);
-
 } //namespace ControlData
 
 #include "dds/topic/TopicTraits.hpp"
@@ -656,6 +635,55 @@ template<> inline const uint8_t * TopicTraits<::ControlData::connection_msg>::ty
  0x00,  0x00,  0x00,  0x00,  0x02,  0x10,  0x00,  0x40,  0x28,  0x00,  0x00,  0x00,  0x24,  0x00,  0x00,  0x00, 
  0x14,  0x00,  0x00,  0x00,  0xf2,  0x90,  0x2e,  0xe7,  0x37,  0x38,  0x01,  0xd9,  0x5e,  0x89,  0x5f,  0xd7, 
  0x7a,  0x0a,  0x42,  0x00,  0x71,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
+ 0x00,  0x00,  0x00,  0x00, };
+  return blob;
+}
+#endif //DDSCXX_HAS_TYPELIB
+
+template <> constexpr const char* TopicTraits<::ControlData::disconnection_msg>::getTypeName()
+{
+  return "ControlData::disconnection_msg";
+}
+
+template <> constexpr bool TopicTraits<::ControlData::disconnection_msg>::isSelfContained()
+{
+  return false;
+}
+
+template <> constexpr bool TopicTraits<::ControlData::disconnection_msg>::isKeyless()
+{
+  return true;
+}
+
+#ifdef DDSCXX_HAS_TYPELIB
+template<> constexpr unsigned int TopicTraits<::ControlData::disconnection_msg>::type_map_blob_sz() { return 210; }
+template<> constexpr unsigned int TopicTraits<::ControlData::disconnection_msg>::type_info_blob_sz() { return 100; }
+template<> inline const uint8_t * TopicTraits<::ControlData::disconnection_msg>::type_map_blob() {
+  alignas(4) static const uint8_t blob[] = {
+ 0x3c,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0xf1,  0x81,  0x93,  0xa9,  0xae,  0xf6,  0x87,  0x18, 
+ 0x36,  0xf6,  0xed,  0xa1,  0xff,  0x01,  0x36,  0x00,  0x24,  0x00,  0x00,  0x00,  0xf1,  0x51,  0x01,  0x00, 
+ 0x01,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x14,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00, 
+ 0x0c,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x01,  0x00,  0x70,  0x00,  0x6e,  0x2b,  0xaa,  0xf3, 
+ 0x66,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0xf2,  0xf6,  0x72,  0x39,  0x3e,  0xf3,  0x88,  0xc2, 
+ 0x96,  0x19,  0xbf,  0x94,  0xde,  0x34,  0xae,  0x00,  0x4e,  0x00,  0x00,  0x00,  0xf2,  0x51,  0x01,  0x00, 
+ 0x27,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x1f,  0x00,  0x00,  0x00,  0x43,  0x6f,  0x6e,  0x74, 
+ 0x72,  0x6f,  0x6c,  0x44,  0x61,  0x74,  0x61,  0x3a,  0x3a,  0x64,  0x69,  0x73,  0x63,  0x6f,  0x6e,  0x6e, 
+ 0x65,  0x63,  0x74,  0x69,  0x6f,  0x6e,  0x5f,  0x6d,  0x73,  0x67,  0x00,  0x00,  0x1a,  0x00,  0x00,  0x00, 
+ 0x01,  0x00,  0x00,  0x00,  0x12,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x01,  0x00,  0x70,  0x00, 
+ 0x04,  0x00,  0x00,  0x00,  0x6d,  0x73,  0x67,  0x00,  0x00,  0x00,  0x00,  0x00,  0x22,  0x00,  0x00,  0x00, 
+ 0x01,  0x00,  0x00,  0x00,  0xf2,  0xf6,  0x72,  0x39,  0x3e,  0xf3,  0x88,  0xc2,  0x96,  0x19,  0xbf,  0x94, 
+ 0xde,  0x34,  0xae,  0xf1,  0x81,  0x93,  0xa9,  0xae,  0xf6,  0x87,  0x18,  0x36,  0xf6,  0xed,  0xa1,  0xff, 
+ 0x01,  0x36, };
+  return blob;
+}
+template<> inline const uint8_t * TopicTraits<::ControlData::disconnection_msg>::type_info_blob() {
+  alignas(4) static const uint8_t blob[] = {
+ 0x60,  0x00,  0x00,  0x00,  0x01,  0x10,  0x00,  0x40,  0x28,  0x00,  0x00,  0x00,  0x24,  0x00,  0x00,  0x00, 
+ 0x14,  0x00,  0x00,  0x00,  0xf1,  0x81,  0x93,  0xa9,  0xae,  0xf6,  0x87,  0x18,  0x36,  0xf6,  0xed,  0xa1, 
+ 0xff,  0x01,  0x36,  0x00,  0x28,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
+ 0x00,  0x00,  0x00,  0x00,  0x02,  0x10,  0x00,  0x40,  0x28,  0x00,  0x00,  0x00,  0x24,  0x00,  0x00,  0x00, 
+ 0x14,  0x00,  0x00,  0x00,  0xf2,  0xf6,  0x72,  0x39,  0x3e,  0xf3,  0x88,  0xc2,  0x96,  0x19,  0xbf,  0x94, 
+ 0xde,  0x34,  0xae,  0x00,  0x52,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
  0x00,  0x00,  0x00,  0x00, };
   return blob;
 }
@@ -944,63 +972,6 @@ template<> inline const uint8_t * TopicTraits<::ControlData::imu_data>::type_inf
 }
 #endif //DDSCXX_HAS_TYPELIB
 
-template <> constexpr const char* TopicTraits<::ControlData::vehicle_gps>::getTypeName()
-{
-  return "ControlData::vehicle_gps";
-}
-
-template <> constexpr bool TopicTraits<::ControlData::vehicle_gps>::isSelfContained()
-{
-  return false;
-}
-
-template <> constexpr bool TopicTraits<::ControlData::vehicle_gps>::isKeyless()
-{
-  return true;
-}
-
-#ifdef DDSCXX_HAS_TYPELIB
-template<> constexpr unsigned int TopicTraits<::ControlData::vehicle_gps>::type_map_blob_sz() { return 346; }
-template<> constexpr unsigned int TopicTraits<::ControlData::vehicle_gps>::type_info_blob_sz() { return 100; }
-template<> inline const uint8_t * TopicTraits<::ControlData::vehicle_gps>::type_map_blob() {
-  alignas(4) static const uint8_t blob[] = {
- 0x6b,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0xf1,  0x40,  0x1b,  0x7b,  0x52,  0x57,  0x90,  0xf7, 
- 0xa2,  0xa6,  0xf6,  0x5a,  0xdc,  0x12,  0x7b,  0x00,  0x53,  0x00,  0x00,  0x00,  0xf1,  0x51,  0x01,  0x00, 
- 0x01,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x43,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
- 0x0c,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x01,  0x00,  0x70,  0x00,  0x35,  0xec,  0x04,  0xdc, 
- 0x0b,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0x01,  0x00,  0x0a,  0x28,  0xc1,  0xe3,  0x7e,  0x00, 
- 0x0b,  0x00,  0x00,  0x00,  0x02,  0x00,  0x00,  0x00,  0x01,  0x00,  0x0a,  0xba,  0x56,  0x9b,  0x80,  0x00, 
- 0x0b,  0x00,  0x00,  0x00,  0x03,  0x00,  0x00,  0x00,  0x01,  0x00,  0x0a,  0x14,  0xd8,  0x93,  0x30,  0x00, 
- 0xbf,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0xf2,  0x30,  0x54,  0x9c,  0x8e,  0xb7,  0x59,  0x82, 
- 0xab,  0x8e,  0x53,  0x50,  0xf3,  0xfe,  0x8f,  0x00,  0xa7,  0x00,  0x00,  0x00,  0xf2,  0x51,  0x01,  0x00, 
- 0x21,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x19,  0x00,  0x00,  0x00,  0x43,  0x6f,  0x6e,  0x74, 
- 0x72,  0x6f,  0x6c,  0x44,  0x61,  0x74,  0x61,  0x3a,  0x3a,  0x76,  0x65,  0x68,  0x69,  0x63,  0x6c,  0x65, 
- 0x5f,  0x67,  0x70,  0x73,  0x00,  0x00,  0x00,  0x00,  0x77,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
- 0x19,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x01,  0x00,  0x70,  0x00,  0x0b,  0x00,  0x00,  0x00, 
- 0x76,  0x65,  0x68,  0x69,  0x63,  0x6c,  0x65,  0x5f,  0x69,  0x64,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00, 
- 0x17,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0x01,  0x00,  0x0a,  0x00,  0x09,  0x00,  0x00,  0x00, 
- 0x6c,  0x61,  0x74,  0x69,  0x74,  0x75,  0x64,  0x65,  0x00,  0x00,  0x00,  0x00,  0x18,  0x00,  0x00,  0x00, 
- 0x02,  0x00,  0x00,  0x00,  0x01,  0x00,  0x0a,  0x00,  0x0a,  0x00,  0x00,  0x00,  0x6c,  0x6f,  0x6e,  0x67, 
- 0x69,  0x74,  0x75,  0x64,  0x65,  0x00,  0x00,  0x00,  0x17,  0x00,  0x00,  0x00,  0x03,  0x00,  0x00,  0x00, 
- 0x01,  0x00,  0x0a,  0x00,  0x09,  0x00,  0x00,  0x00,  0x61,  0x6c,  0x74,  0x69,  0x74,  0x75,  0x64,  0x65, 
- 0x00,  0x00,  0x00,  0x00,  0x22,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0xf2,  0x30,  0x54,  0x9c, 
- 0x8e,  0xb7,  0x59,  0x82,  0xab,  0x8e,  0x53,  0x50,  0xf3,  0xfe,  0x8f,  0xf1,  0x40,  0x1b,  0x7b,  0x52, 
- 0x57,  0x90,  0xf7,  0xa2,  0xa6,  0xf6,  0x5a,  0xdc,  0x12,  0x7b, };
-  return blob;
-}
-template<> inline const uint8_t * TopicTraits<::ControlData::vehicle_gps>::type_info_blob() {
-  alignas(4) static const uint8_t blob[] = {
- 0x60,  0x00,  0x00,  0x00,  0x01,  0x10,  0x00,  0x40,  0x28,  0x00,  0x00,  0x00,  0x24,  0x00,  0x00,  0x00, 
- 0x14,  0x00,  0x00,  0x00,  0xf1,  0x40,  0x1b,  0x7b,  0x52,  0x57,  0x90,  0xf7,  0xa2,  0xa6,  0xf6,  0x5a, 
- 0xdc,  0x12,  0x7b,  0x00,  0x57,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
- 0x00,  0x00,  0x00,  0x00,  0x02,  0x10,  0x00,  0x40,  0x28,  0x00,  0x00,  0x00,  0x24,  0x00,  0x00,  0x00, 
- 0x14,  0x00,  0x00,  0x00,  0xf2,  0x30,  0x54,  0x9c,  0x8e,  0xb7,  0x59,  0x82,  0xab,  0x8e,  0x53,  0x50, 
- 0xf3,  0xfe,  0x8f,  0x00,  0xab,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
- 0x00,  0x00,  0x00,  0x00, };
-  return blob;
-}
-#endif //DDSCXX_HAS_TYPELIB
-
 } //namespace topic
 } //namespace cyclonedds
 } //namespace eclipse
@@ -1033,6 +1004,15 @@ struct topic_type_name<::ControlData::connection_msg>
     static std::string value()
     {
       return org::eclipse::cyclonedds::topic::TopicTraits<::ControlData::connection_msg>::getTypeName();
+    }
+};
+
+template <>
+struct topic_type_name<::ControlData::disconnection_msg>
+{
+    static std::string value()
+    {
+      return org::eclipse::cyclonedds::topic::TopicTraits<::ControlData::disconnection_msg>::getTypeName();
     }
 };
 
@@ -1081,27 +1061,18 @@ struct topic_type_name<::ControlData::imu_data>
     }
 };
 
-template <>
-struct topic_type_name<::ControlData::vehicle_gps>
-{
-    static std::string value()
-    {
-      return org::eclipse::cyclonedds::topic::TopicTraits<::ControlData::vehicle_gps>::getTypeName();
-    }
-};
-
 }
 }
 
 REGISTER_TOPIC_TYPE(::ControlData::tele_status)
 REGISTER_TOPIC_TYPE(::ControlData::vehicle_status)
 REGISTER_TOPIC_TYPE(::ControlData::connection_msg)
+REGISTER_TOPIC_TYPE(::ControlData::disconnection_msg)
 REGISTER_TOPIC_TYPE(::ControlData::steeringWheel_data)
 REGISTER_TOPIC_TYPE(::ControlData::joyStick_data)
 REGISTER_TOPIC_TYPE(::ControlData::streamdeck_buttons_data)
 REGISTER_TOPIC_TYPE(::ControlData::statistic_data)
 REGISTER_TOPIC_TYPE(::ControlData::imu_data)
-REGISTER_TOPIC_TYPE(::ControlData::vehicle_gps)
 
 namespace org{
 namespace eclipse{
@@ -1646,6 +1617,133 @@ bool max(T& streamer, const ::ControlData::connection_msg& instance, const entit
 template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
 bool max(S& str, const ::ControlData::connection_msg& instance, key_mode key) {
   const auto &props = get_type_props<::ControlData::connection_msg>();
+  str.set_mode(cdr_stream::stream_mode::max, key);
+  return max(str, instance, props.data()); 
+}
+
+template<>
+const propvec &get_type_props<::ControlData::disconnection_msg>();
+
+namespace {
+  static const volatile propvec &properties___ControlData__disconnection_msg = get_type_props<::ControlData::disconnection_msg>();
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool write(T& streamer, const ::ControlData::disconnection_msg& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!write_string(streamer, instance.msg(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool write(S& str, const ::ControlData::disconnection_msg& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::disconnection_msg>();
+  str.set_mode(cdr_stream::stream_mode::write, key);
+  return write(str, instance, props.data()); 
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool read(T& streamer, ::ControlData::disconnection_msg& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!read_string(streamer, instance.msg(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool read(S& str, ::ControlData::disconnection_msg& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::disconnection_msg>();
+  str.set_mode(cdr_stream::stream_mode::read, key);
+  return read(str, instance, props.data()); 
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool move(T& streamer, const ::ControlData::disconnection_msg& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!move_string(streamer, instance.msg(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool move(S& str, const ::ControlData::disconnection_msg& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::disconnection_msg>();
+  str.set_mode(cdr_stream::stream_mode::move, key);
+  return move(str, instance, props.data()); 
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool max(T& streamer, const ::ControlData::disconnection_msg& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!max_string(streamer, instance.msg(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool max(S& str, const ::ControlData::disconnection_msg& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::disconnection_msg>();
   str.set_mode(cdr_stream::stream_mode::max, key);
   return max(str, instance, props.data()); 
 }
@@ -3121,233 +3219,10 @@ bool max(S& str, const ::ControlData::imu_data& instance, key_mode key) {
   return max(str, instance, props.data()); 
 }
 
-template<>
-const propvec &get_type_props<::ControlData::vehicle_gps>();
-
-namespace {
-  static const volatile propvec &properties___ControlData__vehicle_gps = get_type_props<::ControlData::vehicle_gps>();
-}
-
-template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
-bool write(T& streamer, const ::ControlData::vehicle_gps& instance, const entity_properties_t *props) {
-  (void)instance;
-  member_id_set member_ids;
-  if (!streamer.start_struct(*props))
-    return false;
-  auto prop = streamer.first_entity(props);
-  while (prop) {
-    switch (prop->m_id) {
-      case 0:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!write_string(streamer, instance.vehicle_id(), 0))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 1:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!write(streamer, instance.latitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 2:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!write(streamer, instance.longitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 3:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!write(streamer, instance.altitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-    }
-    prop = streamer.next_entity(prop);
-  }
-  return streamer.finish_struct(*props, member_ids);
-}
-
-template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
-bool write(S& str, const ::ControlData::vehicle_gps& instance, key_mode key) {
-  const auto &props = get_type_props<::ControlData::vehicle_gps>();
-  str.set_mode(cdr_stream::stream_mode::write, key);
-  return write(str, instance, props.data()); 
-}
-
-template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
-bool read(T& streamer, ::ControlData::vehicle_gps& instance, const entity_properties_t *props) {
-  (void)instance;
-  member_id_set member_ids;
-  if (!streamer.start_struct(*props))
-    return false;
-  auto prop = streamer.first_entity(props);
-  while (prop) {
-    switch (prop->m_id) {
-      case 0:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!read_string(streamer, instance.vehicle_id(), 0))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 1:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!read(streamer, instance.latitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 2:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!read(streamer, instance.longitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 3:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!read(streamer, instance.altitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-    }
-    prop = streamer.next_entity(prop);
-  }
-  return streamer.finish_struct(*props, member_ids);
-}
-
-template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
-bool read(S& str, ::ControlData::vehicle_gps& instance, key_mode key) {
-  const auto &props = get_type_props<::ControlData::vehicle_gps>();
-  str.set_mode(cdr_stream::stream_mode::read, key);
-  return read(str, instance, props.data()); 
-}
-
-template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
-bool move(T& streamer, const ::ControlData::vehicle_gps& instance, const entity_properties_t *props) {
-  (void)instance;
-  member_id_set member_ids;
-  if (!streamer.start_struct(*props))
-    return false;
-  auto prop = streamer.first_entity(props);
-  while (prop) {
-    switch (prop->m_id) {
-      case 0:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!move_string(streamer, instance.vehicle_id(), 0))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 1:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!move(streamer, instance.latitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 2:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!move(streamer, instance.longitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 3:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!move(streamer, instance.altitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-    }
-    prop = streamer.next_entity(prop);
-  }
-  return streamer.finish_struct(*props, member_ids);
-}
-
-template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
-bool move(S& str, const ::ControlData::vehicle_gps& instance, key_mode key) {
-  const auto &props = get_type_props<::ControlData::vehicle_gps>();
-  str.set_mode(cdr_stream::stream_mode::move, key);
-  return move(str, instance, props.data()); 
-}
-
-template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
-bool max(T& streamer, const ::ControlData::vehicle_gps& instance, const entity_properties_t *props) {
-  (void)instance;
-  member_id_set member_ids;
-  if (!streamer.start_struct(*props))
-    return false;
-  auto prop = streamer.first_entity(props);
-  while (prop) {
-    switch (prop->m_id) {
-      case 0:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!max_string(streamer, instance.vehicle_id(), 0))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 1:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!max(streamer, instance.latitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 2:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!max(streamer, instance.longitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-      case 3:
-      if (!streamer.start_member(*prop))
-        return false;
-      if (!max(streamer, instance.altitude()))
-        return false;
-      if (!streamer.finish_member(*prop, member_ids))
-        return false;
-      break;
-    }
-    prop = streamer.next_entity(prop);
-  }
-  return streamer.finish_struct(*props, member_ids);
-}
-
-template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
-bool max(S& str, const ::ControlData::vehicle_gps& instance, key_mode key) {
-  const auto &props = get_type_props<::ControlData::vehicle_gps>();
-  str.set_mode(cdr_stream::stream_mode::max, key);
-  return max(str, instance, props.data()); 
-}
-
 } //namespace cdr
 } //namespace core
 } //namespace cyclonedds
 } //namespace eclipse
 } //namespace org
 
-#endif // DDSCXX_CONTROLDATA_HPP_C5DEB406088C265D644F852D90304874
+#endif // DDSCXX_CONTROLDATA_HPP_45B3BF5AD483A40ABA01BB2C935E96B6

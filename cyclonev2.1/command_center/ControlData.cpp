@@ -44,6 +44,15 @@ std::ostream& operator<<(std::ostream& os, connection_msg const& rhs)
   return os;
 }
 
+std::ostream& operator<<(std::ostream& os, disconnection_msg const& rhs)
+{
+  (void) rhs;
+  os << "[";
+  os << "msg: " << rhs.msg();
+  os << "]";
+  return os;
+}
+
 } //namespace ControlData
 
 namespace org{
@@ -114,6 +123,27 @@ const propvec &get_type_props<::ControlData::connection_msg>() {
   props.push_back(entity_properties_t(0, 0, false, bit_bound::bb_unset, extensibility::ext_final));  //root
   props.push_back(entity_properties_t(1, 0, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::tele_id
   props.push_back(entity_properties_t(1, 1, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::vehicle_id
+
+  entity_properties_t::finish(props, keylist);
+  initialized.store(true, std::memory_order_release);
+  return props;
+}
+
+template<>
+const propvec &get_type_props<::ControlData::disconnection_msg>() {
+  static std::mutex mtx;
+  static propvec props;
+  static std::atomic_bool initialized {false};
+  key_endpoint keylist;
+  if (initialized.load(std::memory_order_relaxed))
+    return props;
+  std::lock_guard<std::mutex> lock(mtx);
+  if (initialized.load(std::memory_order_relaxed))
+    return props;
+  props.clear();
+
+  props.push_back(entity_properties_t(0, 0, false, bit_bound::bb_unset, extensibility::ext_final));  //root
+  props.push_back(entity_properties_t(1, 0, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::msg
 
   entity_properties_t::finish(props, keylist);
   initialized.store(true, std::memory_order_release);

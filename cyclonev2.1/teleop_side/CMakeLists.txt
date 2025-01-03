@@ -15,11 +15,11 @@ idlcxx_generate(TARGET controldata FILES ControlData.idl WARNINGS no-implicit-ex
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 # add source files
-set(SOURCES entry.cpp tele_publisher.cpp tele_subscriber.cpp ControlData.cpp shutdownsignal.cpp)
+set(SOURCES entry.cpp "publisher_control_domain.cpp" "subscriber_control_domain.cpp" ControlData.cpp shutdownsignal.cpp)
 
 
 # add executable 
-add_executable(teleop_side ${SOURCES} "shutdownsignal.hpp")
+add_executable(teleop_side ${SOURCES} "shutdownsignal.hpp" "publisher_command_domain.cpp" "subscriber_command_domain.cpp")
 
 # Link both executables to idl data type library and ddscxx.
 target_link_libraries(teleop_side PRIVATE CycloneDDS-CXX::ddscxx controldata)
