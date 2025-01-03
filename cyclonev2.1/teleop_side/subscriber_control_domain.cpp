@@ -9,6 +9,11 @@
 
 using namespace org::eclipse::cyclonedds;
 
+std::string control_partition_name = "";
+
+void set_control_subscriber_partition(std::string partition_name) {
+	control_partition_name = partition_name;
+}
 
 int subscriber_control_domain(int tele_id) {
 
@@ -16,13 +21,20 @@ int subscriber_control_domain(int tele_id) {
 
 	dds::domain::DomainParticipant control_participant(control_domain);
 
-	dds::sub::Subscriber tele_subscriber(control_participant);
+	dds::sub::qos::SubscriberQos sub_qos;
+
+	dds::core::StringSeq partition_name{ control_partition_name };
+
+	sub_qos << dds::core::policy::Partition(partition_name);
+
+	dds::sub::Subscriber tele_subscriber0(control_participant, sub_qos);
+	dds::sub::Subscriber tele_subscriber1(control_participant);
 
 	dds::topic::Topic<ControlData::streamdeck_buttons_data> buttons_topic(control_participant, "streamdeck_buttons_data");
 	dds::topic::Topic<ControlData::imu_data> imu_topic(control_participant, "imu_data");
 
-	dds::sub::DataReader<ControlData::streamdeck_buttons_data> buttons_reader(tele_subscriber, buttons_topic);
-	dds::sub::DataReader<ControlData::imu_data> imu_reader(tele_subscriber, imu_topic);
+	dds::sub::DataReader<ControlData::streamdeck_buttons_data> buttons_reader(tele_subscriber1, buttons_topic);
+	dds::sub::DataReader<ControlData::imu_data> imu_reader(tele_subscriber0, imu_topic);
 
 	dds::sub::LoanedSamples<ControlData::streamdeck_buttons_data> buttons_samples;
 	dds::sub::LoanedSamples<ControlData::imu_data> imu_samples;
