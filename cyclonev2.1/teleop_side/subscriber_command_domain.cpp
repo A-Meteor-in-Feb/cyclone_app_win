@@ -29,8 +29,11 @@ void subscriber_command_domain(const int& tele_id) {
 	dds::topic::Topic<ControlData::connection_msg> con_topic(command_participant, "connection_msg");
 	dds::topic::Topic<ControlData::disconnection_msg> discon_topic(command_participant, "disconnection_msg");
 
-	dds::sub::DataReader<ControlData::connection_msg> con_reader(command_subscriber, con_topic);
-	dds::sub::DataReader<ControlData::disconnection_msg> discon_reader(command_subscriber, discon_topic);
+	dds::core::QosProvider provider("ReliableQos.xml");
+	auto reader_qos = provider.datareader_qos("myqos::qos_profile");
+
+	dds::sub::DataReader<ControlData::connection_msg> con_reader(command_subscriber, con_topic, reader_qos);
+	dds::sub::DataReader<ControlData::disconnection_msg> discon_reader(command_subscriber, discon_topic, reader_qos);
 
 	dds::sub::LoanedSamples<ControlData::connection_msg> con_samples;
 	dds::sub::LoanedSamples<ControlData::disconnection_msg> discon_samples;
