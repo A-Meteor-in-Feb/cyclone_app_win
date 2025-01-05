@@ -14,9 +14,11 @@ void update_tele_state(bool online_state, bool connected_state) {
 }
 
 
-void publisher_command_domain(const int& tele_id) {
+void publisher_command_domain(const int& tele_id, std::atomic<bool>& command_ato) {
 
 	std::string tele_name = "tele" + std::to_string(tele_id);
+
+	bool init = true;
 
 	int command_domain = 0;
 
@@ -28,6 +30,24 @@ void publisher_command_domain(const int& tele_id) {
 
 	dds::pub::DataWriter<ControlData::tele_status> status_writer(command_publisher, status_topic);
 
-	ControlData::tele_status tele_status_data(tele_name, online, connected);
+	while (!shutdown_requested) {
+
+		if (command_ato.load()) {
+			command_ato = false;
+
+			ControlData::tele_status tele_status_data(tele_name, online, connected);
+
+			status_writer.write(tele_status_data);
+
+		}
+		if (init) {
+			init = false;
+
+			ControlData::tele_status tele_status_data(tele_name, online, connected);
+
+			status_writer.write(tele_status_data);
+		}
+	}
+	
 
 }

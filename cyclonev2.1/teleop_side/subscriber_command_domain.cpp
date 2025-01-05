@@ -8,9 +8,10 @@
 
 void update_tele_state(bool online_state, bool connected_state);
 void set_control_publisher_partition(std::string partition_name);
+void set_control_subscriber_partition(std::string partition_name);
 
 
-void subscriber_command_domain(const int& tele_id) {
+void subscriber_command_domain(const int& tele_id, std::atomic<bool>& command_ato, std::atomic<bool>& control_ato) {
 
 	std::string tele_name = "tele" + std::to_string(tele_id);
 
@@ -57,12 +58,17 @@ void subscriber_command_domain(const int& tele_id) {
 					if (vehicle_id == "non-matched") {
 						std::cout << "non-matched vehicle for now ..." << std::endl;
 						update_tele_state(true, false);
+						command_ato = true;
 					}
 					else {
 						std::cout << "match to vehicle: " << vehicle_id << std::endl;
 						update_tele_state(true, true);
+						command_ato = true;
+
 						std::string control_partition_name = data.tele_id() + data.vehicle_id();
 						set_control_publisher_partition(control_partition_name);
+						set_control_subscriber_partition(control_partition_name);
+						control_ato = true;
 					}
 
 
@@ -85,6 +91,16 @@ void subscriber_command_domain(const int& tele_id) {
 					std::cout << "Received Disconnection Msg: " << data.msg() << std::endl;
 
 					update_tele_state(false, false);
+					command_ato = true;
+
+					if (control_ato.load()) {
+						std::string control_partition_name = "none";
+						set_control_publisher_partition(control_partition_name);
+						set_control_subscriber_partition(control_partition_name);
+						control_ato = false;
+					}
+					
+
 				}
 			}
 		}

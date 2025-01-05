@@ -9,13 +9,13 @@
 
 using namespace org::eclipse::cyclonedds;
 
-std::string control_partition_name = "";
+std::string control_partition_name = "none";
 
 void set_control_subscriber_partition(std::string partition_name) {
 	control_partition_name = partition_name;
 }
 
-int subscriber_control_domain(int tele_id) {
+int subscriber_control_domain(const int& tele_id, std::atomic<bool>& control_ato) {
 
 	int control_domain = 1;
 

@@ -12,8 +12,10 @@
 #include "shutdownsignal.hpp"
 
 
-int publisher_control_domain(int tele_id);
-int subscriber_control_domain(int tele_id);
+void publisher_command_domain(const int& tele_id, std::atomic<bool>& command_ato);
+void subscriber_command_domain(const int& tele_id, std::atomic<bool>& command_ato, std::atomic<bool>& control_ato);
+void publisher_control_domain(const int& tele_id, std::atomic<bool>& control_ato);
+void subscriber_control_domain(const int& tele_id, std::atomic<bool>& control_ato);
 void initControllers();
 
 
@@ -72,12 +74,27 @@ int main(int argc, char* argv[]) {
                 DispatchMessage(&msg);
             }
 
-            initControllers();
-            std::thread tele_subscriber_control_domain(subscriber_control_domain, tele_id);
-            std::thread tele_publisher_control_domain(publisher_control_domain, tele_id);
+            std::atomic<bool> command_ato = false;
+            std::atomic<bool> control_ato = false;
 
-            tele_subscriber_control_domain.join();
-            tele_publisher_control_domain.join();
+            initControllers();
+
+            std::thread tele_subscriber_command_domain(subscriber_command_domain, tele_id, std::ref(command_ato), std::ref(control_ato));
+            std::thread tele_publisher_command_domain(publisher_command_domain, tele_id, std::ref(command_ato));
+            
+            if (control_ato.load()) {
+
+                std::thread tele_subscriber_control_domain(publisher_control_domain, tele_id, std::ref(control_ato));
+                std::thread tele_publisher_control_domain(subscriber_control_domain, tele_id, std::ref(control_ato));
+
+                tele_publisher_control_domain.join();
+                tele_subscriber_control_domain.join();
+
+            }
+
+            tele_subscriber_command_domain.join();
+            tele_publisher_command_domain.join();
+            
         }
         else {
             PostMessage(HWND_BROADCAST, WM_DESTROY, 0, 0);

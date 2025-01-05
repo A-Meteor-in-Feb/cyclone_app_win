@@ -18,7 +18,7 @@
 
 using namespace org::eclipse::cyclonedds;
 
-std::string control_partition_name = "";
+std::string control_partition_name = "none";
 
 wchar_t name[256];
 int wheelIndex = -1;
@@ -101,7 +101,7 @@ void set_control_publisher_partition(std::string partition_name) {
 }
 
 
-int publisher_control_domain(int tele_id) {
+int publisher_control_domain(const int& tele_id, std::atomic<bool>& control_ato) {
 
     std::string tele_name = "tele" + std::to_string(tele_id);
 
