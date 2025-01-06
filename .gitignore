@@ -18,7 +18,7 @@ cyclonev2.1/.vs/*
 cyclonev2.1/out/*
 cyclonev2.1/test_side/build/*
 cyclonev2.1/command_center/build/*
-
+cyclonev2.1/teleop_side/build/*
 
 cyclonev1.2_test/.vs/*
 cyclonev1.2_test/out/*

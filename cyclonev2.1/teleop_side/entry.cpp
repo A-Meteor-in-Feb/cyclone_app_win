@@ -12,10 +12,10 @@
 #include "shutdownsignal.hpp"
 
 
-void publisher_command_domain(const int& tele_id, std::atomic<bool>& command_ato);
-void subscriber_command_domain(const int& tele_id, std::atomic<bool>& command_ato, std::atomic<bool>& control_ato);
-void publisher_control_domain(const int& tele_id, std::atomic<bool>& control_ato);
-void subscriber_control_domain(const int& tele_id, std::atomic<bool>& control_ato);
+void publisher_command_domain(int& tele_id, std::atomic<bool>& command_ato);
+void subscriber_command_domain(int& tele_id, std::atomic<bool>& command_ato, std::atomic<bool>& control_ato);
+void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato);
+void subscriber_control_domain(int& tele_id, std::atomic<bool>& control_ato);
 void initControllers();
 
 
@@ -67,6 +67,11 @@ int main(int argc, char* argv[]) {
             return 0;
         }
 
+        ShowWindow(hwnd, SW_SHOW);
+        SetForegroundWindow(hwnd);
+        initControllers();
+
+
         if (!shutdown_requested) {
             MSG msg = {};
             if (GetMessage(&msg, NULL, 0, 0)) {
@@ -77,20 +82,14 @@ int main(int argc, char* argv[]) {
             std::atomic<bool> command_ato = false;
             std::atomic<bool> control_ato = false;
 
-            initControllers();
-
-            std::thread tele_subscriber_command_domain(subscriber_command_domain, tele_id, std::ref(command_ato), std::ref(control_ato));
-            std::thread tele_publisher_command_domain(publisher_command_domain, tele_id, std::ref(command_ato));
+            std::thread tele_publisher_command_domain(publisher_command_domain, std::ref(tele_id), std::ref(command_ato));
+            std::thread tele_subscriber_command_domain(subscriber_command_domain, std::ref(tele_id), std::ref(command_ato), std::ref(control_ato));
             
-            if (control_ato.load()) {
+            std::thread tele_subscriber_control_domain(publisher_control_domain, std::ref(tele_id), std::ref(control_ato));
+            std::thread tele_publisher_control_domain(subscriber_control_domain, std::ref(tele_id), std::ref(control_ato));
 
-                std::thread tele_subscriber_control_domain(publisher_control_domain, tele_id, std::ref(control_ato));
-                std::thread tele_publisher_control_domain(subscriber_control_domain, tele_id, std::ref(control_ato));
-
-                tele_publisher_control_domain.join();
-                tele_subscriber_control_domain.join();
-
-            }
+            tele_publisher_control_domain.join();
+            tele_subscriber_control_domain.join();
 
             tele_subscriber_command_domain.join();
             tele_publisher_command_domain.join();

@@ -14,7 +14,7 @@ void update_tele_state(bool online_state, bool connected_state) {
 }
 
 
-void publisher_command_domain(const int& tele_id, std::atomic<bool>& command_ato) {
+void publisher_command_domain(int& tele_id, std::atomic<bool>& command_ato) {
 
 	std::string tele_name = "tele" + std::to_string(tele_id);
 
@@ -32,16 +32,24 @@ void publisher_command_domain(const int& tele_id, std::atomic<bool>& command_ato
 
 	while (!shutdown_requested) {
 
-		if (command_ato.load()) {
+		if (!online && !connected) {
+			init = true;
 			command_ato = false;
+		}
+
+		if (command_ato.load()) {
+
+			if (init) {
+				init = false;
+			}
 
 			ControlData::tele_status tele_status_data(tele_name, online, connected);
 
 			status_writer.write(tele_status_data);
 
 		}
-		if (init) {
-			init = false;
+
+		if (init && !command_ato.load()) {
 
 			ControlData::tele_status tele_status_data(tele_name, online, connected);
 

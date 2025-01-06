@@ -2,7 +2,7 @@
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://www.omg.org/spec/DDS-XML http://www.omg.org/spec/DDS-XML/20180501/dds-xml_dds_system_definitions.xsd">
 
-	<qos_library name="myqoslib">
+	<qos_library name="myqos">
 		
 		<qos_profile name="qos_profile">
 			

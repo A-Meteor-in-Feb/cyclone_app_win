@@ -11,7 +11,7 @@ void set_control_publisher_partition(std::string partition_name);
 void set_control_subscriber_partition(std::string partition_name);
 
 
-void subscriber_command_domain(const int& tele_id, std::atomic<bool>& command_ato, std::atomic<bool>& control_ato) {
+void subscriber_command_domain(int& tele_id, std::atomic<bool>& command_ato, std::atomic<bool>& control_ato) {
 
 	std::string tele_name = "tele" + std::to_string(tele_id);
 

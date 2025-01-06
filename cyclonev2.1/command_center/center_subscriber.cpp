@@ -139,11 +139,21 @@ void run_subscriber_application() {
 
 				if (info.valid()) {
 
-					std::cout << "tele_status data: " << data << std::endl;
+					std::cout << "\ntele_status data:    " << data << std::endl;
 
 					std::string tele_id = data.tele_id();
-					std::string tele_state = data.connected() && data.online() ? "connected" : "online";
-					tele_state = data.online() && !data.connected() ? "online" : "offline";
+
+					std::string tele_state;
+
+					if (data.connected()) {
+						tele_state = "connected";
+					}
+					else if (data.online()) {
+						tele_state = "online";
+					}
+					else {
+						tele_state = "offline";
+					}
 
 					if (tele_state == "online") {
 						bool usable = true;
@@ -199,11 +209,21 @@ void run_subscriber_application() {
 
 				if (info.valid()) {
 
-					std::cout << "vehicle_status data: " << data << std::endl;
+					std::cout << "\nvehicle_status data: " << data << std::endl;
 
 					std::string vehicle_id = data.vehicle_id();
-					std::string vehicle_state = data.online() && data.connected() ? "connected" : "online";
-					vehicle_state = data.online() && !data.connected() ? "online" : "offline";
+					
+					std::string vehicle_state;
+
+					if (data.connected()) {
+						vehicle_state = "connected";
+					}
+					else if (data.online()) {
+						vehicle_state = "online";
+					}
+					else {
+						vehicle_state = "offline";
+					}
 
 					if (vehicle_state == "online") {
 						bool usable = true;
