@@ -16,21 +16,6 @@ void publisher_command_domain(int& tele_id, std::atomic<bool>& command_ato);
 void subscriber_command_domain(int& tele_id, std::atomic<bool>& command_ato, std::atomic<bool>& control_ato);
 void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato);
 void subscriber_control_domain(int& tele_id, std::atomic<bool>& control_ato);
-void initControllers();
-
-
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
-    switch (message) {
-
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        return 0;
-
-    default:
-        return ::DefWindowProc(hwnd, message, wparam, lparam);
-    }
-
-}
 
 
 int main(int argc, char* argv[]) {
@@ -42,42 +27,9 @@ int main(int argc, char* argv[]) {
     }
 
 
-    try {
-
-        HINSTANCE hInstance = GetModuleHandle(NULL);
-        WNDCLASS wc = {};
-        wc.lpfnWndProc = WindowProc;
-        wc.hInstance = hInstance;
-        wc.lpszClassName = "Name";
-        RegisterClass(&wc);
-        HWND hwnd = CreateWindowEx(
-            0,
-            "Name",
-            "Name",
-            WS_OVERLAPPEDWINDOW,
-            40, 20, 50, 50,
-            NULL,
-            NULL,
-            hInstance,
-            NULL
-        );
-
-        if (hwnd == NULL) {
-            std::cerr << "Failed to create a Window" << std::endl;
-            return 0;
-        }
-
-        ShowWindow(hwnd, SW_SHOW);
-        SetForegroundWindow(hwnd);
-        initControllers();
-
+    try{
 
         if (!shutdown_requested) {
-            MSG msg = {};
-            if (GetMessage(&msg, NULL, 0, 0)) {
-                TranslateMessage(&msg);
-                DispatchMessage(&msg);
-            }
 
             std::atomic<bool> command_ato = false;
             std::atomic<bool> control_ato = false;
@@ -94,9 +46,6 @@ int main(int argc, char* argv[]) {
             tele_subscriber_command_domain.join();
             tele_publisher_command_domain.join();
             
-        }
-        else {
-            PostMessage(HWND_BROADCAST, WM_DESTROY, 0, 0);
         }
 
     }

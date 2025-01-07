@@ -28,6 +28,22 @@ DIJOYSTATE2* steeringWheel_state;
 DIJOYSTATE2* joyStick_state;
 
 
+
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
+    switch (message) {
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+
+    default:
+        return ::DefWindowProc(hwnd, message, wparam, lparam);
+    }
+
+}
+
+
+
 std::string wstringToString(const std::wstring& wstr) {
     std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
     return converter.to_bytes(wstr);
@@ -107,6 +123,49 @@ void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
 
         if (publisher_control_partition_name != "none") {
 
+            //try{} create the main window
+
+            try {
+
+                HINSTANCE hInstance = GetModuleHandle(NULL);
+                WNDCLASS wc = {};
+                wc.lpfnWndProc = WindowProc;
+                wc.hInstance = hInstance;
+                wc.lpszClassName = "Name";
+                RegisterClass(&wc);
+                HWND hwnd = CreateWindowEx(
+                    0,
+                    "Name",
+                    "Name",
+                    WS_OVERLAPPEDWINDOW,
+                    40, 20, 50, 50,
+                    NULL,
+                    NULL,
+                    hInstance,
+                    NULL
+                );
+
+                if (hwnd == NULL) {
+                    std::cerr << "Failed to create a Window" << std::endl;
+                    //return ;
+                    break;
+                }
+
+                ShowWindow(hwnd, SW_SHOW);
+                SetForegroundWindow(hwnd);
+                initControllers();
+
+                MSG msg = {};
+                if (GetMessage(&msg, NULL, 0, 0)) {
+                    TranslateMessage(&msg);
+                    DispatchMessage(&msg);
+                }
+
+            }
+            catch (...) {
+                std::cerr << "Error happened in control_publisher" << std::endl;
+            }
+
             std::string tele_name = "tele" + std::to_string(tele_id);
 
             LogiPlayLeds(wheelIndex, 4, 1, 6);
@@ -130,9 +189,6 @@ void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
             dds::pub::DataWriter<ControlData::joyStick_data> joyStick_writer(tele_publisher, joyStick_topic);
 
             while (!shutdown_requested && publisher_control_partition_name != "none") {
-
-                std::cout << "\n\n\n" << publisher_control_partition_name << std::endl;
-
 
                 if (GetKeyState('Q') < 0) {
                     break;
@@ -207,6 +263,8 @@ void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
                     std::this_thread::sleep_for(std::chrono::microseconds(33)); // ~30Hz
                 }
             }
+
+            //if shutdown_trequested.. close the main window.
         }
     }
 

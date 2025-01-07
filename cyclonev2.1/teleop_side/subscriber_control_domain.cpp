@@ -21,8 +21,6 @@ void subscriber_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
 
 		if (subscriber_control_partition_name != "none") {
 
-			std::cout << "\n\n\n" << subscriber_control_partition_name << std::endl;
-
 			int control_domain = 1;
 
 			dds::domain::DomainParticipant control_participant(control_domain);
@@ -46,8 +44,6 @@ void subscriber_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
 			dds::sub::LoanedSamples<ControlData::imu_data> imu_samples;
 
 			while (!shutdown_requested && subscriber_control_partition_name != "none") {
-
-				std::cout << "start receiving..." << std::endl;
 
 				// RECEIVE AND TAKE THE DATA SAMPLE
 				buttons_samples = buttons_reader.take();
