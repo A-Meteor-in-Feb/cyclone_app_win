@@ -2,32 +2,38 @@
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://www.omg.org/spec/DDS-XML http://www.omg.org/spec/DDS-XML/20180501/dds-xml_dds_system_definitions.xsd">
 
-	<qos_library name="myqoslib">
-		
-		<qos_profile name="qos_profile">
-			
+	<qos_library name="myqos">
+
+		<qos_profile name="reliable_reader">
+
 			<datareader_qos>
-				
+
 				<reliability>
 					<kind>RELIABLE_RELIABILITY_QOS</kind>
 				</reliability>
-				
+
 				<history>
-					<kind>KEEP_ALL_HISTORY_QOS</kind>
+					<kind>KEEP_LAST_HISTORY_QOS</kind>
+					<depth>1</depth>
 				</history>
-				
+
 			</datareader_qos>
-			
+
+		</qos_profile>
+		
+		<qos_profile name="reliable_writer">
+
 			<datawriter_qos>
 
 				<reliability>
 					<kind>RELIABLE_RELIABILITY_QOS</kind>
 				</reliability>
-				
+
 				<history>
-					<kind>KEEP_ALL_HISTORY_QOS</kind>
+					<kind>KEEP_LAST_HISTORY_QOS</kind>
+					<depth>1</depth>
 				</history>
-				
+
 			</datawriter_qos>
 
 		</qos_profile>

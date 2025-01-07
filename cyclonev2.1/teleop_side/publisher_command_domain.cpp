@@ -47,6 +47,7 @@ void publisher_command_domain(int& tele_id, std::atomic<bool>& command_ato) {
 
 			status_writer.write(tele_status_data);
 
+			std::this_thread::sleep_for(std::chrono::microseconds(20));
 		}
 
 		if (init && !command_ato.load()) {
@@ -54,6 +55,8 @@ void publisher_command_domain(int& tele_id, std::atomic<bool>& command_ato) {
 			ControlData::tele_status tele_status_data(tele_name, online, connected);
 
 			status_writer.write(tele_status_data);
+
+			std::this_thread::sleep_for(std::chrono::microseconds(20));
 		}
 	}
 	

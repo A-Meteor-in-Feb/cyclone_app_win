@@ -123,8 +123,6 @@ void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
 
         if (publisher_control_partition_name != "none") {
 
-            //try{} create the main window
-
             try {
 
                 HINSTANCE hInstance = GetModuleHandle(NULL);
@@ -153,13 +151,14 @@ void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
 
                 ShowWindow(hwnd, SW_SHOW);
                 SetForegroundWindow(hwnd);
-                initControllers();
 
                 MSG msg = {};
                 if (GetMessage(&msg, NULL, 0, 0)) {
                     TranslateMessage(&msg);
                     DispatchMessage(&msg);
                 }
+
+                initControllers();
 
             }
             catch (...) {
@@ -219,7 +218,7 @@ void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
                             ControlData::steeringWheel_data steeringWheel_data(tele_name, sw_lX, sw_lY, sw_lRz, sw_rglSlider_0, sw_buttons);
                             steeringWheel_writer.write(steeringWheel_data);
 
-                            std::cout << "s data: " << steeringWheel_data << std::endl;
+                            //std::cout << "s data: " << steeringWheel_data << std::endl;
 
 
                         }
@@ -245,7 +244,7 @@ void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
                             ControlData::joyStick_data joyStick_data(tele_name, js_lX, js_lZ, js_lRx, js_lRy, js_lRz, js_buttons, { js_rglSlider[0], js_rglSlider[1] });
                             joyStick_writer.write(joyStick_data);
 
-                            std::cout << "j data: " << joyStick_data << std::endl;
+                            //std::cout << "j data: " << joyStick_data << std::endl;
 
                         }
                         else {
@@ -264,7 +263,9 @@ void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
                 }
             }
 
-            //if shutdown_trequested.. close the main window.
+            if (shutdown_requested) {
+                PostMessage(HWND_BROADCAST, WM_DESTROY, 0, 0);
+            }
         }
     }
 
