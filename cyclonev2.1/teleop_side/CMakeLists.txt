@@ -19,7 +19,7 @@ set(SOURCES entry.cpp "publisher_control_domain.cpp" "subscriber_control_domain.
 
 
 # add executable 
-add_executable(teleop_side ${SOURCES} "shutdownsignal.hpp" "publisher_command_domain.cpp" "subscriber_command_domain.cpp")
+add_executable(teleop_side ${SOURCES} "shutdownsignal.hpp" "command_domain.cpp")
 
 # Link both executables to idl data type library and ddscxx.
 target_link_libraries(teleop_side PRIVATE CycloneDDS-CXX::ddscxx controldata)

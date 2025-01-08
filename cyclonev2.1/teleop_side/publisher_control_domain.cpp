@@ -117,7 +117,7 @@ void set_control_publisher_partition(std::string partition_name) {
 }
 
 
-void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
+void publisher_control_domain(int& tele_id) {
 
     while (!shutdown_requested) {
 
@@ -263,7 +263,7 @@ void publisher_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
                 }
             }
 
-            if (shutdown_requested) {
+            if (shutdown_requested || publisher_control_partition_name == "none") {
                 PostMessage(HWND_BROADCAST, WM_DESTROY, 0, 0);
             }
         }

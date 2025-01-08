@@ -15,7 +15,7 @@ void set_control_subscriber_partition(std::string partition_name) {
 	subscriber_control_partition_name = partition_name;
 }
 
-void subscriber_control_domain(int& tele_id, std::atomic<bool>& control_ato) {
+void subscriber_control_domain(int& tele_id) {
 
 	while (!shutdown_requested) {
 
