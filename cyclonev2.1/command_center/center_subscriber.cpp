@@ -16,6 +16,47 @@ std::vector<std::string> online_vehicle;
 std::map<std::string, std::string> con_te_ve;
 
 
+void publish_known_msg(dds::domain::DomainParticipant& command_participant, dds::topic::Topic<ControlData::connection_msg>& con_topic, const std::string& tele_id, const std::string& vehicle_id) {
+
+	if (tele_id == "known") {
+		dds::pub::qos::PublisherQos pub_qos;
+
+		dds::core::StringSeq partition{ vehicle_id };
+		pub_qos << dds::core::policy::detail::Partition(partition);
+
+		dds::pub::Publisher command_con_publisher(command_participant, pub_qos);
+
+		dds::core::QosProvider provider("ReliableQos.xml");
+		auto writer_qos = provider.datawriter_qos("myqos::reliable_writer");
+
+		dds::pub::DataWriter con_topic_writer(command_con_publisher, con_topic, writer_qos);
+
+		ControlData::connection_msg con_msg(tele_id, vehicle_id);
+
+		con_topic_writer.write(con_msg);
+	}
+
+	if (vehicle_id == "known") {
+
+		dds::pub::qos::PublisherQos pub_qos;
+
+		dds::core::StringSeq partition{ tele_id };
+		pub_qos << dds::core::policy::detail::Partition(partition);
+
+		dds::pub::Publisher command_con_publisher(command_participant, pub_qos);
+
+		dds::core::QosProvider provider("ReliableQos.xml");
+		auto writer_qos = provider.datawriter_qos("myqos::reliable_writer");
+
+		dds::pub::DataWriter con_topic_writer(command_con_publisher, con_topic, writer_qos);
+
+		ControlData::connection_msg con_msg(tele_id, vehicle_id);
+
+		con_topic_writer.write(con_msg);
+
+	}
+}
+
 //publish the connection message in strictly reliable way...
 //Also, publisher will only publish the connection msg to the relevant subscribers,
 //so, we need set Partition Qos, then do the initialization of Data Writer.
@@ -23,10 +64,62 @@ std::map<std::string, std::string> con_te_ve;
 // HOWEVER, Partition Qos can only be applied to publisher (subscriber) ......
 // ----
 //Use the QoS settings.
-void publish_connection_msg(dds::domain::DomainParticipant& command_participant, dds::topic::Topic<ControlData::connection_msg>& con_topic, const std::string& tele_id, const std::string& vehicle_id) {
+void publish_connection_msg(dds::domain::DomainParticipant& command_participant, dds::topic::Topic<ControlData::connection_msg>& con_topic, const std::string& tele_id, const std::string& vehicle_id, bool tele_again, bool vehicle_again) {
 	
-	dds::pub::qos::PublisherQos pub_qos;
-	if (tele_id == "non-matched") {
+	if (!tele_again && !vehicle_again) {
+		dds::pub::qos::PublisherQos pub_qos;
+
+		dds::core::StringSeq partition{ tele_id, vehicle_id };
+		pub_qos << dds::core::policy::detail::Partition(partition);
+
+		dds::pub::Publisher command_con_publisher(command_participant, pub_qos);
+
+		dds::core::QosProvider provider("ReliableQos.xml");
+		auto writer_qos = provider.datawriter_qos("myqos::reliable_writer");
+
+		dds::pub::DataWriter con_topic_writer(command_con_publisher, con_topic, writer_qos);
+
+		ControlData::connection_msg con_msg(tele_id, vehicle_id);
+
+		con_topic_writer.write(con_msg);
+	}
+	else if (!tele_again && vehicle_again) {
+		dds::pub::qos::PublisherQos pub_qos;
+
+		dds::core::StringSeq partition{ vehicle_id };
+		pub_qos << dds::core::policy::detail::Partition(partition);
+
+		dds::pub::Publisher command_con_publisher(command_participant, pub_qos);
+
+		dds::core::QosProvider provider("ReliableQos.xml");
+		auto writer_qos = provider.datawriter_qos("myqos::reliable_writer");
+
+		dds::pub::DataWriter con_topic_writer(command_con_publisher, con_topic, writer_qos);
+
+		ControlData::connection_msg con_msg(tele_id, vehicle_id);
+
+		con_topic_writer.write(con_msg);
+	}
+	else if (tele_again && !vehicle_again) {
+		dds::pub::qos::PublisherQos pub_qos;
+
+		dds::core::StringSeq partition{ tele_id };
+		pub_qos << dds::core::policy::detail::Partition(partition);
+
+		dds::pub::Publisher command_con_publisher(command_participant, pub_qos);
+
+		dds::core::QosProvider provider("ReliableQos.xml");
+		auto writer_qos = provider.datawriter_qos("myqos::reliable_writer");
+
+		dds::pub::DataWriter con_topic_writer(command_con_publisher, con_topic, writer_qos);
+
+		ControlData::connection_msg con_msg(tele_id, vehicle_id);
+
+		con_topic_writer.write(con_msg);
+	}
+	
+
+	/*if (tele_id == "non-matched") {
 		dds::core::StringSeq partition{ vehicle_id };
 		pub_qos << dds::core::policy::detail::Partition(partition);
 	}
@@ -37,19 +130,8 @@ void publish_connection_msg(dds::domain::DomainParticipant& command_participant,
 	else {
 		dds::core::StringSeq partition{ tele_id, vehicle_id };
 		pub_qos << dds::core::policy::detail::Partition(partition);
-	}
+	}*/
 
-	dds::pub::Publisher command_con_publisher(command_participant, pub_qos);
-
-	//This place , may need fix .......
-	dds::core::QosProvider provider("ReliableQos.xml");
-	auto writer_qos = provider.datawriter_qos("myqos::reliable_writer");
-
-	dds::pub::DataWriter con_topic_writer(command_con_publisher, con_topic, writer_qos);
-
-	ControlData::connection_msg con_msg(tele_id, vehicle_id);
-
-	con_topic_writer.write(con_msg);
 	
 }
 
@@ -58,6 +140,28 @@ void publish_connection_msg(dds::domain::DomainParticipant& command_participant,
 //add the potential pairs into the tele_vehicle pair.
 void judge_connection(dds::domain::DomainParticipant& command_participant, dds::topic::Topic<ControlData::connection_msg>& con_topic) {
 
+	int tele_num = online_tele.size();
+	int vehicle_num = online_vehicle.size();
+
+	while (tele_num && vehicle_num) {
+
+		std::string usable_vehicle = online_vehicle.back();
+		std::string usable_tele = online_tele.back();
+
+		online_vehicle.pop_back();
+		online_tele.pop_back();
+
+		tele_num -= 1;
+		vehicle_num -= 1;
+
+		con_te_ve.insert(std::make_pair(usable_tele, usable_vehicle));
+		con_te_ve.insert(std::make_pair(usable_vehicle, usable_tele));
+
+		publish_connection_msg(command_participant, con_topic, usable_tele, usable_vehicle, false, false);
+	}
+
+
+	/*
 	if (!online_tele.empty() || !online_vehicle.empty()) {
 
 		int tele_num = online_tele.size();
@@ -96,7 +200,7 @@ void judge_connection(dds::domain::DomainParticipant& command_participant, dds::
 			publish_connection_msg(command_participant, con_topic, usable_tele, usable_vehicle);
 		}
 		
-	}
+	}*/
 
 	
 }
@@ -159,34 +263,15 @@ void run_subscriber_application() {
 						}
 
 						if (usable) {
+							publish_known_msg(command_participant, con_topic, tele_id, "known");
 							online_tele.push_back(tele_id);
 						}
 					}
 					else if (tele_state == "online" && con_te_ve.count(tele_id)) {
-						publish_connection_msg(command_participant, con_topic, tele_id, con_te_ve[tele_id]);
+						publish_connection_msg(command_participant, con_topic, tele_id, con_te_ve[tele_id], true, false);
 					}
 
 
-					//This place, we need to fixxxxxxxxx (x_x) (>_<) (=_=')
-					if (tele_state == "offline" && con_te_ve.count(tele_id)) {
-						
-						std::string discon_tele = tele_id;
-						std::string discon_vehicle = con_te_ve[tele_id];
-
-						//send dis-connection msg. TO THE SPECIFIC TELE !!!
-						dds::pub::qos::PublisherQos pub_qos;
-						dds::core::StringSeq partition{ discon_tele, discon_vehicle };
-						pub_qos << dds::core::policy::detail::Partition(partition);
-						dds::pub::Publisher command_discon_publisher(command_participant, pub_qos);
-						dds::pub::DataWriter<ControlData::disconnection_msg> discon_writer(command_discon_publisher, discon_topic);
-
-						ControlData::disconnection_msg discon_msg("disconnection");
-						discon_writer.write(discon_msg);
-						
-						//delete tele_id:vehicle_id && vehicle_id:tele_id pairs.
-						con_te_ve.erase(discon_tele);
-						con_te_ve.erase(discon_vehicle);
-					}
 					
 					
 
@@ -225,14 +310,54 @@ void run_subscriber_application() {
 						}
 
 						if (usable) {
+							publish_known_msg(command_participant, con_topic, "known", vehicle_id);
 							online_vehicle.push_back(vehicle_id);
 						}
 					}
 					else if (vehicle_state == "online" && con_te_ve.count(vehicle_id)) {
-						publish_connection_msg(command_participant, con_topic, con_te_ve[vehicle_id], vehicle_id);
+						publish_connection_msg(command_participant, con_topic, con_te_ve[vehicle_id], vehicle_id, false, true);
 					}
 
+					
+				}
+
+			}
+		}
+
+		if (online_tele.size() > 0 && online_vehicle.size() > 0) {
+			judge_connection(command_participant, con_topic);
+		}
+
+	}
+}
+
+/*
+
 					//This place, we need to fixxxxxxxxx (x_x) (>_<) (=_=')
+					if (tele_state == "offline" && con_te_ve.count(tele_id)) {
+
+						std::string discon_tele = tele_id;
+						std::string discon_vehicle = con_te_ve[tele_id];
+
+						//send dis-connection msg. TO THE SPECIFIC TELE !!!
+						dds::pub::qos::PublisherQos pub_qos;
+						dds::core::StringSeq partition{ discon_tele, discon_vehicle };
+						pub_qos << dds::core::policy::detail::Partition(partition);
+						dds::pub::Publisher command_discon_publisher(command_participant, pub_qos);
+						dds::pub::DataWriter<ControlData::disconnection_msg> discon_writer(command_discon_publisher, discon_topic);
+
+						ControlData::disconnection_msg discon_msg("disconnection");
+						discon_writer.write(discon_msg);
+
+						//delete tele_id:vehicle_id && vehicle_id:tele_id pairs.
+						con_te_ve.erase(discon_tele);
+						con_te_ve.erase(discon_vehicle);
+					}
+
+*/
+
+/*
+* //This place, we need to fixxxxxxxxx (x_x) (>_<) (=_=')
 					if (vehicle_state == "offline" && con_te_ve.count(vehicle_id)) {
 
 						std::string discon_vehicle = vehicle_id;
@@ -253,12 +378,4 @@ void run_subscriber_application() {
 						con_te_ve.erase(discon_vehicle);
 						con_te_ve.erase(discon_tele);
 					}
-				}
-
-			}
-		}
-
-		judge_connection(command_participant, con_topic);
-
-	}
-}
+*/
