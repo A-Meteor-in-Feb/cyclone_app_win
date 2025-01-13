@@ -6,8 +6,8 @@
   Cyclone DDS: v0.11.0
 
 *****************************************************************/
-#ifndef DDSCXX_CONTROLDATA_HPP_8C02C0DCDF694A0A4E796774075E5A64
-#define DDSCXX_CONTROLDATA_HPP_8C02C0DCDF694A0A4E796774075E5A64
+#ifndef DDSCXX_CONTROLDATA_HPP_890B970929C8CFC9F3AD037BC1E18ABE
+#define DDSCXX_CONTROLDATA_HPP_890B970929C8CFC9F3AD037BC1E18ABE
 
 #include <utility>
 #include <ostream>
@@ -180,6 +180,38 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, disconnection_msg const& rhs);
+
+class partition_data
+{
+private:
+ std::string name_;
+
+public:
+  partition_data() = default;
+
+  explicit partition_data(
+    const std::string& name) :
+    name_(name) { }
+
+  const std::string& name() const { return this->name_; }
+  std::string& name() { return this->name_; }
+  void name(const std::string& _val_) { this->name_ = _val_; }
+  void name(std::string&& _val_) { this->name_ = std::move(_val_); }
+
+  bool operator==(const partition_data& _other) const
+  {
+    (void) _other;
+    return name_ == _other.name_;
+  }
+
+  bool operator!=(const partition_data& _other) const
+  {
+    return !(*this == _other);
+  }
+
+};
+
+std::ostream& operator<<(std::ostream& os, partition_data const& rhs);
 
 class steeringWheel_data
 {
@@ -665,6 +697,54 @@ template<> inline const uint8_t * TopicTraits<::ControlData::disconnection_msg>:
 }
 #endif //DDSCXX_HAS_TYPELIB
 
+template <> constexpr const char* TopicTraits<::ControlData::partition_data>::getTypeName()
+{
+  return "ControlData::partition_data";
+}
+
+template <> constexpr bool TopicTraits<::ControlData::partition_data>::isSelfContained()
+{
+  return false;
+}
+
+template <> constexpr bool TopicTraits<::ControlData::partition_data>::isKeyless()
+{
+  return true;
+}
+
+#ifdef DDSCXX_HAS_TYPELIB
+template<> constexpr unsigned int TopicTraits<::ControlData::partition_data>::type_map_blob_sz() { return 206; }
+template<> constexpr unsigned int TopicTraits<::ControlData::partition_data>::type_info_blob_sz() { return 100; }
+template<> inline const uint8_t * TopicTraits<::ControlData::partition_data>::type_map_blob() {
+  alignas(4) static const uint8_t blob[] = {
+ 0x3c,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0xf1,  0x73,  0xe9,  0xee,  0x56,  0x1f,  0x4d,  0x20, 
+ 0xc0,  0x9c,  0xe8,  0x3b,  0x5e,  0xbd,  0x22,  0x00,  0x24,  0x00,  0x00,  0x00,  0xf1,  0x51,  0x01,  0x00, 
+ 0x01,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x14,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00, 
+ 0x0c,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x01,  0x00,  0x70,  0x00,  0xb0,  0x68,  0x93,  0x1c, 
+ 0x63,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0xf2,  0x68,  0x6a,  0x5b,  0x9f,  0x40,  0xe3,  0x9e, 
+ 0x4b,  0xb0,  0x44,  0x5e,  0x92,  0x83,  0x8a,  0x00,  0x4b,  0x00,  0x00,  0x00,  0xf2,  0x51,  0x01,  0x00, 
+ 0x24,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x1c,  0x00,  0x00,  0x00,  0x43,  0x6f,  0x6e,  0x74, 
+ 0x72,  0x6f,  0x6c,  0x44,  0x61,  0x74,  0x61,  0x3a,  0x3a,  0x70,  0x61,  0x72,  0x74,  0x69,  0x74,  0x69, 
+ 0x6f,  0x6e,  0x5f,  0x64,  0x61,  0x74,  0x61,  0x00,  0x1b,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00, 
+ 0x13,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x01,  0x00,  0x70,  0x00,  0x05,  0x00,  0x00,  0x00, 
+ 0x6e,  0x61,  0x6d,  0x65,  0x00,  0x00,  0x00,  0x00,  0x22,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00, 
+ 0xf2,  0x68,  0x6a,  0x5b,  0x9f,  0x40,  0xe3,  0x9e,  0x4b,  0xb0,  0x44,  0x5e,  0x92,  0x83,  0x8a,  0xf1, 
+ 0x73,  0xe9,  0xee,  0x56,  0x1f,  0x4d,  0x20,  0xc0,  0x9c,  0xe8,  0x3b,  0x5e,  0xbd,  0x22, };
+  return blob;
+}
+template<> inline const uint8_t * TopicTraits<::ControlData::partition_data>::type_info_blob() {
+  alignas(4) static const uint8_t blob[] = {
+ 0x60,  0x00,  0x00,  0x00,  0x01,  0x10,  0x00,  0x40,  0x28,  0x00,  0x00,  0x00,  0x24,  0x00,  0x00,  0x00, 
+ 0x14,  0x00,  0x00,  0x00,  0xf1,  0x73,  0xe9,  0xee,  0x56,  0x1f,  0x4d,  0x20,  0xc0,  0x9c,  0xe8,  0x3b, 
+ 0x5e,  0xbd,  0x22,  0x00,  0x28,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
+ 0x00,  0x00,  0x00,  0x00,  0x02,  0x10,  0x00,  0x40,  0x28,  0x00,  0x00,  0x00,  0x24,  0x00,  0x00,  0x00, 
+ 0x14,  0x00,  0x00,  0x00,  0xf2,  0x68,  0x6a,  0x5b,  0x9f,  0x40,  0xe3,  0x9e,  0x4b,  0xb0,  0x44,  0x5e, 
+ 0x92,  0x83,  0x8a,  0x00,  0x4f,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x04,  0x00,  0x00,  0x00, 
+ 0x00,  0x00,  0x00,  0x00, };
+  return blob;
+}
+#endif //DDSCXX_HAS_TYPELIB
+
 template <> constexpr const char* TopicTraits<::ControlData::steeringWheel_data>::getTypeName()
 {
   return "ControlData::steeringWheel_data";
@@ -979,6 +1059,15 @@ struct topic_type_name<::ControlData::disconnection_msg>
 };
 
 template <>
+struct topic_type_name<::ControlData::partition_data>
+{
+    static std::string value()
+    {
+      return org::eclipse::cyclonedds::topic::TopicTraits<::ControlData::partition_data>::getTypeName();
+    }
+};
+
+template <>
 struct topic_type_name<::ControlData::steeringWheel_data>
 {
     static std::string value()
@@ -1030,6 +1119,7 @@ REGISTER_TOPIC_TYPE(::ControlData::tele_status)
 REGISTER_TOPIC_TYPE(::ControlData::vehicle_status)
 REGISTER_TOPIC_TYPE(::ControlData::connection_msg)
 REGISTER_TOPIC_TYPE(::ControlData::disconnection_msg)
+REGISTER_TOPIC_TYPE(::ControlData::partition_data)
 REGISTER_TOPIC_TYPE(::ControlData::steeringWheel_data)
 REGISTER_TOPIC_TYPE(::ControlData::joyStick_data)
 REGISTER_TOPIC_TYPE(::ControlData::streamdeck_buttons_data)
@@ -1706,6 +1796,133 @@ bool max(T& streamer, const ::ControlData::disconnection_msg& instance, const en
 template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
 bool max(S& str, const ::ControlData::disconnection_msg& instance, key_mode key) {
   const auto &props = get_type_props<::ControlData::disconnection_msg>();
+  str.set_mode(cdr_stream::stream_mode::max, key);
+  return max(str, instance, props.data()); 
+}
+
+template<>
+const propvec &get_type_props<::ControlData::partition_data>();
+
+namespace {
+  static const volatile propvec &properties___ControlData__partition_data = get_type_props<::ControlData::partition_data>();
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool write(T& streamer, const ::ControlData::partition_data& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!write_string(streamer, instance.name(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool write(S& str, const ::ControlData::partition_data& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::partition_data>();
+  str.set_mode(cdr_stream::stream_mode::write, key);
+  return write(str, instance, props.data()); 
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool read(T& streamer, ::ControlData::partition_data& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!read_string(streamer, instance.name(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool read(S& str, ::ControlData::partition_data& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::partition_data>();
+  str.set_mode(cdr_stream::stream_mode::read, key);
+  return read(str, instance, props.data()); 
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool move(T& streamer, const ::ControlData::partition_data& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!move_string(streamer, instance.name(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool move(S& str, const ::ControlData::partition_data& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::partition_data>();
+  str.set_mode(cdr_stream::stream_mode::move, key);
+  return move(str, instance, props.data()); 
+}
+
+template<typename T, std::enable_if_t<std::is_base_of<cdr_stream, T>::value, bool> = true >
+bool max(T& streamer, const ::ControlData::partition_data& instance, const entity_properties_t *props) {
+  (void)instance;
+  member_id_set member_ids;
+  if (!streamer.start_struct(*props))
+    return false;
+  auto prop = streamer.first_entity(props);
+  while (prop) {
+    switch (prop->m_id) {
+      case 0:
+      if (!streamer.start_member(*prop))
+        return false;
+      if (!max_string(streamer, instance.name(), 0))
+        return false;
+      if (!streamer.finish_member(*prop, member_ids))
+        return false;
+      break;
+    }
+    prop = streamer.next_entity(prop);
+  }
+  return streamer.finish_struct(*props, member_ids);
+}
+
+template<typename S, std::enable_if_t<std::is_base_of<cdr_stream, S>::value, bool> = true >
+bool max(S& str, const ::ControlData::partition_data& instance, key_mode key) {
+  const auto &props = get_type_props<::ControlData::partition_data>();
   str.set_mode(cdr_stream::stream_mode::max, key);
   return max(str, instance, props.data()); 
 }
@@ -3091,4 +3308,4 @@ bool max(S& str, const ::ControlData::imu_data& instance, key_mode key) {
 } //namespace eclipse
 } //namespace org
 
-#endif // DDSCXX_CONTROLDATA_HPP_8C02C0DCDF694A0A4E796774075E5A64
+#endif // DDSCXX_CONTROLDATA_HPP_890B970929C8CFC9F3AD037BC1E18ABE

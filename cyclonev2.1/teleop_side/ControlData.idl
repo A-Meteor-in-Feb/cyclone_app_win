@@ -21,6 +21,10 @@ module ControlData{
         string msg;
     };
 
+    struct partition_data {
+        string name;
+    };
+
     struct steeringWheel_data {
         long lX;
         long lY;

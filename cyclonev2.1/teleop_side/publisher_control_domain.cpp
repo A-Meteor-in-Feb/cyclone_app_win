@@ -117,6 +117,7 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
     std::string name = control_partition_name;
     std::cout << "start running publisher, partition: " << name << std::endl;
 
+    std::string streamdeck_name = "streamdeck_tele" + std::to_string(tele);
 
     //Initialize the devices
 
@@ -162,17 +163,22 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
 
     dds::pub::qos::PublisherQos pub_qos;
 
-    dds::core::StringSeq partition_name{ name };
+    dds::core::StringSeq partition_name{ name, streamdeck_name };
 
     pub_qos << dds::core::policy::Partition(partition_name);
 
     dds::pub::Publisher tele_publisher(control_participant, pub_qos);
 
+    dds::topic::Topic<ControlData::partition_data> partiton_topic(control_participant, "partition_data");
     dds::topic::Topic<ControlData::steeringWheel_data> steeringWheel_topic(control_participant, "steeringWheel_topic");
     dds::topic::Topic<ControlData::joyStick_data> joyStick_topic(control_participant, "joyStick_topic");
 
+    dds::pub::DataWriter<ControlData::partition_data> partition_writer(tele_publisher, partiton_topic);
     dds::pub::DataWriter<ControlData::steeringWheel_data> steeringWheel_writer(tele_publisher, steeringWheel_topic);
     dds::pub::DataWriter<ControlData::joyStick_data> joyStick_writer(tele_publisher, joyStick_topic);
+
+    ControlData::partition_data data(name);
+    partition_writer.write(data);
 
     while (!shutdown_requested) {
 

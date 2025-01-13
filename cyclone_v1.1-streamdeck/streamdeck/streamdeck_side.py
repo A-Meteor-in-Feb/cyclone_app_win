@@ -9,8 +9,9 @@ from StreamDeck.ImageHelpers import PILHelper
 from dataclasses import dataclass
 from cyclonedds.idl import IdlStruct
 from cyclonedds.domain import DomainParticipant
-from cyclonedds.pub import DataWriter
-from cyclonedds.sub import DataReader
+from cyclonedds.pub import DataWriter, Publisher
+from cyclonedds.qos import Policy, SubscriberQos, PublisherQos
+from cyclonedds.sub import DataReader, Subscriber
 from cyclonedds.topic import Topic
 import cyclonedds.idl.types as types
 
@@ -26,6 +27,10 @@ class statistic_data(IdlStruct, typename = "statistic_data"):
     depth: types.float64
     auto_flag: types.int16
 
+#topic name: partition_data
+@dataclass
+class partition_data(IdlStruct, typename = "partition_data"):
+    name: str
 
 # Folder location of image assets used by this program
 ASSETS_PATH = os.path.join(os.path.dirname(__file__), "images")
@@ -64,6 +69,8 @@ DESIRED_SERIAL_NUMBER = "A00SA3462OG542"
 
 # Initialize button states as a 16-bit integer
 button_states = 64
+
+control_partiton_name = ""
 
 def read_streamdeck():
 
@@ -140,7 +147,7 @@ def process_data(reader):
     return [height, depth, auto_flag]
 
 
-def main():
+def main(participant, control_partition_name):
     global gear_update_needed, selected_gear
 
     streamdeck = read_streamdeck()
@@ -149,13 +156,15 @@ def main():
 
     initialize = False
 
-    # ======= Publisher function =======
-    domain_id = 0
-    participant = DomainParticipant(domain_id)
+
+    publisher_qos = PublisherQos(Policy.Partition[control_partition_name])
+    subscriber_qos = SubscriberQos(Policy.Partition[control_partition_name])
 
 
+    # ======= Publisher function ======
+    publisher = Publisher(participant, publisher_qos)
     button_topic = Topic(participant, "streamdeck_buttons_data", streamdeck_buttons_data)
-    writer = DataWriter(participant, button_topic)
+    writer = DataWriter(publisher, button_topic)
     button_sample = streamdeck_buttons_data(buttons=button_states)
     writer.write(button_sample)
 
@@ -205,8 +214,9 @@ def main():
     # =========== Subscriber function ===========
     try:
 
+        subscriber = Subscriber(participant, subscriber_qos)
         statistic_topic = Topic(participant, "statistic_data", statistic_data)
-        reader = DataReader(participant, statistic_topic)
+        reader = DataReader(subscriber, statistic_topic)
 
         while True:
             current_time = time.time()
@@ -271,4 +281,17 @@ def main():
 
 if __name__ == "__main__":
     print(ASSETS_PATH)
-    main()
+    tele_id = int(input("What's the corresponding teleop id: "))
+    streamdeck_name = "streamdeck_tele" + str(tele_id)
+    sub_qos = SubscriberQos( Policy.Partition(partitions=[streamdeck_name]))
+    domain_id = 1
+    participant = DomainParticipant(domain_id)
+    subscriber = Subscriber(participant, sub_qos)
+    partition_topic = Topic(participant, "partition_data", partition_data)
+    reader = DataReader(subscriber, partition_topic)
+    while control_partiton_name == "":
+        samples = reader.take()
+        if len(samples) > 0:
+            for sample in samples:
+                control_partiton_name = sample.__dict__['name']
+    main(participant, control_partiton_name)
