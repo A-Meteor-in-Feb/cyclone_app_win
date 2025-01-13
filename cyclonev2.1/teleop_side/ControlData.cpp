@@ -57,8 +57,7 @@ std::ostream& operator<<(std::ostream& os, steeringWheel_data const& rhs)
 {
   (void) rhs;
   os << "[";
-  os << "tele_id: " << rhs.tele_id();
-  os << ", lX: " << rhs.lX();
+  os << "lX: " << rhs.lX();
   os << ", lY: " << rhs.lY();
   os << ", lRz: " << rhs.lRz();
   os << ", rglSlider_0: " << rhs.rglSlider_0();
@@ -71,8 +70,7 @@ std::ostream& operator<<(std::ostream& os, joyStick_data const& rhs)
 {
   (void) rhs;
   os << "[";
-  os << "tele_id: " << rhs.tele_id();
-  os << ", lX: " << rhs.lX();
+  os << "lX: " << rhs.lX();
   os << ", lZ: " << rhs.lZ();
   os << ", lRx: " << rhs.lRx();
   os << ", lRy: " << rhs.lRy();
@@ -107,8 +105,7 @@ std::ostream& operator<<(std::ostream& os, imu_data const& rhs)
 {
   (void) rhs;
   os << "[";
-  os << "vehicle_id: " << rhs.vehicle_id();
-  os << ", acc: " << rhs.acc();
+  os << "acc: " << rhs.acc();
   os << ", gyro: " << rhs.gyro();
   os << ", angle: " << rhs.angle();
   os << ", mag: " << rhs.mag();
@@ -227,12 +224,11 @@ const propvec &get_type_props<::ControlData::steeringWheel_data>() {
   props.clear();
 
   props.push_back(entity_properties_t(0, 0, false, bit_bound::bb_unset, extensibility::ext_final));  //root
-  props.push_back(entity_properties_t(1, 0, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::tele_id
-  props.push_back(entity_properties_t(1, 1, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lX
-  props.push_back(entity_properties_t(1, 2, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lY
-  props.push_back(entity_properties_t(1, 3, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lRz
-  props.push_back(entity_properties_t(1, 4, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::rglSlider_0
-  props.push_back(entity_properties_t(1, 5, false, get_bit_bound<uint32_t>(), extensibility::ext_final, false));  //::buttons
+  props.push_back(entity_properties_t(1, 0, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lX
+  props.push_back(entity_properties_t(1, 1, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lY
+  props.push_back(entity_properties_t(1, 2, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lRz
+  props.push_back(entity_properties_t(1, 3, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::rglSlider_0
+  props.push_back(entity_properties_t(1, 4, false, get_bit_bound<uint32_t>(), extensibility::ext_final, false));  //::buttons
 
   entity_properties_t::finish(props, keylist);
   initialized.store(true, std::memory_order_release);
@@ -253,14 +249,13 @@ const propvec &get_type_props<::ControlData::joyStick_data>() {
   props.clear();
 
   props.push_back(entity_properties_t(0, 0, false, bit_bound::bb_unset, extensibility::ext_final));  //root
-  props.push_back(entity_properties_t(1, 0, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::tele_id
-  props.push_back(entity_properties_t(1, 1, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lX
-  props.push_back(entity_properties_t(1, 2, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lZ
-  props.push_back(entity_properties_t(1, 3, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lRx
-  props.push_back(entity_properties_t(1, 4, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lRy
-  props.push_back(entity_properties_t(1, 5, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lRz
-  props.push_back(entity_properties_t(1, 6, false, get_bit_bound<uint32_t>(), extensibility::ext_final, false));  //::buttons
-  props.push_back(entity_properties_t(1, 7, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::rglSlider
+  props.push_back(entity_properties_t(1, 0, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lX
+  props.push_back(entity_properties_t(1, 1, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lZ
+  props.push_back(entity_properties_t(1, 2, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lRx
+  props.push_back(entity_properties_t(1, 3, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lRy
+  props.push_back(entity_properties_t(1, 4, false, get_bit_bound<int32_t>(), extensibility::ext_final, false));  //::lRz
+  props.push_back(entity_properties_t(1, 5, false, get_bit_bound<uint32_t>(), extensibility::ext_final, false));  //::buttons
+  props.push_back(entity_properties_t(1, 6, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::rglSlider
 
   entity_properties_t::finish(props, keylist);
   initialized.store(true, std::memory_order_release);
@@ -325,11 +320,10 @@ const propvec &get_type_props<::ControlData::imu_data>() {
   props.clear();
 
   props.push_back(entity_properties_t(0, 0, false, bit_bound::bb_unset, extensibility::ext_final));  //root
-  props.push_back(entity_properties_t(1, 0, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::vehicle_id
-  props.push_back(entity_properties_t(1, 1, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::acc
-  props.push_back(entity_properties_t(1, 2, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::gyro
-  props.push_back(entity_properties_t(1, 3, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::angle
-  props.push_back(entity_properties_t(1, 4, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::mag
+  props.push_back(entity_properties_t(1, 0, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::acc
+  props.push_back(entity_properties_t(1, 1, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::gyro
+  props.push_back(entity_properties_t(1, 2, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::angle
+  props.push_back(entity_properties_t(1, 3, false, bit_bound::bb_unset, extensibility::ext_final, false));  //::mag
 
   entity_properties_t::finish(props, keylist);
   initialized.store(true, std::memory_order_release);

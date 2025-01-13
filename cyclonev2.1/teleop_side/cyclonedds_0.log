@@ -1,0 +1,134 @@
+1736751185.971267 [0]      19788: config: Domain/General/MulticastRecvNetworkInterfaceAddresses/#text: preferred {}
+1736751185.971359 [0]      19788: config: Domain/General/ExternalNetworkAddress/#text: auto {}
+1736751185.971386 [0]      19788: config: Domain/General/ExternalNetworkMask/#text: 0.0.0.0 {}
+1736751185.971403 [0]      19788: config: Domain/General/AllowMulticast/#text: default {}
+1736751185.971418 [0]      19788: config: Domain/General/MulticastTimeToLive/#text: 32 {}
+1736751185.971433 [0]      19788: config: Domain/General/DontRoute/#text: false {}
+1736751185.971448 [0]      19788: config: Domain/General/Transport/#text: udp {}
+1736751185.971476 [0]      19788: config: Domain/General/EnableMulticastLoopback/#text: true {}
+1736751185.971864 [0]      19788: config: Domain/General/MaxMessageSize/#text: 14720 B {}
+1736751185.971878 [0]      19788: config: Domain/General/MaxRexmitMessageSize/#text: 1456 B {}
+1736751185.971887 [0]      19788: config: Domain/General/FragmentSize/#text: 1344 B {}
+1736751185.971896 [0]      19788: config: Domain/General/RedundantNetworking/#text: false {}
+1736751185.971905 [0]      19788: config: Domain/General/EntityAutoNaming/#text: empty {}
+1736751185.971915 [0]      19788: config: Domain/General/EntityAutoNaming[@seed]: 2578434056 1493651093 2181844689 1806430976 4083397744 3270926621 4019033996 3436363928 {}
+1736751185.971927 [0]      19788: config: Domain/Sizing/ReceiveBufferSize/#text: 1 MiB {}
+1736751185.971936 [0]      19788: config: Domain/Sizing/ReceiveBufferChunkSize/#text: 128 KiB {}
+1736751185.971945 [0]      19788: config: Domain/Compatibility/StandardsConformance/#text: lax {}
+1736751185.971954 [0]      19788: config: Domain/Compatibility/ExplicitlyPublishQosSetToDefault/#text: false {}
+1736751185.971962 [0]      19788: config: Domain/Compatibility/ManySocketsMode/#text: single {}
+1736751185.971971 [0]      19788: config: Domain/Compatibility/AssumeRtiHasPmdEndpoints/#text: false {}
+1736751185.971980 [0]      19788: config: Domain/Discovery/Tag/#text:  {}
+1736751185.971988 [0]      19788: config: Domain/Discovery/ExternalDomainId/#text: 0 {}
+1736751185.971997 [0]      19788: config: Domain/Discovery/DSGracePeriod/#text: 30 s {}
+1736751185.972007 [0]      19788: config: Domain/Discovery/Peers/Peer[@Address]: 192.168.0.167 {1}
+1736751185.972017 [0]      19788: config: Domain/Discovery/Peers/Peer[@PruneDelay]: default {}
+1736751185.972026 [0]      19788: config: Domain/Discovery/Peers/Peer[@Address]: 192.168.0.140 {1}
+1736751185.972035 [0]      19788: config: Domain/Discovery/Peers/Peer[@PruneDelay]: default {}
+1736751185.972044 [0]      19788: config: Domain/Discovery/Peers[@AddLocalhost]: default {}
+1736751185.972052 [0]      19788: config: Domain/Discovery/ParticipantIndex/#text: -3 {}
+1736751185.972061 [0]      19788: config: Domain/Discovery/MaxAutoParticipantIndex/#text: 99 {}
+1736751185.972069 [0]      19788: config: Domain/Discovery/SPDPMulticastAddress/#text: 239.255.0.1 {}
+1736751185.972078 [0]      19788: config: Domain/Discovery/SPDPInterval/#text: default {}
+1736751185.972086 [0]      19788: config: Domain/Discovery/DefaultMulticastAddress/#text: auto {}
+1736751185.972095 [0]      19788: config: Domain/Discovery/InitialLocatorPruneDelay/#text: 30 s {}
+1736751185.972104 [0]      19788: config: Domain/Discovery/DiscoveredLocatorPruneDelay/#text: 1 min {}
+1736751185.972113 [0]      19788: config: Domain/Discovery/Ports/Base/#text: 7400 {}
+1736751185.972122 [0]      19788: config: Domain/Discovery/Ports/DomainGain/#text: 250 {}
+1736751185.972131 [0]      19788: config: Domain/Discovery/Ports/ParticipantGain/#text: 2 {}
+1736751185.972140 [0]      19788: config: Domain/Discovery/Ports/MulticastMetaOffset/#text: 0 {}
+1736751185.972149 [0]      19788: config: Domain/Discovery/Ports/UnicastMetaOffset/#text: 10 {}
+1736751185.972158 [0]      19788: config: Domain/Discovery/Ports/MulticastDataOffset/#text: 1 {}
+1736751185.972167 [0]      19788: config: Domain/Discovery/Ports/UnicastDataOffset/#text: 11 {}
+1736751185.972175 [0]      19788: config: Domain/Discovery/EnableTopicDiscoveryEndpoints/#text: false {}
+1736751185.972210 [0]      19788: config: Domain/Discovery/LeaseDuration/#text: 10 s {}
+1736751185.972231 [0]      19788: config: Domain/Tracing/Category/#text: fatal,error,warning,info,config {1}
+1736751185.972241 [0]      19788: config: Domain/Tracing/OutputFile/#text: cyclonedds_0.log {1}
+1736751185.972250 [0]      19788: config: Domain/Tracing/AppendToFile/#text: false {1}
+1736751185.972258 [0]      19788: config: Domain/Tracing/PacketCaptureFile/#text:  {}
+1736751185.972267 [0]      19788: config: Domain/Internal/DeliveryQueueMaxSamples/#text: 256 {}
+1736751185.972275 [0]      19788: config: Domain/Internal/PrimaryReorderMaxSamples/#text: 128 {}
+1736751185.972283 [0]      19788: config: Domain/Internal/SecondaryReorderMaxSamples/#text: 128 {}
+1736751185.972292 [0]      19788: config: Domain/Internal/DefragUnreliableMaxSamples/#text: 4 {}
+1736751185.972300 [0]      19788: config: Domain/Internal/DefragReliableMaxSamples/#text: 16 {}
+1736751185.972308 [0]      19788: config: Domain/Internal/BuiltinEndpointSet/#text: writers {}
+1736751185.972317 [0]      19788: config: Domain/Internal/MeasureHbToAckLatency/#text: false {}
+1736751185.972325 [0]      19788: config: Domain/Internal/SynchronousDeliveryPriorityThreshold/#text: 0 {}
+1736751185.972334 [0]      19788: config: Domain/Internal/SynchronousDeliveryLatencyBound/#text: inf {}
+1736751185.972342 [0]      19788: config: Domain/Internal/MaxParticipants/#text: 0 {}
+1736751185.972350 [0]      19788: config: Domain/Internal/AccelerateRexmitBlockSize/#text: 0 {}
+1736751185.972359 [0]      19788: config: Domain/Internal/RetransmitMerging/#text: never {}
+1736751185.972368 [0]      19788: config: Domain/Internal/RetransmitMergingPeriod/#text: 5 ms {}
+1736751185.972377 [0]      19788: config: Domain/Internal/HeartbeatInterval/#text: 100 ms {}
+1736751185.972386 [0]      19788: config: Domain/Internal/HeartbeatInterval[@min]: 5 ms {}
+1736751185.972395 [0]      19788: config: Domain/Internal/HeartbeatInterval[@minsched]: 20 ms {}
+1736751185.972403 [0]      19788: config: Domain/Internal/HeartbeatInterval[@max]: 8 s {}
+1736751185.972412 [0]      19788: config: Domain/Internal/MaxQueuedRexmitBytes/#text: 512 KiB {}
+1736751185.972420 [0]      19788: config: Domain/Internal/MaxQueuedRexmitMessages/#text: 200 {}
+1736751185.972429 [0]      19788: config: Domain/Internal/WriterLingerDuration/#text: 1 s {}
+1736751185.972438 [0]      19788: config: Domain/Internal/SocketReceiveBufferSize[@min]: default {}
+1736751185.972447 [0]      19788: config: Domain/Internal/SocketReceiveBufferSize[@max]: default {}
+1736751185.972456 [0]      19788: config: Domain/Internal/SocketSendBufferSize[@min]: 64 KiB {}
+1736751185.972464 [0]      19788: config: Domain/Internal/SocketSendBufferSize[@max]: default {}
+1736751185.972473 [0]      19788: config: Domain/Internal/NackDelay/#text: 100 ms {}
+1736751185.972482 [0]      19788: config: Domain/Internal/AckDelay/#text: 10 ms {}
+1736751185.972491 [0]      19788: config: Domain/Internal/AutoReschedNackDelay/#text: 3 s {}
+1736751185.972499 [0]      19788: config: Domain/Internal/PreEmptiveAckDelay/#text: 10 ms {}
+1736751185.972508 [0]      19788: config: Domain/Internal/SquashParticipants/#text: false {}
+1736751185.972516 [0]      19788: config: Domain/Internal/SPDPResponseMaxDelay/#text: 0 s {}
+1736751185.972525 [0]      19788: config: Domain/Internal/LateAckMode/#text: false {}
+1736751185.972533 [0]      19788: config: Domain/Internal/RetryOnRejectBestEffort/#text: false {}
+1736751185.972541 [0]      19788: config: Domain/Internal/GenerateKeyhash/#text: false {}
+1736751185.972550 [0]      19788: config: Domain/Internal/MaxSampleSize/#text: 2147483647 B {}
+1736751185.972559 [0]      19788: config: Domain/Internal/LivelinessMonitoring/#text: false {}
+1736751185.972567 [0]      19788: config: Domain/Internal/LivelinessMonitoring[@StackTraces]: true {}
+1736751185.972576 [0]      19788: config: Domain/Internal/LivelinessMonitoring[@Interval]: 1 s {}
+1736751185.972604 [0]      19788: config: Domain/Internal/MonitorPort/#text: -1 {}
+1736751185.972615 [0]      19788: config: Domain/Internal/PrioritizeRetransmit/#text: true {}
+1736751185.972628 [0]      19788: config: Domain/Internal/UseMulticastIfMreqn/#text: 0 {}
+1736751185.972636 [0]      19788: config: Domain/Internal/RediscoveryBlacklistDuration/#text: 0 s {}
+1736751185.972645 [0]      19788: config: Domain/Internal/RediscoveryBlacklistDuration[@enforce]: false {}
+1736751185.972654 [0]      19788: config: Domain/Internal/MultipleReceiveThreads/#text: default {}
+1736751185.972662 [0]      19788: config: Domain/Internal/MultipleReceiveThreads[@maxretries]: 4294967295 {}
+1736751185.972672 [0]      19788: config: Domain/Internal/Test/XmitLossiness/#text: 0 {}
+1736751185.972682 [0]      19788: config: Domain/Internal/Watermarks/WhcLow/#text: 1 KiB {}
+1736751185.972692 [0]      19788: config: Domain/Internal/Watermarks/WhcHigh/#text: 500 KiB {}
+1736751185.972701 [0]      19788: config: Domain/Internal/Watermarks/WhcHighInit/#text: 30 KiB {}
+1736751185.972710 [0]      19788: config: Domain/Internal/Watermarks/WhcAdaptive/#text: true {}
+1736751185.972719 [0]      19788: config: Domain/Internal/BurstSize/MaxRexmit/#text: 1 MiB {}
+1736751185.972728 [0]      19788: config: Domain/Internal/BurstSize/MaxInitTransmit/#text: 4294967295 {}
+1736751185.972737 [0]      19788: config: Domain/Internal/BurstSize/MaxFragsRexmitSample/#text: 1 {}
+1736751185.972745 [0]      19788: config: Domain/Internal/ExtendedPacketInfo/#text: true {}
+1736751185.972754 [0]      19788: config: Domain/Internal/EnableExpensiveChecks/#text:  {}
+1736751185.972763 [0]      19788: config: Domain/TCP/NoDelay/#text: true {}
+1736751185.972771 [0]      19788: config: Domain/TCP/Port/#text: -1 {}
+1736751185.972780 [0]      19788: config: Domain/TCP/ReadTimeout/#text: 2 s {}
+1736751185.972789 [0]      19788: config: Domain/TCP/WriteTimeout/#text: 2 s {}
+1736751185.972797 [0]      19788: config: Domain/TCP/AlwaysUsePeeraddrForUnicast/#text: false {}
+1736751185.972806 [0]      19788: config: Domain[@Id]: 0 {1,2}
+1736751185.973245 [0]      19788: started at 1736751185.06972834 -- 2025-01-13 14:53:05+08:00
+1736751185.973257 [0]      19788: Version: CycloneDDS 0.11.0 25bf38ab 
+1736751185.973268 [0]      19788: udp initialized
+1736751185.983037 [0]      19788: interfaces: Ethernet (interface down) Local Area Connection* 1 (interface down) Local Area Connection* 10 (interface down) Wi-Fi wireless udp/192.168.0.167(q9) Bluetooth Network Connection (interface down) Loopback Pseudo-Interface 1 udp/127.0.0.1(q1)
+1736751185.983066 [0]      19788: Wi-Fi: presumed flaky multicast, use for SPDP only
+1736751185.983080 [0]      19788: selected interfaces: Wi-Fi (index 9 priority 0 mc {spdp})
+1736751185.983124 [0]      19788: ownip: udp/192.168.0.167
+1736751185.983132 [0]      19788: extmask: invalid/0 (not applicable)
+1736751185.983138 [0]      19788: SPDP MC: udp/239.255.0.1
+1736751185.983144 [0]      19788: default MC: udp/239.255.0.1
+1736751185.983150 [0]      19788: SSM support included
+1736751185.985479 [0]      19788: rtps_init: trying to find a free participant index
+1736751185.985646 [0]      19788: socket receive buffer size set to 1048576 bytes
+1736751185.985703 [0]      19788: socket receive buffer size set to 1048576 bytes
+1736751185.985758 [0]      19788: socket receive buffer size set to 1048576 bytes
+1736751185.985785 [0]      19788: rtps_init: uc ports: disc 7412 data 7413
+1736751185.985795 [0]      19788: rtps_init: domainid 0 participantid 2
+1736751185.985801 [0]      19788: Unicast Ports: discovery 7412 data 7413
+1736751185.985821 [0]      19788: socket receive buffer size set to 1048576 bytes
+1736751185.985866 [0]      19788: socket receive buffer size set to 1048576 bytes
+1736751185.985891 [0]      19788: Multicast Ports: discovery 7400 data 7401 
+1736751185.985912 [0]      19788: socket receive buffer size set to 1048576 bytes
+1736751185.985950 [0]      19788: interface Wi-Fi: transmit port 52209
+1736751185.986076 [0]      19788: add_peer_address: add udp/192.168.0.167:7410 ... :7608 (prune delay 30000000000)
+1736751185.986163 [0]      19788: add_peer_address: add udp/192.168.0.140:7410 ... :7608 (prune delay 30000000000)
+1736751185.986175 [0]      19788: interface Wi-Fi has spdp multicast enabled, adding udp/239.255.0.1:7400@9 (never expiring)

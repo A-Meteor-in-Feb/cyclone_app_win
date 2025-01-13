@@ -15,7 +15,7 @@ idlcxx_generate(TARGET controldata FILES ControlData.idl WARNINGS no-implicit-ex
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 # add source files -  entry.cpp
-set(SOURCES "command_domain.cpp" "publisher_control_domain.cpp" "subscriber_control_domain.cpp" ControlData.cpp shutdownsignal.cpp "shutdownsignal.hpp" "partitionName.hpp")
+set(SOURCES "command_domain.cpp" "publisher_control_domain.cpp" "subscriber_control_domain.cpp" "ControlData.cpp" "shutdownsignal.cpp" "shutdownsignal.hpp" "partitionName.hpp")
 
 
 # add executable 

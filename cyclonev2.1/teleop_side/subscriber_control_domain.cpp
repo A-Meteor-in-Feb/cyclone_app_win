@@ -11,7 +11,7 @@
 using namespace org::eclipse::cyclonedds;
 
 
-void subscriber_control_domain(int& tele_id, std::string& control_partition_name) {
+void subscriber_control_domain(int& tele, std::string& control_partition_name) {
 
 	std::string name = control_partition_name;
 

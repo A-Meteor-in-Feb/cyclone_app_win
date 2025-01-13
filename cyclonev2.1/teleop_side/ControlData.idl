@@ -22,7 +22,6 @@ module ControlData{
     };
 
     struct steeringWheel_data {
-        string tele_id;
         long lX;
         long lY;
         long lRz;
@@ -31,7 +30,6 @@ module ControlData{
     };
 
     struct joyStick_data {
-        string tele_id;
         long lX;
         long lZ;
         long lRx;
@@ -52,7 +50,6 @@ module ControlData{
     };
 
     struct imu_data {
-        string vehicle_id;
         sequence<double, 3> acc;
         sequence<double, 3> gyro;
         sequence<double, 3> angle;

@@ -7,13 +7,13 @@
 #include "partitionName.hpp"
 
 
-void publisher_control_domain(int& tele_id, std::string& partition_name);
-void subscriber_control_domain(int& tele_id, std::string& partition_name);
+void publisher_control_domain(int& tele, std::string& partition_name);
+void subscriber_control_domain(int& tele, std::string& partition_name);
 
 
-void run_command_domain(int& tele_id) {
+void run_command_domain(int& tele) {
 
-	std::string tele_name = "tele" + std::to_string(tele_id);
+	std::string tele_id = "tele" + std::to_string(tele);
 	bool online_state = true;
 	bool connected_state = false;
 
@@ -31,7 +31,7 @@ void run_command_domain(int& tele_id) {
 	// ====== SUBSCRIBER ======
 	dds::sub::qos::SubscriberQos sub_qos;
 
-	dds::core::StringSeq partition_name{ tele_name };
+	dds::core::StringSeq partition_name{ tele_id };
 
 	sub_qos << dds::core::policy::Partition(partition_name);
 
@@ -72,25 +72,27 @@ void run_command_domain(int& tele_id) {
 
 						known = true;
 						std::cout << "non-matched vehicle for now ..." << std::endl;
-						/*
-						online_state = true;
-						connected_state = false;
-						ControlData::tele_status tele_status_data(tele_name, online_state, connected_state);
-						status_writer.write(tele_status_data);*/
 
 					}
 					else {
 						std::cout << "match to vehicle: " << vehicle_id << std::endl;
 
+						//send the latest state .
 						online_state = true;
 						connected_state = true;
-						ControlData::tele_status tele_status_data(tele_name, online_state, connected_state);
+						ControlData::tele_status tele_status_data(tele_id, online_state, connected_state);
 						status_writer.write(tele_status_data);
 
+						//start to run the functions of control domain
+						//set the partition name
+						//get the vehicle's ip address.
 						std::string name = data.tele_id() + data.vehicle_id();
+
 						std::cout << "partition name: " << name << std::endl;
-						std::thread tele_control_publisher(publisher_control_domain, std::ref(tele_id), std::ref(name));
-						std::thread tele_control_subscriber(subscriber_control_domain, std::ref(tele_id), std::ref(name));
+
+						//start to run the teleop publisher and subscriber at the same time.
+						std::thread tele_control_publisher(publisher_control_domain, std::ref(tele), std::ref(name));
+						std::thread tele_control_subscriber(subscriber_control_domain, std::ref(tele), std::ref(name));
 
 						tele_control_publisher.join();
 						tele_control_subscriber.join();
@@ -99,13 +101,17 @@ void run_command_domain(int& tele_id) {
 
 				}
 			}
-		}
+		} // This situation means the command center did not receive any status info, 
+		  // and we need to keep writing until the commend center side has recorded the info about the teleop.
 		else if (!known) {
-			ControlData::tele_status tele_status_data(tele_name, online_state, connected_state);
+			ControlData::tele_status tele_status_data(tele_id, online_state, connected_state);
 			status_writer.write(tele_status_data);
 			std::this_thread::sleep_for(std::chrono::microseconds(20));
 		}
 
+		/*
+		* Here we need to figure out what kind of conditions will trigger this ...... 
+		
 		discon_samples = discon_reader.take();
 
 		if (discon_samples.length() > 0) {
@@ -129,27 +135,23 @@ void run_command_domain(int& tele_id) {
 
 				}
 			}
-		}
+		}*/
 	}
 }
 
+
+
 int main(int argc, char* argv[]) {
 
-	int tele_id = -1;
+	int tele = -1;
 
 	if (argc > 2 && strcmp(argv[1], "-id") == 0) {
-		tele_id = atoi(argv[2]);
+		tele = atoi(argv[2]);
 	}
 
 
 	try {
-
-		if (!shutdown_requested) {
-
-			run_command_domain(std::ref(tele_id));
-
-		}
-
+		run_command_domain(std::ref(tele));
 	}
 	catch (const std::exception& ex) {
 		// This will catch DDS exceptions

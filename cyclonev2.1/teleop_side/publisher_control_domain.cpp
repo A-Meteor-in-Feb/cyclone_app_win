@@ -110,54 +110,49 @@ void initControllers() {
 }
 
 
-void publisher_control_domain(int& tele_id, std::string& control_partition_name) {
+void publisher_control_domain(int& tele, std::string& control_partition_name) {
+
+    std::string tele_id = "tele" + std::to_string(tele);
 
     std::string name = control_partition_name;
-
     std::cout << "start running publisher, partition: " << name << std::endl;
 
-    try {
 
-        HINSTANCE hInstance = GetModuleHandle(NULL);
-        WNDCLASS wc = {};
-        wc.lpfnWndProc = WindowProc;
-        wc.hInstance = hInstance;
-        wc.lpszClassName = "Name";
-        RegisterClass(&wc);
-        HWND hwnd = CreateWindowEx(
-            0,
-            "Name",
-            "Name",
-            WS_OVERLAPPEDWINDOW,
-            40, 20, 50, 50,
-            NULL,
-            NULL,
-            hInstance,
-            NULL
-        );
+    //Initialize the devices
 
-        if (hwnd == NULL) {
-            std::cerr << "Failed to create a Window" << std::endl;
-            return ;
-        }
+    HINSTANCE hInstance = GetModuleHandle(NULL);
+    WNDCLASS wc = {};
+    wc.lpfnWndProc = WindowProc;
+    wc.hInstance = hInstance;
+    wc.lpszClassName = "Name";
+    RegisterClass(&wc);
+    HWND hwnd = CreateWindowEx(
+        0,
+        "Name",
+        "Name",
+        WS_OVERLAPPEDWINDOW,
+        40, 20, 50, 50,
+        NULL,
+        NULL,
+        hInstance,
+        NULL
+    );
 
-        ShowWindow(hwnd, SW_SHOW);
-        SetForegroundWindow(hwnd);
-
-        MSG msg = {};
-        if (GetMessage(&msg, NULL, 0, 0)) {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-
-        initControllers();
-
-    }
-    catch (...) {
-        std::cerr << "Error happened in control_publisher" << std::endl;
+    if (hwnd == NULL) {
+        std::cerr << "Failed to create a Window" << std::endl;
+        return;
     }
 
-    std::string tele_name = "tele" + std::to_string(tele_id);
+    ShowWindow(hwnd, SW_SHOW);
+    SetForegroundWindow(hwnd);
+
+    MSG msg = {};
+    if (GetMessage(&msg, NULL, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+    initControllers();
 
     LogiPlayLeds(wheelIndex, 4, 1, 6);
     LogiSetOperatingRange(wheelIndex, 900);
@@ -207,7 +202,7 @@ void publisher_control_domain(int& tele_id, std::string& control_partition_name)
                     unsigned long sw_buttons = wheelButtons.to_ulong();
 
                     //I think you initialize it here will cause some problems.
-                    ControlData::steeringWheel_data steeringWheel_data(tele_name, sw_lX, sw_lY, sw_lRz, sw_rglSlider_0, sw_buttons);
+                    ControlData::steeringWheel_data steeringWheel_data(sw_lX, sw_lY, sw_lRz, sw_rglSlider_0, sw_buttons);
                     steeringWheel_writer.write(steeringWheel_data);
 
                     //std::cout << "s data: " << steeringWheel_data << std::endl;
@@ -233,7 +228,7 @@ void publisher_control_domain(int& tele_id, std::string& control_partition_name)
                     long js_rglSlider[2] = { joyStick_state->rglSlider[0], joyStick_state->rglSlider[1] };
 
                     //I think you initialize it here will cause some problems.
-                    ControlData::joyStick_data joyStick_data(tele_name, js_lX, js_lZ, js_lRx, js_lRy, js_lRz, js_buttons, { js_rglSlider[0], js_rglSlider[1] });
+                    ControlData::joyStick_data joyStick_data(js_lX, js_lZ, js_lRx, js_lRy, js_lRz, js_buttons, { js_rglSlider[0], js_rglSlider[1] });
                     joyStick_writer.write(joyStick_data);
 
                     //std::cout << "j data: " << joyStick_data << std::endl;
