@@ -70,7 +70,7 @@ DESIRED_SERIAL_NUMBER = "A00SA3462OG542"
 # Initialize button states as a 16-bit integer
 button_states = 64
 
-control_partiton_name = ""
+control_partition_name = ""
 
 def read_streamdeck():
 
@@ -156,9 +156,8 @@ def main(participant, control_partition_name):
 
     initialize = False
 
-
-    publisher_qos = PublisherQos(Policy.Partition[control_partition_name])
-    subscriber_qos = SubscriberQos(Policy.Partition[control_partition_name])
+    publisher_qos = PublisherQos(Policy.Partition(partitions=[control_partition_name]))
+    subscriber_qos = SubscriberQos(Policy.Partition(partitions=[control_partition_name]))
 
 
     # ======= Publisher function ======
@@ -289,9 +288,11 @@ if __name__ == "__main__":
     subscriber = Subscriber(participant, sub_qos)
     partition_topic = Topic(participant, "partition_data", partition_data)
     reader = DataReader(subscriber, partition_topic)
-    while control_partiton_name == "":
+    while control_partition_name == "":
         samples = reader.take()
         if len(samples) > 0:
             for sample in samples:
-                control_partiton_name = sample.__dict__['name']
-    main(participant, control_partiton_name)
+                control_partition_name = sample.__dict__['name']
+
+    print(control_partition_name)
+    main(participant, control_partition_name)

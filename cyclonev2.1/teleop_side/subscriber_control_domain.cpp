@@ -14,8 +14,9 @@ using namespace org::eclipse::cyclonedds;
 void subscriber_control_domain(int& tele, std::string& control_partition_name) {
 
 	std::string name = control_partition_name;
-
 	std::cout << "start running subscriber, partition: " << name << std::endl;
+	
+	std::string streamdeck_name = "streamdeck_tele" + std::to_string(tele);
 
 	int control_domain = 1;
 
@@ -38,11 +39,21 @@ void subscriber_control_domain(int& tele, std::string& control_partition_name) {
 	dds::sub::LoanedSamples<ControlData::streamdeck_buttons_data> buttons_samples;
 	dds::sub::LoanedSamples<ControlData::imu_data> imu_samples;
 
+	bool connected_sd = false;
+	dds::pub::qos::PublisherQos pub_qos_sd;
+	dds::core::StringSeq partition_name_sd{ streamdeck_name };
+	pub_qos_sd << dds::core::policy::Partition(partition_name_sd);
+	dds::pub::Publisher teleSd_publisher(control_participant, pub_qos_sd);
+
+	dds::topic::Topic<ControlData::partition_data> partiton_topic(control_participant, "partition_data");
+	dds::pub::DataWriter<ControlData::partition_data> partition_writer(teleSd_publisher, partiton_topic);
+	
+
 	while (!shutdown_requested) {
 		
 		// RECEIVE AND TAKE THE DATA SAMPLE
 		buttons_samples = buttons_reader.take();
-
+		
 		if (buttons_samples.length() > 0) {
 
 			dds::sub::LoanedSamples<ControlData::streamdeck_buttons_data>::const_iterator iter;
@@ -52,11 +63,16 @@ void subscriber_control_domain(int& tele, std::string& control_partition_name) {
 				const dds::sub::SampleInfo& info = iter->info();
 
 				if (info.valid()) {
+					connected_sd = true;
 					std::cout << "streamdeck_buttons_data: " << data << std::endl;
 
 				}
 
 			}
+		}
+		else if(!connected_sd){
+			ControlData::partition_data data(name);
+			partition_writer.write(data);
 		}
 
 		imu_samples = imu_reader.take();
