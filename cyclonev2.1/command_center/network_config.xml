@@ -10,7 +10,8 @@
 
 			<Peers>
 				<Peer Address="192.168.0.167" />
-				<!--<Peer Address="192.168.0.140" />-->
+				<!--<Peer Address="192.168.0.150" />-->
+				<Peer Address="192.168.0.140" />
 				<Peer Address="10.8.0.6" />
 			</Peers>
 
