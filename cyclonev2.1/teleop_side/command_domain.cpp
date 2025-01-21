@@ -5,13 +5,15 @@
 #include "shutdownsignal.hpp"
 #include "ControlData.hpp"
 #include "partitionName.hpp"
-
+#include "TimeStampLogger.h"
 
 void publisher_control_domain(int& tele, std::string& partition_name);
 void subscriber_control_domain(int& tele, std::string& partition_name);
 
 
 void run_command_domain(int& tele) {
+
+	const std::string filename = "tele_connection_msg.txt";
 
 	std::string tele_id = "tele" + std::to_string(tele);
 	bool online_state = true;
@@ -56,6 +58,11 @@ void run_command_domain(int& tele) {
 		con_samples = con_reader.take();
 
 		if (con_samples.length() > 0) {
+
+			std::string timestamp = TimestampLogger::getTimestamp();
+
+			TimestampLogger::writeToFile(filename, timestamp);
+
 
 			dds::sub::LoanedSamples<ControlData::connection_msg>::const_iterator iter;
 

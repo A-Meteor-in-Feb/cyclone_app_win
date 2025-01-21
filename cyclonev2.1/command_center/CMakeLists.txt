@@ -19,7 +19,7 @@ set(SOURCES entry.cpp center_subscriber.cpp ControlData.cpp shutdownsignal.cpp)
 
 
 # add executable 
-add_executable(command_center ${SOURCES} "shutdownsignal.hpp")
+add_executable(command_center ${SOURCES} "shutdownsignal.hpp" "TimeStampLogger.h")
 
 # Link both executables to idl data type library and ddscxx.
 target_link_libraries(command_center PRIVATE CycloneDDS-CXX::ddscxx controldata)

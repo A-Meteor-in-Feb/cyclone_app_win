@@ -7,6 +7,8 @@
 #include "shutdownsignal.hpp"
 #include "dds/dds.hpp"
 #include "ControlData.hpp"
+#include "TimeStampLogger.h"
+
 
 using namespace org::eclipse::cyclonedds;
 
@@ -34,6 +36,8 @@ void publish_known_msg(dds::domain::DomainParticipant& command_participant, dds:
 		ControlData::connection_msg con_msg(tele_id, vehicle_id);
 
 		con_topic_writer.write(con_msg);
+
+
 	}
 
 	if (vehicle_id == "known") {
@@ -53,6 +57,8 @@ void publish_known_msg(dds::domain::DomainParticipant& command_participant, dds:
 		ControlData::connection_msg con_msg(tele_id, vehicle_id);
 
 		con_topic_writer.write(con_msg);
+
+
 
 	}
 }
@@ -208,6 +214,9 @@ void judge_connection(dds::domain::DomainParticipant& command_participant, dds::
 
 void run_subscriber_application() {
 
+	const std::string filename1 = "command_tele.txt";
+	const std::string filename2 = "command_vehicle.txt";
+
 	int command_domain = 0;
 
 	dds::domain::DomainParticipant command_participant(command_domain);
@@ -264,11 +273,15 @@ void run_subscriber_application() {
 
 						if (usable) {
 							publish_known_msg(command_participant, con_topic, tele_id, "known");
+							std::string timestamp = TimestampLogger::getTimestamp();
+							TimestampLogger::writeToFile(filename1, timestamp);
 							online_tele.push_back(tele_id);
 						}
 					}
 					else if (tele_state == "online" && con_te_ve.count(tele_id)) {
 						publish_connection_msg(command_participant, con_topic, tele_id, con_te_ve[tele_id], true, false);
+						std::string timestamp = TimestampLogger::getTimestamp();
+						TimestampLogger::writeToFile(filename1, timestamp);
 					}
 
 
@@ -311,11 +324,15 @@ void run_subscriber_application() {
 
 						if (usable) {
 							publish_known_msg(command_participant, con_topic, "known", vehicle_id);
+							std::string timestamp = TimestampLogger::getTimestamp();
+							TimestampLogger::writeToFile(filename2, timestamp);
 							online_vehicle.push_back(vehicle_id);
 						}
 					}
 					else if (vehicle_state == "online" && con_te_ve.count(vehicle_id)) {
 						publish_connection_msg(command_participant, con_topic, con_te_ve[vehicle_id], vehicle_id, false, true);
+						std::string timestamp = TimestampLogger::getTimestamp();
+						TimestampLogger::writeToFile(filename2, timestamp);
 					}
 
 					
@@ -326,6 +343,9 @@ void run_subscriber_application() {
 
 		if (online_tele.size() > 0 && online_vehicle.size() > 0) {
 			judge_connection(command_participant, con_topic);
+			std::string timestamp = TimestampLogger::getTimestamp();
+			TimestampLogger::writeToFile(filename1, timestamp);
+			TimestampLogger::writeToFile(filename2, timestamp);
 		}
 
 	}

@@ -19,7 +19,7 @@ set(SOURCES "command_domain.cpp" "publisher_control_domain.cpp" "subscriber_cont
 
 
 # add executable 
-add_executable(teleop_side ${SOURCES})
+add_executable(teleop_side ${SOURCES} "TimeStampLogger.h")
 
 # Link both executables to idl data type library and ddscxx.
 target_link_libraries(teleop_side PRIVATE CycloneDDS-CXX::ddscxx controldata)

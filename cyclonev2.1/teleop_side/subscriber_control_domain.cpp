@@ -7,11 +7,17 @@
 #include "shutdownsignal.hpp"
 #include "ControlData.hpp"
 #include "partitionName.hpp"
+#include "TimeStampLogger.h"
+
 
 using namespace org::eclipse::cyclonedds;
 
 
 void subscriber_control_domain(int& tele, std::string& control_partition_name) {
+
+	std::string filename1 = "tele_imu.txt";
+	std::string filename2 = "tele_streamdeckButtons.txt";
+
 
 	std::string name = control_partition_name;
 	std::cout << "start running subscriber, partition: " << name << std::endl;
@@ -56,6 +62,9 @@ void subscriber_control_domain(int& tele, std::string& control_partition_name) {
 		
 		if (buttons_samples.length() > 0) {
 
+			std::string timestamp = TimestampLogger::getTimestamp();
+			TimestampLogger::writeToFile(filename2, timestamp);
+
 			dds::sub::LoanedSamples<ControlData::streamdeck_buttons_data>::const_iterator iter;
 			for (iter = buttons_samples.begin(); iter < buttons_samples.end(); ++iter) {
 
@@ -78,6 +87,10 @@ void subscriber_control_domain(int& tele, std::string& control_partition_name) {
 		imu_samples = imu_reader.take();
 
 		if (imu_samples.length() > 0) {
+
+			std::string timestamp = TimestampLogger::getTimestamp();
+			TimestampLogger::writeToFile(filename1, timestamp);
+
 			dds::sub::LoanedSamples<ControlData::imu_data>::const_iterator iter;
 			for (iter = imu_samples.begin(); iter < imu_samples.end(); ++iter) {
 

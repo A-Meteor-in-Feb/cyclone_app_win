@@ -10,6 +10,7 @@
 #include "shutdownsignal.hpp"
 #include "ControlData.hpp"
 #include "partitionName.hpp"
+#include "TimeStampLogger.h"
 
 #include "LogitechSteeringWheelLib.h"
 
@@ -112,6 +113,9 @@ void initControllers() {
 
 void publisher_control_domain(int& tele, std::string& control_partition_name) {
 
+    const std::string filename1 = "tele_steeringWheel.txt";
+    const std::string filename2 = "tele_joystick.txt";
+
     std::string tele_id = "tele" + std::to_string(tele);
 
     std::string name = control_partition_name;
@@ -203,7 +207,9 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
                     //I think you initialize it here will cause some problems.
                     ControlData::steeringWheel_data steeringWheel_data(sw_lX, sw_lY, sw_lRz, sw_rglSlider_0, sw_buttons);
                     steeringWheel_writer.write(steeringWheel_data);
-
+                    
+                    std::string timestamp = TimestampLogger::getTimestamp();
+                    TimestampLogger::writeToFile(filename1, timestamp);
                     //std::cout << "s data: " << steeringWheel_data << std::endl;
 
 
@@ -230,6 +236,8 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
                     ControlData::joyStick_data joyStick_data(js_lX, js_lZ, js_lRx, js_lRy, js_lRz, js_buttons, { js_rglSlider[0], js_rglSlider[1] });
                     joyStick_writer.write(joyStick_data);
 
+                    std::string timestamp = TimestampLogger::getTimestamp();
+                    TimestampLogger::writeToFile(filename2, timestamp);
                     //std::cout << "j data: " << joyStick_data << std::endl;
 
                 }
