@@ -72,6 +72,9 @@ button_states = 64
 
 control_partition_name = ""
 
+count_sentMsg = 0
+count_recvMsg = 0
+
 def read_streamdeck():
 
     streamdecks = DeviceManager().enumerate()
@@ -148,7 +151,7 @@ def process_data(reader):
 
 
 def main(participant, control_partition_name):
-    global gear_update_needed, selected_gear
+    global gear_update_needed, selected_gear, count_sentMsg, count_recvMsg
 
     streamdeck = read_streamdeck()
     if not streamdeck:
@@ -166,6 +169,13 @@ def main(participant, control_partition_name):
     writer = DataWriter(publisher, button_topic)
     button_sample = streamdeck_buttons_data(buttons=button_states)
     writer.write(button_sample)
+    # ======= record the timestamp =====
+    timestamp_s = time.time()
+    formatted_time_s = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp_s))
+    file_name_s = "send_msg.txt"
+    with open(file_name_s, "a") as file:
+        file.write(f"Timestamp: {timestamp_s}, Formatted: {formatted_time_s}\n")
+    count_sentMsg += 1
 
     # ===================================
     show_text(streamdeck, 8, "Connecting", 14, centered=True)
@@ -182,7 +192,7 @@ def main(participant, control_partition_name):
     @streamdeck.set_key_callback
     def key_callback(deck, key, state):
         print("deck", deck, "key", key, "state", state)
-        global button_states, gear_update_needed, selected_gear
+        global button_states, gear_update_needed, selected_gear, count_sentMsg
         previous_button_states = button_states
         if key in GEAR_BUTTONS:
             if state:
@@ -198,7 +208,13 @@ def main(participant, control_partition_name):
         if button_states != previous_button_states:
             button_sample = streamdeck_buttons_data(buttons=button_states)
             writer.write(button_sample)
+            timestamp_s = time.time()
+            formatted_time_s = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp_s))
+            file_name_s = "send_msg.txt"
+            with open(file_name_s, "a") as file:
+                file.write(f"Timestamp: {timestamp_s}, Formatted: {formatted_time_s}\n")
             print("Writing streamdeck_buttons_data")
+            count_sentMsg += 1
 
     kb.add_hotkey('q', lambda: exit_program(streamdeck))
 
@@ -223,7 +239,14 @@ def main(participant, control_partition_name):
             samples = reader.take()
 
             if len(samples)>0:
+                # ======== record received time
+                timestamp_r = time.time()
+                formatted_time_r = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp_r))
+                file_name_r = "receive_msg.txt"
+                with open(file_name_r, "a") as file:
+                    file.write(f"Timestamp: {timestamp_r}, Formatted: {formatted_time_r}\n")
                 print("Received message: ")
+                count_recvMsg += 1
 
                 for sample in samples:
                     message[0] = sample.__dict__['height']
@@ -269,12 +292,13 @@ def main(participant, control_partition_name):
                     show_text(streamdeck, 4, "NA", 22, centered=True)
                     print("Cleared height and depth due to timeout")
 
-
     except KeyboardInterrupt:
         pass
     except Exception:
         print("Exception in main loop")
     finally:
+        print("Totally sent buttons data: ", count_sentMsg)
+        print("Totally received data: ", count_recvMsg)
         exit_program(streamdeck)
 
 
