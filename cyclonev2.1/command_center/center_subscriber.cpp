@@ -17,6 +17,7 @@ std::vector<std::string> online_tele;
 std::vector<std::string> online_vehicle;
 std::map<std::string, std::string> con_te_ve;
 
+int count_ConMsg_v = 0, count_ConMsg_t = 0;
 
 void publish_known_msg(dds::domain::DomainParticipant& command_participant, dds::topic::Topic<ControlData::connection_msg>& con_topic, const std::string& tele_id, const std::string& vehicle_id) {
 
@@ -37,6 +38,7 @@ void publish_known_msg(dds::domain::DomainParticipant& command_participant, dds:
 
 		con_topic_writer.write(con_msg);
 
+		count_ConMsg_v += 1;
 
 	}
 
@@ -58,7 +60,7 @@ void publish_known_msg(dds::domain::DomainParticipant& command_participant, dds:
 
 		con_topic_writer.write(con_msg);
 
-
+		count_ConMsg_t += 1;
 
 	}
 }
@@ -88,6 +90,10 @@ void publish_connection_msg(dds::domain::DomainParticipant& command_participant,
 		ControlData::connection_msg con_msg(tele_id, vehicle_id);
 
 		con_topic_writer.write(con_msg);
+
+		count_ConMsg_t += 1;
+		count_ConMsg_v += 1;
+
 	}
 	else if (!tele_again && vehicle_again) {
 		dds::pub::qos::PublisherQos pub_qos;
@@ -105,6 +111,9 @@ void publish_connection_msg(dds::domain::DomainParticipant& command_participant,
 		ControlData::connection_msg con_msg(tele_id, vehicle_id);
 
 		con_topic_writer.write(con_msg);
+
+		count_ConMsg_v += 1;
+
 	}
 	else if (tele_again && !vehicle_again) {
 		dds::pub::qos::PublisherQos pub_qos;
@@ -122,6 +131,9 @@ void publish_connection_msg(dds::domain::DomainParticipant& command_participant,
 		ControlData::connection_msg con_msg(tele_id, vehicle_id);
 
 		con_topic_writer.write(con_msg);
+
+		count_ConMsg_t += 1;
+
 	}
 	
 
@@ -349,6 +361,10 @@ void run_subscriber_application() {
 		}
 
 	}
+
+	std::cout << "Preparing to shutdown ..." << std::endl;
+	std::cout << "Totally sent connection msg to vehicle side: " << count_ConMsg_v << std::endl;
+	std::cout << "Totally sent connection msg to teleop side: " << count_ConMsg_t << std::endl;
 }
 
 /*

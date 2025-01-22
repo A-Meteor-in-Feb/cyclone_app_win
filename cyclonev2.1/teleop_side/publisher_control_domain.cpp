@@ -28,6 +28,8 @@ int joystickIndex = -1;
 DIJOYSTATE2* steeringWheel_state;
 DIJOYSTATE2* joyStick_state;
 
+int count_sentMsg = 100;
+
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
     switch (message) {
@@ -177,7 +179,7 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
     dds::pub::DataWriter<ControlData::steeringWheel_data> steeringWheel_writer(tele_publisher, steeringWheel_topic);
     dds::pub::DataWriter<ControlData::joyStick_data> joyStick_writer(tele_publisher, joyStick_topic);
 
-    while (!shutdown_requested) {
+    while (!shutdown_requested && count_sentMsg > 0) {
 
         if (GetKeyState('Q') < 0) {
             break;
@@ -253,10 +255,11 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
                 std::cerr << "Unknown Error" << std::endl;
             }
 
+            count_sentMsg -= 1;
+
             std::this_thread::sleep_for(std::chrono::microseconds(33)); // ~30Hz
         }
     }
 
     PostMessage(HWND_BROADCAST, WM_DESTROY, 0, 0);
-
 }

@@ -7,8 +7,13 @@
 #include "partitionName.hpp"
 #include "TimeStampLogger.h"
 
+
+
 void publisher_control_domain(int& tele, std::string& partition_name);
 void subscriber_control_domain(int& tele, std::string& partition_name);
+
+
+int count_ConMsg = 0;
 
 
 void run_command_domain(int& tele) {
@@ -72,6 +77,8 @@ void run_command_domain(int& tele) {
 				const dds::sub::SampleInfo& info = iter->info();
 
 				if (info.valid()) {
+
+					count_ConMsg += 1;
 
 					std::string vehicle_id = data.vehicle_id();
 
@@ -144,6 +151,10 @@ void run_command_domain(int& tele) {
 			}
 		}*/
 	}
+
+	std::cout << "preparing shutdown ..." << std::endl;
+	std::cout << "Totally received connection msg from the command center: " << count_ConMsg << std::endl;
+	std::cout << "From teleop side, totally 100 controller messages are sent." << std::endl;
 }
 
 
