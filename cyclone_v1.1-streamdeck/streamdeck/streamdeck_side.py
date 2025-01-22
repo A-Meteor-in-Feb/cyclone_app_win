@@ -1,6 +1,8 @@
+import threading
 import time
 import keyboard as kb
 import os
+from keyboard import add_hotkey
 from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.DeviceManager import DeviceManager
 from StreamDeck.ImageHelpers import PILHelper
@@ -75,6 +77,9 @@ control_partition_name = ""
 count_sentMsg = 0
 count_recvMsg = 0
 
+exit_flag = False
+
+
 def read_streamdeck():
 
     streamdecks = DeviceManager().enumerate()
@@ -137,25 +142,26 @@ def update_gear(deck, selected_gear):
         return True
     return False
 
-def process_data(reader):
-    samples = reader.take_data()
-    height = 0
-    depth = 0
-    auto_flag = 0
-    for sample in samples:
-        print(f"Received: {sample}")
-        height = sample.height
-        depth = sample.depth
-        auto_flag = sample.auto_flag
-    return [height, depth, auto_flag]
+
+def exit_program(deck):
+    global exit_flag
+    print("Exiting program.")
+    if deck:
+        deck.set_brightness(40)
+        deck.reset()
+        deck.close()
+    exit_flag = True
+    os._exit(0)
 
 
-def main(participant, control_partition_name):
+def hotkey_listener(streamdeck):
+    add_hotkey('q', lambda: exit_program(streamdeck))
+    while not exit_flag:
+        time.sleep(0.1)
+
+
+def main(participant, control_partition_name, streamdeck):
     global gear_update_needed, selected_gear, count_sentMsg, count_recvMsg
-
-    streamdeck = read_streamdeck()
-    if not streamdeck:
-        return
 
     initialize = False
 
@@ -216,15 +222,6 @@ def main(participant, control_partition_name):
             print("Writing streamdeck_buttons_data")
             count_sentMsg += 1
 
-    kb.add_hotkey('q', lambda: exit_program(streamdeck))
-
-    def exit_program(deck):
-        print("Exiting program.")
-        if deck:
-            deck.set_brightness(40)
-            deck.reset()
-            deck.close()
-        os._exit(0)
 
     # =========== Subscriber function ===========
     try:
@@ -304,6 +301,14 @@ def main(participant, control_partition_name):
 
 if __name__ == "__main__":
     print(ASSETS_PATH)
+
+    streamdeck = read_streamdeck()
+    if not streamdeck:
+        exit(0)
+
+    listener_thread = threading.Thread(target=lambda: hotkey_listener(streamdeck))
+    listener_thread.start()
+
     tele_id = int(input("What's the corresponding teleop id: "))
     streamdeck_name = "streamdeck_tele" + str(tele_id)
     sub_qos = SubscriberQos( Policy.Partition(partitions=[streamdeck_name]))
@@ -319,4 +324,4 @@ if __name__ == "__main__":
                 control_partition_name = sample.__dict__['name']
 
     print(control_partition_name)
-    main(participant, control_partition_name)
+    main(participant, control_partition_name, streamdeck)
