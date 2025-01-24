@@ -60,7 +60,7 @@ void run_command_domain(int& tele) {
 	std::string name;
 	std::string timestamp;
 
-	while (!shutdown_requested) {
+	while (!shutdown_requested.load(std::memory_order_acquire)) {
 
 		con_samples = con_reader.take();
 
@@ -112,6 +112,7 @@ void run_command_domain(int& tele) {
 						tele_control_publisher.join();
 						tele_control_subscriber.join();
 						
+						shutdown_requested.store(true, std::memory_order_release);
 					}
 
 

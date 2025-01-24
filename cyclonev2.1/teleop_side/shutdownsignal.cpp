@@ -1,3 +1,3 @@
 #include "shutdownsignal.hpp"
 
-bool shutdown_requested = false;
+std::atomic<bool> shutdown_requested = false;

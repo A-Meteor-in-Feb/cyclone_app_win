@@ -181,7 +181,8 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
 
     std::string timestamp;
 
-    while (!shutdown_requested && count_sentMsg > 0) {
+    //while (!shutdown_requested && count_sentMsg > 0) {
+    while(count_sentMsg > 0) {
 
         if (GetKeyState('Q') < 0) {
             break;

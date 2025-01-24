@@ -3,13 +3,14 @@
 
 #include <iostream>
 #include <csignal>
+#include <atomic>
 
 
-extern bool shutdown_requested;
+extern std::atomic<bool> shutdown_requested;
 
 inline void stop_handler(int sig)
 {
-    shutdown_requested = true;
+    shutdown_requested.store(true, std::memory_order_release);
     std::cout << "preparing to shut down..." << std::endl;
 }
 
