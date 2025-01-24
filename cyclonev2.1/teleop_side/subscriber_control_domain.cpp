@@ -57,8 +57,8 @@ void subscriber_control_domain(int& tele, std::string& control_partition_name) {
 
 	std::string timestamp;
 
-	//while (!shutdown_requested) {
-	for(int i=0; i<205 ; i++){
+	while (!shutdown_requested) {
+	
 		/*
 		// RECEIVE AND TAKE THE DATA SAMPLE
 		buttons_samples = buttons_reader.take();
