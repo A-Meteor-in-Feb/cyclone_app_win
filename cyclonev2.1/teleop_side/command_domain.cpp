@@ -18,7 +18,7 @@ int count_ConMsg = 0;
 
 void run_command_domain(int& tele) {
 
-	const std::string filename = "tele_connection_msg.txt";
+	//const std::string filename = "tele_connection_msg.txt";
 
 	std::string tele_id = "tele" + std::to_string(tele);
 	bool online_state = true;
@@ -57,6 +57,8 @@ void run_command_domain(int& tele) {
 	dds::sub::LoanedSamples<ControlData::disconnection_msg> discon_samples;
 
 	bool known = false;
+	std::string name;
+	std::string timestamp;
 
 	while (!shutdown_requested) {
 
@@ -64,9 +66,10 @@ void run_command_domain(int& tele) {
 
 		if (con_samples.length() > 0) {
 
-			std::string timestamp = TimestampLogger::getTimestamp();
+			timestamp = TimestampLogger::getTimestamp();
 
-			TimestampLogger::writeToFile(filename, timestamp);
+			//TimestampLogger::writeToFile(filename, timestamp);
+			std::cout << "receive connection msg at: " << timestamp << std::endl;
 
 
 			dds::sub::LoanedSamples<ControlData::connection_msg>::const_iterator iter;
@@ -100,16 +103,15 @@ void run_command_domain(int& tele) {
 						//start to run the functions of control domain
 						//set the partition name
 						//get the vehicle's ip address.
-						std::string name = data.tele_id() + data.vehicle_id();
-
+						name = data.tele_id() + data.vehicle_id();
 						std::cout << "partition name: " << name << std::endl;
 
-						//start to run the teleop publisher and subscriber at the same time.
 						std::thread tele_control_publisher(publisher_control_domain, std::ref(tele), std::ref(name));
 						std::thread tele_control_subscriber(subscriber_control_domain, std::ref(tele), std::ref(name));
 
 						tele_control_publisher.join();
 						tele_control_subscriber.join();
+						
 					}
 
 
@@ -120,6 +122,8 @@ void run_command_domain(int& tele) {
 		else if (!known) {
 			ControlData::tele_status tele_status_data(tele_id, online_state, connected_state);
 			status_writer.write(tele_status_data);
+			timestamp = TimestampLogger::getTimestamp();
+			std::cout << "publish status msg at: " << timestamp << std::endl;
 			std::this_thread::sleep_for(std::chrono::microseconds(20));
 		}
 
@@ -152,9 +156,10 @@ void run_command_domain(int& tele) {
 		}*/
 	}
 
+
 	std::cout << "preparing shutdown ..." << std::endl;
 	std::cout << "Totally received connection msg from the command center: " << count_ConMsg << std::endl;
-	std::cout << "From teleop side, totally 100 controller messages are sent." << std::endl;
+	std::cout << "From teleop side, totally 200 controller messages are sent." << std::endl;
 }
 
 

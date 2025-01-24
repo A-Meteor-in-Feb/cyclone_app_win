@@ -15,11 +15,11 @@ public:
     static std::string getTimestamp() {
         auto now = std::chrono::system_clock::now();
         auto time_t_now = std::chrono::system_clock::to_time_t(now);
-        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
+        auto us = std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()) % 1000000;
 
         std::ostringstream oss;
         oss << std::put_time(std::localtime(&time_t_now), "%Y-%m-%d %H:%M:%S");
-        oss << '.' << std::setfill('0') << std::setw(3) << ms.count();
+        oss << '.' << std::setfill('0') << std::setw(6) << us.count();
 
         return oss.str();
     }

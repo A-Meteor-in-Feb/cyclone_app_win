@@ -28,7 +28,7 @@ int joystickIndex = -1;
 DIJOYSTATE2* steeringWheel_state;
 DIJOYSTATE2* joyStick_state;
 
-int count_sentMsg = 100;
+int count_sentMsg = 200;
 
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
@@ -115,8 +115,8 @@ void initControllers() {
 
 void publisher_control_domain(int& tele, std::string& control_partition_name) {
 
-    const std::string filename1 = "tele_steeringWheel.txt";
-    const std::string filename2 = "tele_joystick.txt";
+    //const std::string filename1 = "tele_steeringWheel.txt";
+    //const std::string filename2 = "tele_joystick.txt";
 
     std::string tele_id = "tele" + std::to_string(tele);
 
@@ -145,7 +145,7 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
 
     if (hwnd == NULL) {
         std::cerr << "Failed to create a Window" << std::endl;
-        return;
+        exit(0);
     }
 
     ShowWindow(hwnd, SW_SHOW);
@@ -179,23 +179,23 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
     dds::pub::DataWriter<ControlData::steeringWheel_data> steeringWheel_writer(tele_publisher, steeringWheel_topic);
     dds::pub::DataWriter<ControlData::joyStick_data> joyStick_writer(tele_publisher, joyStick_topic);
 
+    std::string timestamp;
+
     while (!shutdown_requested && count_sentMsg > 0) {
 
         if (GetKeyState('Q') < 0) {
             break;
         }
+        
 
-        //then, transmit the data...
         if (LogiUpdate()) {
-
+            std::cout << "here 2" << std::endl;
             try {
 
                 steeringWheel_state = LogiGetState(wheelIndex);
                 joyStick_state = LogiGetState(joystickIndex);
 
                 if (steeringWheel_state) {
-
-                    //std::cout << "Detected: controller." << std::endl;
 
                     std::bitset<32> wheelButtons = getCombinedButtons(steeringWheel_state);
 
@@ -210,9 +210,9 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
                     ControlData::steeringWheel_data steeringWheel_data(sw_lX, sw_lY, sw_lRz, sw_rglSlider_0, sw_buttons);
                     steeringWheel_writer.write(steeringWheel_data);
                     
-                    std::string timestamp = TimestampLogger::getTimestamp();
-                    TimestampLogger::writeToFile(filename1, timestamp);
-                    //std::cout << "s data: " << steeringWheel_data << std::endl;
+                    timestamp = TimestampLogger::getTimestamp();
+                    //TimestampLogger::writeToFile(filename1, timestamp);
+                    std::cout << "publish steering wheel data at: " << timestamp << std::endl;
 
 
                 }
@@ -238,9 +238,9 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
                     ControlData::joyStick_data joyStick_data(js_lX, js_lZ, js_lRx, js_lRy, js_lRz, js_buttons, { js_rglSlider[0], js_rglSlider[1] });
                     joyStick_writer.write(joyStick_data);
 
-                    std::string timestamp = TimestampLogger::getTimestamp();
-                    TimestampLogger::writeToFile(filename2, timestamp);
-                    //std::cout << "j data: " << joyStick_data << std::endl;
+                    timestamp = TimestampLogger::getTimestamp();
+                    //TimestampLogger::writeToFile(filename2, timestamp);
+                    std::cout << "publish joystick data at: " << timestamp << std::endl;
 
                 }
                 else {
@@ -256,10 +256,12 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
             }
 
             count_sentMsg -= 1;
-
+           
             std::this_thread::sleep_for(std::chrono::microseconds(33)); // ~30Hz
         }
     }
 
-    PostMessage(HWND_BROADCAST, WM_DESTROY, 0, 0);
+    std::cout << "publish all data" << std::endl;
+
+    //PostMessage(HWND_BROADCAST, WM_DESTROY, 0, 0);
 }

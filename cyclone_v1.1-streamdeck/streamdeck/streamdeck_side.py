@@ -178,9 +178,10 @@ def main(participant, control_partition_name, streamdeck):
     # ======= record the timestamp =====
     timestamp_s = time.time()
     formatted_time_s = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp_s))
-    file_name_s = "send_msg.txt"
-    with open(file_name_s, "a") as file:
-        file.write(f"Timestamp: {timestamp_s}, Formatted: {formatted_time_s}\n")
+    #file_name_s = "send_msg.txt"
+    #with open(file_name_s, "a") as file:
+    #    file.write(f"Timestamp: {timestamp_s}, Formatted: {formatted_time_s}\n")
+    print("publish buttons data to tele: ", formatted_time_s)
     count_sentMsg += 1
 
     # ===================================
@@ -216,10 +217,7 @@ def main(participant, control_partition_name, streamdeck):
             writer.write(button_sample)
             timestamp_s = time.time()
             formatted_time_s = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp_s))
-            file_name_s = "send_msg.txt"
-            with open(file_name_s, "a") as file:
-                file.write(f"Timestamp: {timestamp_s}, Formatted: {formatted_time_s}\n")
-            print("Writing streamdeck_buttons_data")
+            print("publish buttons data to tele: ", formatted_time_s)
             count_sentMsg += 1
 
 
@@ -239,9 +237,9 @@ def main(participant, control_partition_name, streamdeck):
                 # ======== record received time
                 timestamp_r = time.time()
                 formatted_time_r = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp_r))
-                file_name_r = "receive_msg.txt"
-                with open(file_name_r, "a") as file:
-                    file.write(f"Timestamp: {timestamp_r}, Formatted: {formatted_time_r}\n")
+
+                print("receive data from vehicle: ", formatted_time_r)
+
                 print("Received message: ")
                 count_recvMsg += 1
 

@@ -4,25 +4,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="https://cdds.io/config file:///C:/Users/NTU/Desktop/cyclonedds.xsd">
 
-	<Domain Id="0">
-
-		<Discovery>
-
-			<Peers>
-				<Peer Address="192.168.0.167" />
-			</Peers>
-
-		</Discovery>
-
-
-		<Tracing>
-			<Verbosity>config</Verbosity>
-			<OutputFile>cyclonedds_0.log</OutputFile>
-			<AppendToFile>false</AppendToFile>
-		</Tracing>
-
-	</Domain>
-
 	<Domain Id = "1">
 
 		<Discovery>
@@ -30,6 +11,7 @@
 			<Peers>
 				<Peer Address="192.168.0.167" />
 				<Peer Address="10.8.0.6" />
+				<!--<Peer Address="192.168.0.167" />-->
 			</Peers>
 		</Discovery>
 
@@ -38,8 +20,8 @@
 			<OutputFile>cyclonedds_1.log</OutputFile>
 			<AppendToFile>false</AppendToFile>
 		</Tracing>
-
+		
 	</Domain>
-
-
+	
+	
 </CycloneDDS>
