@@ -180,9 +180,11 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
     dds::pub::DataWriter<ControlData::joyStick_data> joyStick_writer(tele_publisher, joyStick_topic);
 
     std::string timestamp;
+    const auto frame_duration = std::chrono::milliseconds(33);
 
     //while (!shutdown_requested && count_sentMsg > 0) {
     while(count_sentMsg > 0) {
+        auto start_time = std::chrono::steady_clock::now();
 
         if (GetKeyState('Q') < 0) {
             break;
@@ -257,8 +259,11 @@ void publisher_control_domain(int& tele, std::string& control_partition_name) {
             }
 
             count_sentMsg -= 1;
-           
-            std::this_thread::sleep_for(std::chrono::microseconds(33)); // ~30Hz
+
+            auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start_time);
+            if (elapsed_time < frame_duration) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(frame_duration - elapsed_time)); // ~30Hz
+            }
         }
     }
 
