@@ -1,0 +1,507 @@
+RTI Connext DDS Research License issued to Orient Robotic - Nanyang Technological University (NANYANG01) ... For non-production use only.
+Expires on 27-apr-2025
+Please contact support@rti.com with any questions or comments.
+publish status msg at: 2025-01-29 20:31:06.087197
+publish status msg at: 2025-01-29 20:31:09.087924
+publish status msg at: 2025-01-29 20:31:12.088995
+receive connection msg at: 2025-01-29 20:31:15.089696
+match with teleop station: tele3
+partition name: tele3vehicle3
+start running publisher, partition: tele3vehicle3
+start running subscriber, partition: tele3vehicle3
+isatty success!
+open /dev/ttyUSB0 success
+RTI Connext DDS Research License issued to Orient Robotic - Nanyang Technological University (NANYANG01) ... For non-production use only.
+Expires on 27-apr-2025
+Please contact support@rti.com with any questions or comments.
+RTI Connext DDS Research License issued to Orient Robotic - Nanyang Technological University (NANYANG01) ... For non-production use only.
+Expires on 27-apr-2025
+Please contact support@rti.com with any questions or comments.
+isatty success!
+4800 baud find sensor
+
+publish imu data at: 2025-01-29 20:31:16.322909
+publish imu data at: 2025-01-29 20:31:17.323558
+publish imu data at: 2025-01-29 20:31:18.324212
+publish imu data at: 2025-01-29 20:31:19.324720
+publish imu data at: 2025-01-29 20:31:20.325169
+publish imu data at: 2025-01-29 20:31:21.325812
+publish imu data at: 2025-01-29 20:31:22.326311
+publish imu data at: 2025-01-29 20:31:23.326798
+publish imu data at: 2025-01-29 20:31:24.327270
+publish imu data at: 2025-01-29 20:31:25.327724
+publish imu data at: 2025-01-29 20:31:26.328356
+publish imu data at: 2025-01-29 20:31:27.328852
+publish imu data at: 2025-01-29 20:31:28.329356
+publish imu data at: 2025-01-29 20:31:29.330054
+publish imu data at: 2025-01-29 20:31:30.330677
+publish imu data at: 2025-01-29 20:31:31.331324
+publish imu data at: 2025-01-29 20:31:32.331954
+publish imu data at: 2025-01-29 20:31:33.332577
+publish imu data at: 2025-01-29 20:31:34.333197
+publish imu data at: 2025-01-29 20:31:35.333656
+publish imu data at: 2025-01-29 20:31:36.334077
+publish imu data at: 2025-01-29 20:31:37.334594
+publish imu data at: 2025-01-29 20:31:38.335572
+publish imu data at: 2025-01-29 20:31:39.336378
+publish imu data at: 2025-01-29 20:31:40.337170
+publish imu data at: 2025-01-29 20:31:41.337991
+publish imu data at: 2025-01-29 20:31:42.338791
+publish imu data at: 2025-01-29 20:31:43.339590
+publish imu data at: 2025-01-29 20:31:44.340356
+publish imu data at: 2025-01-29 20:31:45.341015
+publish imu data at: 2025-01-29 20:31:46.341578
+receive steering wheel data at: 2025-01-29 20:31:47.111221
+receive joystick data at: 2025-01-29 20:31:47.111356
+receive steering wheel data at: 2025-01-29 20:31:47.143391
+receive joystick data at: 2025-01-29 20:31:47.144810
+receive steering wheel data at: 2025-01-29 20:31:47.172026
+receive joystick data at: 2025-01-29 20:31:47.176117
+receive steering wheel data at: 2025-01-29 20:31:47.210165
+receive joystick data at: 2025-01-29 20:31:47.210268
+receive steering wheel data at: 2025-01-29 20:31:47.242557
+receive joystick data at: 2025-01-29 20:31:47.242579
+receive steering wheel data at: 2025-01-29 20:31:47.276371
+receive joystick data at: 2025-01-29 20:31:47.276392
+receive steering wheel data at: 2025-01-29 20:31:47.309859
+receive joystick data at: 2025-01-29 20:31:47.312754
+publish imu data at: 2025-01-29 20:31:47.342083
+receive steering wheel data at: 2025-01-29 20:31:47.346308
+receive joystick data at: 2025-01-29 20:31:47.347713
+receive steering wheel data at: 2025-01-29 20:31:47.378185
+receive joystick data at: 2025-01-29 20:31:47.378212
+receive steering wheel data at: 2025-01-29 20:31:47.411690
+receive joystick data at: 2025-01-29 20:31:47.415094
+receive steering wheel data at: 2025-01-29 20:31:47.448626
+receive joystick data at: 2025-01-29 20:31:47.450079
+receive steering wheel data at: 2025-01-29 20:31:47.481773
+receive joystick data at: 2025-01-29 20:31:47.481797
+receive steering wheel data at: 2025-01-29 20:31:47.514081
+receive joystick data at: 2025-01-29 20:31:47.515138
+receive steering wheel data at: 2025-01-29 20:31:47.552441
+receive joystick data at: 2025-01-29 20:31:47.552550
+receive steering wheel data at: 2025-01-29 20:31:47.585101
+receive joystick data at: 2025-01-29 20:31:47.585133
+receive steering wheel data at: 2025-01-29 20:31:47.615653
+receive joystick data at: 2025-01-29 20:31:47.623454
+receive steering wheel data at: 2025-01-29 20:31:47.649035
+receive joystick data at: 2025-01-29 20:31:47.649148
+receive steering wheel data at: 2025-01-29 20:31:47.685713
+receive joystick data at: 2025-01-29 20:31:47.685736
+receive steering wheel data at: 2025-01-29 20:31:47.730396
+receive joystick data at: 2025-01-29 20:31:47.739156
+receive steering wheel data at: 2025-01-29 20:31:47.755013
+receive joystick data at: 2025-01-29 20:31:47.755113
+receive steering wheel data at: 2025-01-29 20:31:47.788599
+receive joystick data at: 2025-01-29 20:31:47.788618
+receive steering wheel data at: 2025-01-29 20:31:47.820239
+receive joystick data at: 2025-01-29 20:31:47.820282
+receive steering wheel data at: 2025-01-29 20:31:47.850239
+receive joystick data at: 2025-01-29 20:31:47.853550
+receive steering wheel data at: 2025-01-29 20:31:47.891900
+receive joystick data at: 2025-01-29 20:31:47.891930
+receive steering wheel data at: 2025-01-29 20:31:47.925111
+receive joystick data at: 2025-01-29 20:31:47.925476
+receive steering wheel data at: 2025-01-29 20:31:47.955896
+receive joystick data at: 2025-01-29 20:31:47.955923
+receive steering wheel data at: 2025-01-29 20:31:47.993834
+receive joystick data at: 2025-01-29 20:31:47.993875
+receive steering wheel data at: 2025-01-29 20:31:48.025358
+receive joystick data at: 2025-01-29 20:31:48.026934
+receive steering wheel data at: 2025-01-29 20:31:48.058114
+receive joystick data at: 2025-01-29 20:31:48.058138
+receive steering wheel data at: 2025-01-29 20:31:48.094148
+receive joystick data at: 2025-01-29 20:31:48.095279
+receive steering wheel data at: 2025-01-29 20:31:48.127685
+receive joystick data at: 2025-01-29 20:31:48.133989
+receive steering wheel data at: 2025-01-29 20:31:48.160643
+receive joystick data at: 2025-01-29 20:31:48.160722
+receive steering wheel data at: 2025-01-29 20:31:48.194693
+receive joystick data at: 2025-01-29 20:31:48.194713
+receive steering wheel data at: 2025-01-29 20:31:48.226752
+receive joystick data at: 2025-01-29 20:31:48.226775
+receive steering wheel data at: 2025-01-29 20:31:48.262524
+receive joystick data at: 2025-01-29 20:31:48.262564
+receive steering wheel data at: 2025-01-29 20:31:48.296515
+receive joystick data at: 2025-01-29 20:31:48.298209
+receive steering wheel data at: 2025-01-29 20:31:48.332534
+receive joystick data at: 2025-01-29 20:31:48.332558
+publish imu data at: 2025-01-29 20:31:48.342582
+receive steering wheel data at: 2025-01-29 20:31:48.362632
+receive joystick data at: 2025-01-29 20:31:48.365573
+receive steering wheel data at: 2025-01-29 20:31:48.398745
+receive joystick data at: 2025-01-29 20:31:48.403466
+receive steering wheel data at: 2025-01-29 20:31:48.429532
+receive joystick data at: 2025-01-29 20:31:48.429640
+receive steering wheel data at: 2025-01-29 20:31:48.462384
+receive joystick data at: 2025-01-29 20:31:48.462454
+receive steering wheel data at: 2025-01-29 20:31:48.502397
+receive joystick data at: 2025-01-29 20:31:48.502507
+receive steering wheel data at: 2025-01-29 20:31:48.533501
+receive joystick data at: 2025-01-29 20:31:48.533537
+receive steering wheel data at: 2025-01-29 20:31:48.571800
+receive joystick data at: 2025-01-29 20:31:48.571906
+receive steering wheel data at: 2025-01-29 20:31:48.601793
+receive joystick data at: 2025-01-29 20:31:48.601818
+receive steering wheel data at: 2025-01-29 20:31:48.633637
+receive joystick data at: 2025-01-29 20:31:48.633683
+receive steering wheel data at: 2025-01-29 20:31:48.664785
+receive joystick data at: 2025-01-29 20:31:48.670110
+receive steering wheel data at: 2025-01-29 20:31:48.703593
+receive joystick data at: 2025-01-29 20:31:48.706026
+receive steering wheel data at: 2025-01-29 20:31:48.732346
+receive joystick data at: 2025-01-29 20:31:48.732368
+receive steering wheel data at: 2025-01-29 20:31:48.775298
+receive joystick data at: 2025-01-29 20:31:48.775319
+receive steering wheel data at: 2025-01-29 20:31:48.802775
+receive joystick data at: 2025-01-29 20:31:48.802894
+receive steering wheel data at: 2025-01-29 20:31:48.836962
+receive joystick data at: 2025-01-29 20:31:48.838223
+receive steering wheel data at: 2025-01-29 20:31:48.867634
+receive joystick data at: 2025-01-29 20:31:48.870147
+receive steering wheel data at: 2025-01-29 20:31:48.904986
+receive joystick data at: 2025-01-29 20:31:48.905085
+receive steering wheel data at: 2025-01-29 20:31:48.939144
+receive joystick data at: 2025-01-29 20:31:48.939168
+receive steering wheel data at: 2025-01-29 20:31:48.979506
+receive joystick data at: 2025-01-29 20:31:48.982451
+receive steering wheel data at: 2025-01-29 20:31:49.014077
+receive joystick data at: 2025-01-29 20:31:49.015804
+receive steering wheel data at: 2025-01-29 20:31:49.039341
+receive joystick data at: 2025-01-29 20:31:49.042676
+receive steering wheel data at: 2025-01-29 20:31:49.072484
+receive joystick data at: 2025-01-29 20:31:49.076617
+receive steering wheel data at: 2025-01-29 20:31:49.116538
+receive joystick data at: 2025-01-29 20:31:49.117862
+receive steering wheel data at: 2025-01-29 20:31:49.144403
+receive joystick data at: 2025-01-29 20:31:49.144425
+receive steering wheel data at: 2025-01-29 20:31:49.188145
+receive joystick data at: 2025-01-29 20:31:49.188168
+receive steering wheel data at: 2025-01-29 20:31:49.209546
+receive joystick data at: 2025-01-29 20:31:49.213455
+receive steering wheel data at: 2025-01-29 20:31:49.245825
+receive joystick data at: 2025-01-29 20:31:49.248253
+receive steering wheel data at: 2025-01-29 20:31:49.279315
+receive joystick data at: 2025-01-29 20:31:49.279334
+receive steering wheel data at: 2025-01-29 20:31:49.312643
+receive joystick data at: 2025-01-29 20:31:49.312663
+publish imu data at: 2025-01-29 20:31:49.343343
+receive steering wheel data at: 2025-01-29 20:31:49.348806
+receive joystick data at: 2025-01-29 20:31:49.348883
+receive steering wheel data at: 2025-01-29 20:31:49.381041
+receive joystick data at: 2025-01-29 20:31:49.381112
+receive steering wheel data at: 2025-01-29 20:31:49.425878
+receive joystick data at: 2025-01-29 20:31:49.425947
+receive steering wheel data at: 2025-01-29 20:31:49.450197
+receive joystick data at: 2025-01-29 20:31:49.450295
+receive steering wheel data at: 2025-01-29 20:31:49.479230
+receive joystick data at: 2025-01-29 20:31:49.480963
+receive steering wheel data at: 2025-01-29 20:31:49.514467
+receive joystick data at: 2025-01-29 20:31:49.516625
+receive steering wheel data at: 2025-01-29 20:31:49.553250
+receive joystick data at: 2025-01-29 20:31:49.554892
+receive steering wheel data at: 2025-01-29 20:31:49.580242
+receive joystick data at: 2025-01-29 20:31:49.581887
+receive steering wheel data at: 2025-01-29 20:31:49.619393
+receive joystick data at: 2025-01-29 20:31:49.619436
+receive steering wheel data at: 2025-01-29 20:31:49.651182
+receive joystick data at: 2025-01-29 20:31:49.651217
+receive steering wheel data at: 2025-01-29 20:31:49.693465
+receive joystick data at: 2025-01-29 20:31:49.694801
+receive steering wheel data at: 2025-01-29 20:31:49.721288
+receive joystick data at: 2025-01-29 20:31:49.721314
+receive steering wheel data at: 2025-01-29 20:31:49.757671
+receive joystick data at: 2025-01-29 20:31:49.761267
+receive steering wheel data at: 2025-01-29 20:31:49.784888
+receive joystick data at: 2025-01-29 20:31:49.786683
+receive steering wheel data at: 2025-01-29 20:31:49.822545
+receive joystick data at: 2025-01-29 20:31:49.822571
+receive steering wheel data at: 2025-01-29 20:31:49.852670
+receive joystick data at: 2025-01-29 20:31:49.852698
+receive steering wheel data at: 2025-01-29 20:31:49.887790
+receive joystick data at: 2025-01-29 20:31:49.889364
+receive steering wheel data at: 2025-01-29 20:31:49.923665
+receive joystick data at: 2025-01-29 20:31:49.923744
+receive steering wheel data at: 2025-01-29 20:31:49.954767
+receive joystick data at: 2025-01-29 20:31:49.958664
+receive steering wheel data at: 2025-01-29 20:31:49.986209
+receive joystick data at: 2025-01-29 20:31:49.987404
+receive steering wheel data at: 2025-01-29 20:31:50.025201
+receive joystick data at: 2025-01-29 20:31:50.025256
+receive steering wheel data at: 2025-01-29 20:31:50.060624
+receive joystick data at: 2025-01-29 20:31:50.062054
+receive steering wheel data at: 2025-01-29 20:31:50.088498
+receive joystick data at: 2025-01-29 20:31:50.088590
+receive steering wheel data at: 2025-01-29 20:31:50.127695
+receive joystick data at: 2025-01-29 20:31:50.129316
+receive steering wheel data at: 2025-01-29 20:31:50.163940
+receive joystick data at: 2025-01-29 20:31:50.164014
+receive steering wheel data at: 2025-01-29 20:31:50.192400
+receive joystick data at: 2025-01-29 20:31:50.196208
+receive steering wheel data at: 2025-01-29 20:31:50.226520
+receive joystick data at: 2025-01-29 20:31:50.234267
+receive steering wheel data at: 2025-01-29 20:31:50.260934
+receive joystick data at: 2025-01-29 20:31:50.264460
+receive steering wheel data at: 2025-01-29 20:31:50.293174
+receive joystick data at: 2025-01-29 20:31:50.298720
+receive steering wheel data at: 2025-01-29 20:31:50.333257
+receive joystick data at: 2025-01-29 20:31:50.333346
+publish imu data at: 2025-01-29 20:31:50.344030
+receive steering wheel data at: 2025-01-29 20:31:50.366236
+receive joystick data at: 2025-01-29 20:31:50.366270
+receive steering wheel data at: 2025-01-29 20:31:50.393014
+receive joystick data at: 2025-01-29 20:31:50.396113
+receive steering wheel data at: 2025-01-29 20:31:50.430752
+receive joystick data at: 2025-01-29 20:31:50.434483
+receive steering wheel data at: 2025-01-29 20:31:50.466352
+receive joystick data at: 2025-01-29 20:31:50.466431
+receive steering wheel data at: 2025-01-29 20:31:50.499158
+receive joystick data at: 2025-01-29 20:31:50.499184
+receive steering wheel data at: 2025-01-29 20:31:50.533027
+receive joystick data at: 2025-01-29 20:31:50.536714
+receive steering wheel data at: 2025-01-29 20:31:50.566540
+receive joystick data at: 2025-01-29 20:31:50.566577
+receive steering wheel data at: 2025-01-29 20:31:50.598404
+receive joystick data at: 2025-01-29 20:31:50.598429
+receive steering wheel data at: 2025-01-29 20:31:50.636401
+receive joystick data at: 2025-01-29 20:31:50.636425
+receive steering wheel data at: 2025-01-29 20:31:50.667502
+receive joystick data at: 2025-01-29 20:31:50.667526
+receive steering wheel data at: 2025-01-29 20:31:50.701340
+receive joystick data at: 2025-01-29 20:31:50.701363
+receive steering wheel data at: 2025-01-29 20:31:50.747849
+receive joystick data at: 2025-01-29 20:31:50.747875
+receive steering wheel data at: 2025-01-29 20:31:50.769777
+receive joystick data at: 2025-01-29 20:31:50.771172
+receive steering wheel data at: 2025-01-29 20:31:50.807919
+receive joystick data at: 2025-01-29 20:31:50.808322
+receive steering wheel data at: 2025-01-29 20:31:50.844153
+receive joystick data at: 2025-01-29 20:31:50.844196
+receive steering wheel data at: 2025-01-29 20:31:50.877690
+receive joystick data at: 2025-01-29 20:31:50.877710
+receive steering wheel data at: 2025-01-29 20:31:50.909914
+receive joystick data at: 2025-01-29 20:31:50.909995
+receive steering wheel data at: 2025-01-29 20:31:50.941189
+receive joystick data at: 2025-01-29 20:31:50.942535
+receive steering wheel data at: 2025-01-29 20:31:50.971412
+receive joystick data at: 2025-01-29 20:31:50.973388
+receive steering wheel data at: 2025-01-29 20:31:51.005749
+receive joystick data at: 2025-01-29 20:31:51.009876
+receive steering wheel data at: 2025-01-29 20:31:51.043555
+receive joystick data at: 2025-01-29 20:31:51.043580
+receive steering wheel data at: 2025-01-29 20:31:51.085335
+receive joystick data at: 2025-01-29 20:31:51.085357
+receive steering wheel data at: 2025-01-29 20:31:51.109423
+receive joystick data at: 2025-01-29 20:31:51.109443
+receive steering wheel data at: 2025-01-29 20:31:51.146082
+receive joystick data at: 2025-01-29 20:31:51.147577
+receive steering wheel data at: 2025-01-29 20:31:51.176171
+receive joystick data at: 2025-01-29 20:31:51.176195
+receive steering wheel data at: 2025-01-29 20:31:51.211636
+receive joystick data at: 2025-01-29 20:31:51.214060
+receive steering wheel data at: 2025-01-29 20:31:51.243548
+receive joystick data at: 2025-01-29 20:31:51.243585
+receive steering wheel data at: 2025-01-29 20:31:51.281054
+receive joystick data at: 2025-01-29 20:31:51.281077
+receive steering wheel data at: 2025-01-29 20:31:51.315335
+receive joystick data at: 2025-01-29 20:31:51.316860
+publish imu data at: 2025-01-29 20:31:51.344794
+receive steering wheel data at: 2025-01-29 20:31:51.356255
+receive joystick data at: 2025-01-29 20:31:51.356291
+receive steering wheel data at: 2025-01-29 20:31:51.376367
+receive joystick data at: 2025-01-29 20:31:51.376447
+receive steering wheel data at: 2025-01-29 20:31:51.416457
+receive joystick data at: 2025-01-29 20:31:51.416536
+receive steering wheel data at: 2025-01-29 20:31:51.458446
+receive joystick data at: 2025-01-29 20:31:51.458482
+receive steering wheel data at: 2025-01-29 20:31:51.484660
+receive joystick data at: 2025-01-29 20:31:51.484699
+receive steering wheel data at: 2025-01-29 20:31:51.520385
+receive joystick data at: 2025-01-29 20:31:51.520440
+receive steering wheel data at: 2025-01-29 20:31:51.549331
+receive joystick data at: 2025-01-29 20:31:51.549360
+receive steering wheel data at: 2025-01-29 20:31:51.583888
+receive joystick data at: 2025-01-29 20:31:51.583923
+receive steering wheel data at: 2025-01-29 20:31:51.623407
+receive joystick data at: 2025-01-29 20:31:51.623446
+receive steering wheel data at: 2025-01-29 20:31:51.652459
+receive joystick data at: 2025-01-29 20:31:51.652515
+receive steering wheel data at: 2025-01-29 20:31:51.686893
+receive joystick data at: 2025-01-29 20:31:51.686917
+receive steering wheel data at: 2025-01-29 20:31:51.724122
+receive joystick data at: 2025-01-29 20:31:51.725156
+receive steering wheel data at: 2025-01-29 20:31:51.753132
+receive joystick data at: 2025-01-29 20:31:51.754552
+receive steering wheel data at: 2025-01-29 20:31:51.785330
+receive joystick data at: 2025-01-29 20:31:51.785386
+receive steering wheel data at: 2025-01-29 20:31:51.831628
+receive joystick data at: 2025-01-29 20:31:51.831724
+receive joystick data at: 2025-01-29 20:31:51.853819
+receive steering wheel data at: 2025-01-29 20:31:51.853843
+receive steering wheel data at: 2025-01-29 20:31:51.898287
+receive joystick data at: 2025-01-29 20:31:51.898315
+receive steering wheel data at: 2025-01-29 20:31:51.925481
+receive joystick data at: 2025-01-29 20:31:51.925563
+receive steering wheel data at: 2025-01-29 20:31:51.965229
+receive joystick data at: 2025-01-29 20:31:51.970287
+receive steering wheel data at: 2025-01-29 20:31:51.987673
+receive joystick data at: 2025-01-29 20:31:51.987702
+receive steering wheel data at: 2025-01-29 20:31:52.024195
+receive joystick data at: 2025-01-29 20:31:52.024242
+receive steering wheel data at: 2025-01-29 20:31:52.058063
+receive joystick data at: 2025-01-29 20:31:52.058115
+receive steering wheel data at: 2025-01-29 20:31:52.094693
+receive joystick data at: 2025-01-29 20:31:52.097277
+receive steering wheel data at: 2025-01-29 20:31:52.130129
+receive joystick data at: 2025-01-29 20:31:52.130170
+receive steering wheel data at: 2025-01-29 20:31:52.161180
+receive joystick data at: 2025-01-29 20:31:52.161206
+receive steering wheel data at: 2025-01-29 20:31:52.194053
+receive joystick data at: 2025-01-29 20:31:52.194106
+receive steering wheel data at: 2025-01-29 20:31:52.230996
+receive joystick data at: 2025-01-29 20:31:52.231033
+receive steering wheel data at: 2025-01-29 20:31:52.262494
+receive joystick data at: 2025-01-29 20:31:52.262520
+receive steering wheel data at: 2025-01-29 20:31:52.300423
+receive joystick data at: 2025-01-29 20:31:52.300458
+receive steering wheel data at: 2025-01-29 20:31:52.330097
+receive joystick data at: 2025-01-29 20:31:52.330147
+publish imu data at: 2025-01-29 20:31:52.345511
+receive steering wheel data at: 2025-01-29 20:31:52.366039
+receive joystick data at: 2025-01-29 20:31:52.366075
+receive steering wheel data at: 2025-01-29 20:31:52.407011
+receive joystick data at: 2025-01-29 20:31:52.407049
+receive steering wheel data at: 2025-01-29 20:31:52.434191
+receive joystick data at: 2025-01-29 20:31:52.434257
+receive steering wheel data at: 2025-01-29 20:31:52.467669
+receive joystick data at: 2025-01-29 20:31:52.468995
+receive steering wheel data at: 2025-01-29 20:31:52.502820
+receive joystick data at: 2025-01-29 20:31:52.502849
+receive steering wheel data at: 2025-01-29 20:31:52.534316
+receive joystick data at: 2025-01-29 20:31:52.534415
+receive steering wheel data at: 2025-01-29 20:31:52.572718
+receive joystick data at: 2025-01-29 20:31:52.572757
+receive steering wheel data at: 2025-01-29 20:31:52.599876
+receive joystick data at: 2025-01-29 20:31:52.601141
+receive steering wheel data at: 2025-01-29 20:31:52.634396
+receive joystick data at: 2025-01-29 20:31:52.643579
+receive steering wheel data at: 2025-01-29 20:31:52.673981
+receive joystick data at: 2025-01-29 20:31:52.674031
+receive steering wheel data at: 2025-01-29 20:31:52.703566
+receive joystick data at: 2025-01-29 20:31:52.703591
+receive steering wheel data at: 2025-01-29 20:31:52.736342
+receive joystick data at: 2025-01-29 20:31:52.738174
+receive steering wheel data at: 2025-01-29 20:31:52.768948
+receive joystick data at: 2025-01-29 20:31:52.779627
+receive steering wheel data at: 2025-01-29 20:31:52.804336
+receive joystick data at: 2025-01-29 20:31:52.804374
+receive steering wheel data at: 2025-01-29 20:31:52.842470
+receive joystick data at: 2025-01-29 20:31:52.842498
+receive steering wheel data at: 2025-01-29 20:31:52.876832
+receive joystick data at: 2025-01-29 20:31:52.883650
+receive steering wheel data at: 2025-01-29 20:31:52.907063
+receive joystick data at: 2025-01-29 20:31:52.907150
+receive steering wheel data at: 2025-01-29 20:31:52.940395
+receive joystick data at: 2025-01-29 20:31:52.940473
+receive steering wheel data at: 2025-01-29 20:31:52.985767
+receive joystick data at: 2025-01-29 20:31:52.985791
+receive steering wheel data at: 2025-01-29 20:31:53.008013
+receive joystick data at: 2025-01-29 20:31:53.008090
+receive steering wheel data at: 2025-01-29 20:31:53.047875
+receive joystick data at: 2025-01-29 20:31:53.047914
+receive steering wheel data at: 2025-01-29 20:31:53.078076
+receive joystick data at: 2025-01-29 20:31:53.078095
+receive steering wheel data at: 2025-01-29 20:31:53.110920
+receive joystick data at: 2025-01-29 20:31:53.112247
+receive steering wheel data at: 2025-01-29 20:31:53.145991
+receive joystick data at: 2025-01-29 20:31:53.152594
+receive steering wheel data at: 2025-01-29 20:31:53.180191
+receive joystick data at: 2025-01-29 20:31:53.180230
+receive steering wheel data at: 2025-01-29 20:31:53.213027
+receive joystick data at: 2025-01-29 20:31:53.214473
+receive steering wheel data at: 2025-01-29 20:31:53.248343
+receive joystick data at: 2025-01-29 20:31:53.248382
+receive steering wheel data at: 2025-01-29 20:31:53.283510
+receive joystick data at: 2025-01-29 20:31:53.283537
+receive steering wheel data at: 2025-01-29 20:31:53.314335
+receive joystick data at: 2025-01-29 20:31:53.314363
+publish imu data at: 2025-01-29 20:31:53.346249
+receive steering wheel data at: 2025-01-29 20:31:53.346472
+receive joystick data at: 2025-01-29 20:31:53.346505
+receive steering wheel data at: 2025-01-29 20:31:53.379880
+receive joystick data at: 2025-01-29 20:31:53.387969
+receive steering wheel data at: 2025-01-29 20:31:53.419880
+receive joystick data at: 2025-01-29 20:31:53.419920
+receive steering wheel data at: 2025-01-29 20:31:53.446551
+receive joystick data at: 2025-01-29 20:31:53.446628
+receive steering wheel data at: 2025-01-29 20:31:53.483504
+receive joystick data at: 2025-01-29 20:31:53.486753
+receive steering wheel data at: 2025-01-29 20:31:53.513329
+receive joystick data at: 2025-01-29 20:31:53.513361
+receive steering wheel data at: 2025-01-29 20:31:53.548042
+receive joystick data at: 2025-01-29 20:31:53.554702
+receive joystick data at: 2025-01-29 20:31:53.587577
+receive steering wheel data at: 2025-01-29 20:31:53.587670
+publish imu data at: 2025-01-29 20:31:54.347022
+publish imu data at: 2025-01-29 20:31:55.347843
+publish imu data at: 2025-01-29 20:31:56.348652
+publish imu data at: 2025-01-29 20:31:57.349453
+publish imu data at: 2025-01-29 20:31:58.350285
+publish imu data at: 2025-01-29 20:31:59.351115
+publish imu data at: 2025-01-29 20:32:00.351927
+publish imu data at: 2025-01-29 20:32:01.352752
+publish imu data at: 2025-01-29 20:32:02.353541
+publish imu data at: 2025-01-29 20:32:03.354333
+publish imu data at: 2025-01-29 20:32:04.354897
+publish imu data at: 2025-01-29 20:32:05.355884
+publish imu data at: 2025-01-29 20:32:06.356863
+publish imu data at: 2025-01-29 20:32:07.357861
+publish imu data at: 2025-01-29 20:32:08.358721
+publish imu data at: 2025-01-29 20:32:09.359514
+publish imu data at: 2025-01-29 20:32:10.360344
+publish imu data at: 2025-01-29 20:32:11.361203
+publish imu data at: 2025-01-29 20:32:12.362048
+publish imu data at: 2025-01-29 20:32:13.362866
+publish imu data at: 2025-01-29 20:32:14.363658
+publish imu data at: 2025-01-29 20:32:15.364449
+publish imu data at: 2025-01-29 20:32:16.365271
+publish imu data at: 2025-01-29 20:32:17.366101
+publish imu data at: 2025-01-29 20:32:18.366799
+publish imu data at: 2025-01-29 20:32:19.367647
+publish imu data at: 2025-01-29 20:32:20.368129
+publish imu data at: 2025-01-29 20:32:21.368599
+publish imu data at: 2025-01-29 20:32:22.369051
+publish imu data at: 2025-01-29 20:32:23.369481
+publish imu data at: 2025-01-29 20:32:24.369907
+publish imu data at: 2025-01-29 20:32:25.370361
+publish imu data at: 2025-01-29 20:32:26.370809
+publish imu data at: 2025-01-29 20:32:27.371269
+publish imu data at: 2025-01-29 20:32:28.371727
+publish imu data at: 2025-01-29 20:32:29.372154
+publish imu data at: 2025-01-29 20:32:30.372677
+publish imu data at: 2025-01-29 20:32:31.373449
+publish imu data at: 2025-01-29 20:32:32.374458
+publish imu data at: 2025-01-29 20:32:33.375445
+publish imu data at: 2025-01-29 20:32:34.376432
+publish imu data at: 2025-01-29 20:32:35.377272
+publish imu data at: 2025-01-29 20:32:36.378258
+publish imu data at: 2025-01-29 20:32:37.379060
+publish imu data at: 2025-01-29 20:32:38.379843
+publish imu data at: 2025-01-29 20:32:39.380627
+publish imu data at: 2025-01-29 20:32:40.381411
+publish imu data at: 2025-01-29 20:32:41.382210
+publish imu data at: 2025-01-29 20:32:42.383027
+publish imu data at: 2025-01-29 20:32:43.383860
+publish imu data at: 2025-01-29 20:32:44.384662
+publish imu data at: 2025-01-29 20:32:45.385493
+publish imu data at: 2025-01-29 20:32:46.386343
+publish imu data at: 2025-01-29 20:32:47.387157
+publish imu data at: 2025-01-29 20:32:48.387948
+publish imu data at: 2025-01-29 20:32:49.388781
+publish imu data at: 2025-01-29 20:32:50.389590
+publish imu data at: 2025-01-29 20:32:51.390427
+publish imu data at: 2025-01-29 20:32:52.391078
+publish imu data at: 2025-01-29 20:32:53.391652
+publish imu data at: 2025-01-29 20:32:54.392622
+publish imu data at: 2025-01-29 20:32:55.393424
+publish all data

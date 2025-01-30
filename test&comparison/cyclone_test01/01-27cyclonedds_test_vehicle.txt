@@ -1,0 +1,797 @@
+publish status msg at: 2025-01-27 14:58:54.109539
+publish status msg at: 2025-01-27 14:58:57.110333
+receive connection msg at: 2025-01-27 14:59:00.110991
+non-matched teleop station for now ...
+receive connection msg at: 2025-01-27 14:59:07.876311
+match with teleop station: tele2
+partition name: tele2vehicle2
+start running publisher, partition: tele2vehicle2
+start running subscriber, partition: tele2vehicle2
+isatty success!
+open /dev/ttyUSB0 success
+isatty success!
+receive steering wheel data at: 2025-01-27 14:59:08.027219
+receive joystick data at: 2025-01-27 14:59:08.027335
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.044054
+receive joystick data at: 2025-01-27 14:59:08.044147
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.070031
+receive joystick data at: 2025-01-27 14:59:08.070053
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.070077
+receive joystick data at: 2025-01-27 14:59:08.070088
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.082739
+receive joystick data at: 2025-01-27 14:59:08.082843
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.096061
+receive joystick data at: 2025-01-27 14:59:08.098339
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.111819
+receive joystick data at: 2025-01-27 14:59:08.117273
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.132173
+receive joystick data at: 2025-01-27 14:59:08.132288
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.140769
+receive joystick data at: 2025-01-27 14:59:08.140873
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.155935
+receive joystick data at: 2025-01-27 14:59:08.157995
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.171388
+receive joystick data at: 2025-01-27 14:59:08.175380
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.188723
+receive joystick data at: 2025-01-27 14:59:08.195655
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.204501
+receive joystick data at: 2025-01-27 14:59:08.206548
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.219625
+receive joystick data at: 2025-01-27 14:59:08.219736
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.232317
+receive joystick data at: 2025-01-27 14:59:08.234934
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.260084
+receive joystick data at: 2025-01-27 14:59:08.260140
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.273236
+receive joystick data at: 2025-01-27 14:59:08.273297
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+isatty success!
+receive steering wheel data at: 2025-01-27 14:59:08.286819
+receive joystick data at: 2025-01-27 14:59:08.288720
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.298261
+receive joystick data at: 2025-01-27 14:59:08.298373
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.310549
+receive joystick data at: 2025-01-27 14:59:08.310595
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.333444
+receive joystick data at: 2025-01-27 14:59:08.333495
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.337614
+receive joystick data at: 2025-01-27 14:59:08.337714
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.357529
+receive joystick data at: 2025-01-27 14:59:08.357555
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.368208
+receive joystick data at: 2025-01-27 14:59:08.375443
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.382408
+receive joystick data at: 2025-01-27 14:59:08.382452
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.401146
+receive joystick data at: 2025-01-27 14:59:08.401179
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.414231
+receive joystick data at: 2025-01-27 14:59:08.414256
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.430953
+receive joystick data at: 2025-01-27 14:59:08.430982
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.447645
+receive joystick data at: 2025-01-27 14:59:08.454608
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.462375
+receive joystick data at: 2025-01-27 14:59:08.462425
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.477360
+receive joystick data at: 2025-01-27 14:59:08.484119
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+9600 baud find sensor
+
+receive steering wheel data at: 2025-01-27 14:59:08.487284
+receive joystick data at: 2025-01-27 14:59:08.487311
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.503389
+receive joystick data at: 2025-01-27 14:59:08.506116
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.517190
+receive joystick data at: 2025-01-27 14:59:08.517221
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.532330
+receive joystick data at: 2025-01-27 14:59:08.534703
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.550960
+receive joystick data at: 2025-01-27 14:59:08.550988
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.564363
+receive joystick data at: 2025-01-27 14:59:08.565977
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.580542
+receive joystick data at: 2025-01-27 14:59:08.582790
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.592520
+receive joystick data at: 2025-01-27 14:59:08.596570
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.607780
+receive joystick data at: 2025-01-27 14:59:08.607807
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.624367
+receive joystick data at: 2025-01-27 14:59:08.624398
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.639813
+receive joystick data at: 2025-01-27 14:59:08.641719
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.657735
+receive joystick data at: 2025-01-27 14:59:08.657762
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.673005
+receive joystick data at: 2025-01-27 14:59:08.673053
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.684180
+receive joystick data at: 2025-01-27 14:59:08.685305
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.698989
+receive joystick data at: 2025-01-27 14:59:08.699022
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.713282
+receive joystick data at: 2025-01-27 14:59:08.717873
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.733241
+receive joystick data at: 2025-01-27 14:59:08.733283
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.744922
+receive joystick data at: 2025-01-27 14:59:08.744956
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.766205
+receive joystick data at: 2025-01-27 14:59:08.766235
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.775219
+receive joystick data at: 2025-01-27 14:59:08.784662
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.788064
+receive joystick data at: 2025-01-27 14:59:08.788092
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.802594
+receive joystick data at: 2025-01-27 14:59:08.802623
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.826162
+receive joystick data at: 2025-01-27 14:59:08.826190
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.832408
+receive joystick data at: 2025-01-27 14:59:08.835979
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.848354
+receive joystick data at: 2025-01-27 14:59:08.848448
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.867104
+receive joystick data at: 2025-01-27 14:59:08.867209
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.876894
+receive joystick data at: 2025-01-27 14:59:08.876923
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.892255
+receive joystick data at: 2025-01-27 14:59:08.897059
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.904634
+receive joystick data at: 2025-01-27 14:59:08.908007
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.928031
+receive joystick data at: 2025-01-27 14:59:08.928141
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.934212
+receive joystick data at: 2025-01-27 14:59:08.941341
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.963485
+receive joystick data at: 2025-01-27 14:59:08.963514
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.983468
+receive joystick data at: 2025-01-27 14:59:08.983494
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.990153
+receive joystick data at: 2025-01-27 14:59:08.990174
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:08.999900
+receive joystick data at: 2025-01-27 14:59:09.001775
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.013102
+receive joystick data at: 2025-01-27 14:59:09.013209
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.033583
+receive joystick data at: 2025-01-27 14:59:09.033692
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.043256
+receive joystick data at: 2025-01-27 14:59:09.043284
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.058585
+receive joystick data at: 2025-01-27 14:59:09.060694
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.076887
+receive joystick data at: 2025-01-27 14:59:09.078941
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.092500
+receive joystick data at: 2025-01-27 14:59:09.092529
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.103343
+receive joystick data at: 2025-01-27 14:59:09.103370
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.116274
+receive joystick data at: 2025-01-27 14:59:09.120188
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.132529
+receive joystick data at: 2025-01-27 14:59:09.132567
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.147761
+receive joystick data at: 2025-01-27 14:59:09.147800
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.163942
+receive joystick data at: 2025-01-27 14:59:09.173714
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.180522
+receive joystick data at: 2025-01-27 14:59:09.180573
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.195887
+receive joystick data at: 2025-01-27 14:59:09.197648
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.205881
+receive joystick data at: 2025-01-27 14:59:09.205911
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.221498
+receive joystick data at: 2025-01-27 14:59:09.221528
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.243157
+receive joystick data at: 2025-01-27 14:59:09.243223
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.254328
+receive joystick data at: 2025-01-27 14:59:09.254360
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.266789
+receive joystick data at: 2025-01-27 14:59:09.271407
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.280132
+receive joystick data at: 2025-01-27 14:59:09.280159
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.296897
+receive joystick data at: 2025-01-27 14:59:09.300633
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.310801
+receive joystick data at: 2025-01-27 14:59:09.310827
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.330981
+receive joystick data at: 2025-01-27 14:59:09.331011
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.343512
+receive joystick data at: 2025-01-27 14:59:09.343550
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.364084
+receive joystick data at: 2025-01-27 14:59:09.375518
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.375548
+receive joystick data at: 2025-01-27 14:59:09.375572
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.391277
+receive joystick data at: 2025-01-27 14:59:09.400255
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.404763
+receive joystick data at: 2025-01-27 14:59:09.404861
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.417396
+receive joystick data at: 2025-01-27 14:59:09.419659
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.433224
+receive joystick data at: 2025-01-27 14:59:09.433254
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.448847
+receive joystick data at: 2025-01-27 14:59:09.453479
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.469255
+receive joystick data at: 2025-01-27 14:59:09.471086
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.483860
+receive joystick data at: 2025-01-27 14:59:09.483891
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+publish imu data at: 2025-01-27 14:59:09.486786
+receive steering wheel data at: 2025-01-27 14:59:09.493580
+receive joystick data at: 2025-01-27 14:59:09.495777
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.504407
+receive joystick data at: 2025-01-27 14:59:09.504502
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.523250
+receive joystick data at: 2025-01-27 14:59:09.523362
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.535646
+receive joystick data at: 2025-01-27 14:59:09.544741
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.552546
+receive joystick data at: 2025-01-27 14:59:09.552573
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.567895
+receive joystick data at: 2025-01-27 14:59:09.572635
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.582483
+receive joystick data at: 2025-01-27 14:59:09.582574
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.595706
+receive joystick data at: 2025-01-27 14:59:09.597503
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.610032
+receive joystick data at: 2025-01-27 14:59:09.610145
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.627667
+receive joystick data at: 2025-01-27 14:59:09.632063
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.642299
+receive joystick data at: 2025-01-27 14:59:09.646172
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.656353
+receive joystick data at: 2025-01-27 14:59:09.656472
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.673020
+receive joystick data at: 2025-01-27 14:59:09.677398
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.692430
+receive joystick data at: 2025-01-27 14:59:09.692486
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.706218
+receive joystick data at: 2025-01-27 14:59:09.708094
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.725081
+receive joystick data at: 2025-01-27 14:59:09.725109
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.734329
+receive joystick data at: 2025-01-27 14:59:09.734358
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.746577
+receive joystick data at: 2025-01-27 14:59:09.754838
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.764213
+receive joystick data at: 2025-01-27 14:59:09.764313
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.784791
+receive joystick data at: 2025-01-27 14:59:09.784822
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.796255
+receive joystick data at: 2025-01-27 14:59:09.797954
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.808415
+receive joystick data at: 2025-01-27 14:59:09.810552
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.823320
+receive joystick data at: 2025-01-27 14:59:09.829675
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.837117
+receive joystick data at: 2025-01-27 14:59:09.837225
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.857742
+receive joystick data at: 2025-01-27 14:59:09.857798
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.868399
+receive joystick data at: 2025-01-27 14:59:09.871891
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.883506
+receive joystick data at: 2025-01-27 14:59:09.883588
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.901951
+receive joystick data at: 2025-01-27 14:59:09.912715
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.912743
+receive joystick data at: 2025-01-27 14:59:09.912799
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.932761
+receive joystick data at: 2025-01-27 14:59:09.932793
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.941624
+receive joystick data at: 2025-01-27 14:59:09.946117
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.962587
+receive joystick data at: 2025-01-27 14:59:09.962625
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.976790
+receive joystick data at: 2025-01-27 14:59:09.976819
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:09.987924
+receive joystick data at: 2025-01-27 14:59:09.992047
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.008183
+receive joystick data at: 2025-01-27 14:59:10.008207
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.019775
+receive joystick data at: 2025-01-27 14:59:10.019875
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.030004
+receive joystick data at: 2025-01-27 14:59:10.032517
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.044764
+receive joystick data at: 2025-01-27 14:59:10.044786
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.069539
+receive joystick data at: 2025-01-27 14:59:10.069569
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.081098
+receive joystick data at: 2025-01-27 14:59:10.083368
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.095745
+receive joystick data at: 2025-01-27 14:59:10.095772
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.110131
+receive joystick data at: 2025-01-27 14:59:10.116263
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.119169
+receive joystick data at: 2025-01-27 14:59:10.119282
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.135661
+receive joystick data at: 2025-01-27 14:59:10.138732
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.156230
+receive joystick data at: 2025-01-27 14:59:10.156261
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.168520
+receive joystick data at: 2025-01-27 14:59:10.171630
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.187908
+receive joystick data at: 2025-01-27 14:59:10.187939
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.199573
+receive joystick data at: 2025-01-27 14:59:10.211362
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.219909
+receive joystick data at: 2025-01-27 14:59:10.219942
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.229554
+receive joystick data at: 2025-01-27 14:59:10.239079
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.245300
+receive joystick data at: 2025-01-27 14:59:10.245329
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.260869
+receive joystick data at: 2025-01-27 14:59:10.260971
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.277413
+receive joystick data at: 2025-01-27 14:59:10.277443
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.289406
+receive joystick data at: 2025-01-27 14:59:10.289433
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.308666
+receive joystick data at: 2025-01-27 14:59:10.308741
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.320853
+receive joystick data at: 2025-01-27 14:59:10.323010
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.333248
+receive joystick data at: 2025-01-27 14:59:10.333281
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.348456
+receive joystick data at: 2025-01-27 14:59:10.354952
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.364375
+receive joystick data at: 2025-01-27 14:59:10.364408
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.381734
+receive joystick data at: 2025-01-27 14:59:10.381819
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.394791
+receive joystick data at: 2025-01-27 14:59:10.394894
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.410578
+receive joystick data at: 2025-01-27 14:59:10.413859
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.424427
+receive joystick data at: 2025-01-27 14:59:10.424481
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.434705
+receive joystick data at: 2025-01-27 14:59:10.438282
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.450087
+receive joystick data at: 2025-01-27 14:59:10.450145
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.468131
+receive joystick data at: 2025-01-27 14:59:10.471066
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+publish imu data at: 2025-01-27 14:59:10.487316
+receive steering wheel data at: 2025-01-27 14:59:10.489238
+receive joystick data at: 2025-01-27 14:59:10.489277
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.495824
+receive joystick data at: 2025-01-27 14:59:10.498389
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.514594
+receive joystick data at: 2025-01-27 14:59:10.514648
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.536147
+receive joystick data at: 2025-01-27 14:59:10.538289
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.545213
+receive joystick data at: 2025-01-27 14:59:10.545245
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.561681
+receive joystick data at: 2025-01-27 14:59:10.565371
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.574541
+receive joystick data at: 2025-01-27 14:59:10.576707
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.589679
+receive joystick data at: 2025-01-27 14:59:10.589792
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.603564
+receive joystick data at: 2025-01-27 14:59:10.603619
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.618971
+receive joystick data at: 2025-01-27 14:59:10.619028
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.630525
+receive joystick data at: 2025-01-27 14:59:10.640468
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.647028
+receive joystick data at: 2025-01-27 14:59:10.647084
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.673439
+receive joystick data at: 2025-01-27 14:59:10.673532
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.679568
+receive joystick data at: 2025-01-27 14:59:10.679593
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.697829
+receive joystick data at: 2025-01-27 14:59:10.697854
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.708746
+receive joystick data at: 2025-01-27 14:59:10.711746
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.721940
+receive joystick data at: 2025-01-27 14:59:10.731095
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.744545
+receive joystick data at: 2025-01-27 14:59:10.752754
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.756571
+receive joystick data at: 2025-01-27 14:59:10.756611
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.770028
+receive joystick data at: 2025-01-27 14:59:10.772300
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.787309
+receive joystick data at: 2025-01-27 14:59:10.787352
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.797018
+receive joystick data at: 2025-01-27 14:59:10.797058
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.816327
+receive joystick data at: 2025-01-27 14:59:10.816358
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.833550
+receive joystick data at: 2025-01-27 14:59:10.833578
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.839642
+receive joystick data at: 2025-01-27 14:59:10.839690
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.854538
+receive joystick data at: 2025-01-27 14:59:10.854577
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.875828
+receive joystick data at: 2025-01-27 14:59:10.875876
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.897608
+receive joystick data at: 2025-01-27 14:59:10.897640
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive steering wheel data at: 2025-01-27 14:59:10.903576
+receive joystick data at: 2025-01-27 14:59:10.903677
+joyStick_data: [lX: 0, lZ: 0, lRx: 0, lRy: 0, lRz: 0, buttons: 0, rglSlider: [0, 0]]
+receive joystick data at: 2025-01-27 14:59:10.918588
+receive steering wheel data at: 2025-01-27 14:59:10.936771
+publish imu data at: 2025-01-27 14:59:11.488039
+publish imu data at: 2025-01-27 14:59:12.488815
+publish imu data at: 2025-01-27 14:59:13.489599
+publish imu data at: 2025-01-27 14:59:14.490221
+publish imu data at: 2025-01-27 14:59:15.490838
+publish imu data at: 2025-01-27 14:59:16.491443
+publish imu data at: 2025-01-27 14:59:17.492057
+publish imu data at: 2025-01-27 14:59:18.492666
+publish imu data at: 2025-01-27 14:59:19.493260
+publish imu data at: 2025-01-27 14:59:20.493895
+publish imu data at: 2025-01-27 14:59:21.494677
+publish imu data at: 2025-01-27 14:59:22.495291
+publish imu data at: 2025-01-27 14:59:23.495911
+publish imu data at: 2025-01-27 14:59:24.496471
+publish imu data at: 2025-01-27 14:59:25.497197
+publish imu data at: 2025-01-27 14:59:26.497935
+publish imu data at: 2025-01-27 14:59:27.498715
+publish imu data at: 2025-01-27 14:59:28.499343
+publish imu data at: 2025-01-27 14:59:29.500118
+publish imu data at: 2025-01-27 14:59:30.500894
+publish imu data at: 2025-01-27 14:59:31.501646
+publish imu data at: 2025-01-27 14:59:32.502317
+publish imu data at: 2025-01-27 14:59:33.503005
+publish imu data at: 2025-01-27 14:59:34.503618
+publish imu data at: 2025-01-27 14:59:35.504263
+publish imu data at: 2025-01-27 14:59:36.505038
+publish imu data at: 2025-01-27 14:59:37.505640
+publish imu data at: 2025-01-27 14:59:38.506384
+publish imu data at: 2025-01-27 14:59:39.507158
+publish imu data at: 2025-01-27 14:59:40.508028
+publish imu data at: 2025-01-27 14:59:41.508664
+publish imu data at: 2025-01-27 14:59:42.509244
+publish imu data at: 2025-01-27 14:59:43.509837
+publish imu data at: 2025-01-27 14:59:44.510652
+publish imu data at: 2025-01-27 14:59:45.511299
+publish imu data at: 2025-01-27 14:59:46.512092
+publish imu data at: 2025-01-27 14:59:47.512878
+publish imu data at: 2025-01-27 14:59:48.513497
+publish imu data at: 2025-01-27 14:59:49.514275
+publish imu data at: 2025-01-27 14:59:50.515044
+publish imu data at: 2025-01-27 14:59:51.515807
+publish imu data at: 2025-01-27 14:59:52.516575
+publish imu data at: 2025-01-27 14:59:53.517337
+publish imu data at: 2025-01-27 14:59:54.518090
+publish imu data at: 2025-01-27 14:59:55.518700
+publish imu data at: 2025-01-27 14:59:56.519474
+publish imu data at: 2025-01-27 14:59:57.520276
+publish imu data at: 2025-01-27 14:59:58.521064
+publish imu data at: 2025-01-27 14:59:59.521708
+publish imu data at: 2025-01-27 15:00:00.522332
+publish imu data at: 2025-01-27 15:00:01.523004
+publish imu data at: 2025-01-27 15:00:02.523643
+publish imu data at: 2025-01-27 15:00:03.524302
+publish imu data at: 2025-01-27 15:00:04.525064
+publish imu data at: 2025-01-27 15:00:05.525830
+publish imu data at: 2025-01-27 15:00:06.526447
+publish imu data at: 2025-01-27 15:00:07.527240
+publish imu data at: 2025-01-27 15:00:08.527921
+publish imu data at: 2025-01-27 15:00:09.528562
+publish imu data at: 2025-01-27 15:00:10.529215
+publish imu data at: 2025-01-27 15:00:11.529838
+publish imu data at: 2025-01-27 15:00:12.530454
+publish imu data at: 2025-01-27 15:00:13.531078
+publish imu data at: 2025-01-27 15:00:14.531651
+publish imu data at: 2025-01-27 15:00:15.532234
+publish imu data at: 2025-01-27 15:00:16.532866
+publish imu data at: 2025-01-27 15:00:17.533669
+publish imu data at: 2025-01-27 15:00:18.534468
+publish imu data at: 2025-01-27 15:00:19.535245
+publish imu data at: 2025-01-27 15:00:20.536058
+publish imu data at: 2025-01-27 15:00:21.536698
+publish imu data at: 2025-01-27 15:00:22.537452
+publish imu data at: 2025-01-27 15:00:23.538170
+publish imu data at: 2025-01-27 15:00:24.539027
+publish imu data at: 2025-01-27 15:00:25.539797
+publish imu data at: 2025-01-27 15:00:26.540565
+publish imu data at: 2025-01-27 15:00:27.541192
+publish imu data at: 2025-01-27 15:00:28.541974
+publish imu data at: 2025-01-27 15:00:29.542758
+publish imu data at: 2025-01-27 15:00:30.543492
+publish imu data at: 2025-01-27 15:00:31.544251
+publish imu data at: 2025-01-27 15:00:32.545030
+publish imu data at: 2025-01-27 15:00:33.545810
+publish imu data at: 2025-01-27 15:00:34.546678
+publish imu data at: 2025-01-27 15:00:35.547473
+publish imu data at: 2025-01-27 15:00:36.548238
+publish imu data at: 2025-01-27 15:00:37.549013
+publish imu data at: 2025-01-27 15:00:38.549793
+publish imu data at: 2025-01-27 15:00:39.550561
+publish imu data at: 2025-01-27 15:00:40.551367
+publish imu data at: 2025-01-27 15:00:41.552149
+publish imu data at: 2025-01-27 15:00:42.552927
+publish imu data at: 2025-01-27 15:00:43.553711
+publish imu data at: 2025-01-27 15:00:44.554478
+publish imu data at: 2025-01-27 15:00:45.555100
+publish imu data at: 2025-01-27 15:00:46.555870
+publish imu data at: 2025-01-27 15:00:47.556662
+publish imu data at: 2025-01-27 15:00:48.557455
+publish imu data at: 2025-01-27 15:00:49.558262
+publish imu data at: 2025-01-27 15:00:50.559119
+publish imu data at: 2025-01-27 15:00:51.559930
+publish imu data at: 2025-01-27 15:00:52.560676
+publish imu data at: 2025-01-27 15:00:53.561447
+publish imu data at: 2025-01-27 15:00:54.562182
+publish imu data at: 2025-01-27 15:00:55.562939
+publish imu data at: 2025-01-27 15:00:56.563694
+publish imu data at: 2025-01-27 15:00:57.564452
+publish imu data at: 2025-01-27 15:00:58.565260
+publish imu data at: 2025-01-27 15:00:59.566051
+publish imu data at: 2025-01-27 15:01:00.566689
+publish imu data at: 2025-01-27 15:01:01.567335
+publish imu data at: 2025-01-27 15:01:02.568073
+publish imu data at: 2025-01-27 15:01:03.568707
+publish imu data at: 2025-01-27 15:01:04.569490
+publish imu data at: 2025-01-27 15:01:05.570128
+publish imu data at: 2025-01-27 15:01:06.570764
+publish imu data at: 2025-01-27 15:01:07.571566
+publish imu data at: 2025-01-27 15:01:08.572221
+publish imu data at: 2025-01-27 15:01:09.573019
+publish imu data at: 2025-01-27 15:01:10.573797
+publish imu data at: 2025-01-27 15:01:11.574444
+publish imu data at: 2025-01-27 15:01:12.575212
+publish imu data at: 2025-01-27 15:01:13.575840
+publish imu data at: 2025-01-27 15:01:14.576606
+publish imu data at: 2025-01-27 15:01:15.577383
+publish imu data at: 2025-01-27 15:01:16.578017
+publish imu data at: 2025-01-27 15:01:17.578809
+publish imu data at: 2025-01-27 15:01:18.579458
+publish imu data at: 2025-01-27 15:01:19.580283
+publish imu data at: 2025-01-27 15:01:20.581077
+publish imu data at: 2025-01-27 15:01:21.581710
+publish imu data at: 2025-01-27 15:01:22.582342
+publish imu data at: 2025-01-27 15:01:23.583179
+publish imu data at: 2025-01-27 15:01:24.583789
+publish imu data at: 2025-01-27 15:01:25.584556
+publish imu data at: 2025-01-27 15:01:26.585230
+publish imu data at: 2025-01-27 15:01:27.585831
+publish imu data at: 2025-01-27 15:01:28.586457
+publish imu data at: 2025-01-27 15:01:29.587107
+publish imu data at: 2025-01-27 15:01:30.587718
+publish imu data at: 2025-01-27 15:01:31.588489
+publish imu data at: 2025-01-27 15:01:32.589259
+publish imu data at: 2025-01-27 15:01:33.590023
+publish imu data at: 2025-01-27 15:01:34.590778
+publish imu data at: 2025-01-27 15:01:35.591579
+publish imu data at: 2025-01-27 15:01:36.592361
+publish imu data at: 2025-01-27 15:01:37.593130
+publish imu data at: 2025-01-27 15:01:38.593780
+publish imu data at: 2025-01-27 15:01:39.594576
+publish imu data at: 2025-01-27 15:01:40.595376
+publish imu data at: 2025-01-27 15:01:41.596017
+publish imu data at: 2025-01-27 15:01:42.596670
+publish imu data at: 2025-01-27 15:01:43.597288
+publish imu data at: 2025-01-27 15:01:44.597918
+publish imu data at: 2025-01-27 15:01:45.598550
+publish imu data at: 2025-01-27 15:01:46.599189
+publish imu data at: 2025-01-27 15:01:47.599814
+publish imu data at: 2025-01-27 15:01:48.600433
+publish imu data at: 2025-01-27 15:01:49.601052
+publish imu data at: 2025-01-27 15:01:50.601694
+publish imu data at: 2025-01-27 15:01:51.602321
+publish imu data at: 2025-01-27 15:01:52.602948
+publish imu data at: 2025-01-27 15:01:53.603567
+publish imu data at: 2025-01-27 15:01:54.604211
+publish imu data at: 2025-01-27 15:01:55.604829
+publish imu data at: 2025-01-27 15:01:56.605458
+publish imu data at: 2025-01-27 15:01:57.606066
+publish imu data at: 2025-01-27 15:01:58.606684
+publish imu data at: 2025-01-27 15:01:59.607439
+publish imu data at: 2025-01-27 15:02:00.608060
+publish imu data at: 2025-01-27 15:02:01.608859
+publish imu data at: 2025-01-27 15:02:02.609667
+publish imu data at: 2025-01-27 15:02:03.610458
+publish imu data at: 2025-01-27 15:02:04.611236
+publish imu data at: 2025-01-27 15:02:05.612032
+publish imu data at: 2025-01-27 15:02:06.612805
+publish imu data at: 2025-01-27 15:02:07.613589
+publish imu data at: 2025-01-27 15:02:08.614248
+publish imu data at: 2025-01-27 15:02:09.614895
+publish imu data at: 2025-01-27 15:02:10.615551
+publish imu data at: 2025-01-27 15:02:11.616199
+publish imu data at: 2025-01-27 15:02:12.616783
+publish imu data at: 2025-01-27 15:02:13.617545
+publish imu data at: 2025-01-27 15:02:14.618162
+publish imu data at: 2025-01-27 15:02:15.618951
+publish imu data at: 2025-01-27 15:02:16.619758
+publish imu data at: 2025-01-27 15:02:17.620558
+publish imu data at: 2025-01-27 15:02:18.621338
+publish imu data at: 2025-01-27 15:02:19.622114
+publish imu data at: 2025-01-27 15:02:20.622933
+publish imu data at: 2025-01-27 15:02:21.623733
+publish imu data at: 2025-01-27 15:02:22.624530
+publish imu data at: 2025-01-27 15:02:23.625322
+publish imu data at: 2025-01-27 15:02:24.625972
+publish imu data at: 2025-01-27 15:02:25.626616
+publish imu data at: 2025-01-27 15:02:26.627404
+publish imu data at: 2025-01-27 15:02:27.628046
+publish imu data at: 2025-01-27 15:02:28.628697
+publish all data

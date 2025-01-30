@@ -38,3 +38,15 @@ test_cyclonedds/test_cyclonedds/build/*
 test_udp/.vs/*
 test_udp/Debug/*
 test_udp/test_udp/*
+
+
+processData/perf_imu/.idea/*
+processData/perf_imu/.venv/*
+processData/perf_joy/.idea/*
+processData/perf_joy/perf_joy/.idea/*
+processData/perf_joy/perf_joy/.venv/*
+processData/perf_stw/.idea/*
+processData/perf_stw/.venv/*
+processData/rti_lost_data/.idea/*
+processData/rti_lost_data/.venv/*
+processData/pythonProject/.idea/*
